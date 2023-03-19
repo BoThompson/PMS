@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://8aky3sa5q3fk"]
+
+[ext_resource type="Script" path="res://MatchBoard.gd" id="1_v65fq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_top = -14.0
+offset_right = 31.0
+offset_bottom = 26.0
+
+[node name="Player Board" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 207.5
+offset_right = 414.0
+offset_bottom = 527.5
+script = ExtResource("1_v65fq")
+player = true
+
+[node name="Opponent Board" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 213.0
+offset_right = 950.0
+offset_bottom = 533.0
