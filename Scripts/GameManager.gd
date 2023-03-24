@@ -42,11 +42,14 @@ func add_resource(resource, amt, player):
 		resources[1][resource] += amt
 		oppResourcesChanged.emit(resources[1])
 
-func select_action(is_player, action):
+func select_action(is_player, action) -> bool:
 	if is_player:
 		selected_actions[0] = action
+		return true
 	else:
 		selected_actions[1] = action
+		return true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
