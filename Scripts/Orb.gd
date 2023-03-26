@@ -12,11 +12,11 @@ enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
 @export var state : OrbState
-@export var lit : OrbLit : set=_on_change_lit
+@export var lit : bool : set=_on_change_lit
 
 ###########################################   Internals   ##########################################
 var type : OrbType : set=_on_change_type
-var board : MatchBoard
+var field : EnergyField
 var tween : Tween
 var coordinate : Vector2i
 var deployed = true
@@ -24,24 +24,22 @@ var deployed = true
 ####################################          Resources          ###################################
 ####################################################################################################
 
-var symbol_sprites = {
-	OrbType.ATTACK + 1000 * OrbLit.UNLIT : preload("res://Sprites/Unlit Attack.png"),
-	OrbType.DEFENSE + 1000 *  OrbLit.UNLIT : preload("res://Sprites/Unlit Defense.png"),
-	OrbType.PREPARE + 1000 *  OrbLit.UNLIT : preload("res://Sprites/Unlit Prepare.png"),
-	OrbType.QI + 1000 *  OrbLit.UNLIT : preload("res://Sprites/Unlit Qi.png"),
-	OrbType.YIN + 1000 *  OrbLit.UNLIT : preload("res://Sprites/Unlit Yin.png"),
-	OrbType.YANG + 1000 *  OrbLit.UNLIT : preload("res://Sprites/Unlit Yang.png"),
-	OrbType.ATTACK + 1000 * OrbLit.LIT : preload("res://Sprites/Lit Attack.png"),
-	OrbType.DEFENSE + 1000 *  OrbLit.LIT : preload("res://Sprites/Lit Defense.png"),
-	OrbType.PREPARE + 1000 *  OrbLit.LIT : preload("res://Sprites/Lit Prepare.png"),
-	OrbType.QI + 1000 *  OrbLit.LIT : preload("res://Sprites/Lit Qi.png"),
-	OrbType.YIN + 1000 *  OrbLit.LIT : preload("res://Sprites/Lit Yin.png"),
-	OrbType.YANG + 1000 *  OrbLit.LIT : preload("res://Sprites/Lit Yang.png"),
+var foreground_sprites = {
+	OrbType.ATTACK 	: preload("res://Sprites/Orbs/Attack FG.png"),
+	OrbType.DEFENSE : preload("res://Sprites/Orbs/Defense FG.png"),
+	OrbType.PREPARE : preload("res://Sprites/Orbs/Prepare FG.png"),
+	OrbType.QI 		: preload("res://Sprites/Orbs/Qi FG.png"),
+	OrbType.YIN 	: preload("res://Sprites/Orbs/Yin FG.png"),
+	OrbType.YANG 	: preload("res://Sprites/Orbs/Yang FG.png")
 }
 
-var orb_sprites = {
-	OrbLit.UNLIT : preload("res://Sprites/Unlit Tile.png"),
-	OrbLit.LIT : preload("res://Sprites/Lit Tile.png")
+var background_sprites = {
+	OrbType.ATTACK 	: preload("res://Sprites/Orbs/Attack BG.png"),
+	OrbType.DEFENSE : preload("res://Sprites/Orbs/Defense BG.png"),
+	OrbType.PREPARE : preload("res://Sprites/Orbs/Prepare BG.png"),
+	OrbType.QI 		: preload("res://Sprites/Orbs/Qi BG.png"),
+	OrbType.YIN 	: preload("res://Sprites/Orbs/Yin BG.png"),
+	OrbType.YANG 	: preload("res://Sprites/Orbs/Yang BG.png")
 }
 
 ####################################################################################################	
@@ -49,12 +47,12 @@ var orb_sprites = {
 ####################################################################################################
 
 func _on_change_type(value : OrbType):
-	$Symbol.texture = symbol_sprites[lit * 1000 + value]
+	$Background.texture = background_sprites[value]
+	$Foreground.texture = foreground_sprites[value]
 	type = value
 	
-func _on_change_lit(value : OrbLit):
-	$Background.texture = orb_sprites[value]
-	$Symbol.texture = symbol_sprites[value * 1000 + type]
+func _on_change_lit(value):
+	$Highlight.visible = value
 	lit = value
 
 ####################################################################################################	
@@ -112,15 +110,15 @@ func shuffle():
 ####################################################################################################
 
 func _on_swap_complete():
-	board.remove_active_orb(self)
+	field.remove_active_orb(self)
 	transition(OrbState.SELECTABLE)
 
 func _on_activate_complete():
-	board.remove_active_orb(self)
+	field.remove_active_orb(self)
 	exit_state(OrbState.ACTIVATED)
 
 func _on_fall_complete():
-	board.remove_active_orb(self)
+	field.remove_active_orb(self)
 	transition(OrbState.SELECTABLE)
 	
 ####################################################################################################	
@@ -132,20 +130,20 @@ func enter_state(new_state):
 	match(state):
 		OrbState.FALLING:
 			tween = create_tween()
-			var final_position = 64*Vector2(coordinate.x,4-coordinate.y)
+			var final_position = 50*Vector2(coordinate.x,4-coordinate.y)
 			if(deployed):
 				modulate = Color(1,1,1,0)
-				tween.tween_property(self, "modulate", Color(1,1,1,1), .2 * (final_position.y - position.y) / 64)
+				tween.tween_property(self, "modulate", Color(1,1,1,1), .2 * -(final_position.y - position.y) / 50)
 			deployed = false
-			tween.tween_property(self, "position", final_position, .2 * (final_position.y - position.y) / 64).set_ease(Tween.EASE_IN)
+			tween.tween_property(self, "position", final_position, .2 * -(final_position.y - position.y) / 50).set_ease(Tween.EASE_IN)
 			tween.tween_callback(_on_fall_complete)
-			board.add_active_orb(self)
+			field.add_active_orb(self)
 		OrbState.SWAPPING:
 			tween = create_tween()
-			var final_position = 64*Vector2(coordinate.x,4-coordinate.y)
+			var final_position = 50*Vector2(coordinate.x,4-coordinate.y)
 			tween.tween_property(self, "position", final_position, .25).set_ease(Tween.EASE_IN_OUT)
 			tween.tween_callback(_on_swap_complete)
-			board.add_active_orb(self)
+			field.add_active_orb(self)
 		OrbState.SELECTABLE:
 			lit = OrbLit.UNLIT
 		OrbState.SELECTED:
@@ -154,7 +152,7 @@ func enter_state(new_state):
 			tween = create_tween()
 			tween.tween_property(self, "modulate", Color(0,0,0,0), .25).set_ease(Tween.EASE_IN_OUT)
 			tween.tween_callback(_on_activate_complete)
-			board.add_active_orb(self)
+			field.add_active_orb(self)
 			
 	
 func exit_state(old_state):
@@ -168,8 +166,8 @@ func exit_state(old_state):
 		OrbState.SELECTED:
 			pass
 		OrbState.ACTIVATED:
-			board.clear_orb(coordinate)
-			board.add_resource(type, 1)
+			field.clear_orb(coordinate)
+			field.add_resource(type, 1)
 			queue_free()
 
 func transition(forced_state):

@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://clwe01igdnvgq"]
+
+[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="1_guiq0"]
+[ext_resource type="Script" path="res://Scenes/CharacterSelectPanel.gd" id="2_v1gf7"]
+[ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="3_abbiu"]
+[ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="4_xcgvq"]
+[ext_resource type="Texture2D" uid="uid://q47hydsf8rra" path="res://Sprites/Portraits/Prodigy.png" id="5_ds475"]
+[ext_resource type="Texture2D" uid="uid://c2fpg3ppj5ckk" path="res://Sprites/Character Locked.png" id="6_0407a"]
+
+[node name="Character Select Panel" type="TextureButton"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
+offset_left = 368.0
+offset_top = 376.0
+offset_right = 542.0
+offset_bottom = 460.0
+texture_normal = ExtResource("1_guiq0")
+script = ExtResource("2_v1gf7")
+
+[node name="Seal" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.635294, 0.635294, 0.635294, 0.27451)
+layout_mode = 0
+offset_left = 70.0
+offset_top = 8.0
+offset_right = 139.0
+offset_bottom = 77.0
+mouse_filter = 2
+texture = ExtResource("3_abbiu")
+
+[node name="Title" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 7.0
+offset_right = 139.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("4_xcgvq")
+
+[node name="Quote" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 47.0
+offset_top = 31.0
+offset_right = 167.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0.478431, 0.423529, 0.392157, 1)
+theme_override_colors/font_shadow_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 9
+text = "\"If you're a match for me today, I promise you won't be for long.\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 66.0
+offset_bottom = 82.0
+mouse_filter = 2
+texture = ExtResource("5_ds475")
+
+[node name="Requirement" type="Label" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 4.0
+offset_right = 159.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 11
+text = "This character is not playable at this time. Check back later!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Lock" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 21.0
+offset_right = 118.0
+offset_bottom = 66.0
+mouse_filter = 2
+texture = ExtResource("6_0407a")
