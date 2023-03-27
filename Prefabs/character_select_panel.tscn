@@ -1,99 +1,129 @@
-[gd_scene load_steps=7 format=3 uid="uid://6h68q7txb0d6"]
+[gd_scene load_steps=11 format=3 uid="uid://6h68q7txb0d6"]
 
+[ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="1_0wxnq"]
 [ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="1_guiq0"]
-[ext_resource type="Script" path="res://Scenes/CharacterSelectPanel.gd" id="2_v1gf7"]
 [ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="3_abbiu"]
 [ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="4_xcgvq"]
-[ext_resource type="Texture2D" uid="uid://q47hydsf8rra" path="res://Sprites/Portraits/Prodigy.png" id="5_ds475"]
+[ext_resource type="FontFile" uid="uid://3x1abt1jgvne" path="res://Fonts/GodsendPro.ttf" id="5_y8k1c"]
 [ext_resource type="Texture2D" uid="uid://c2fpg3ppj5ckk" path="res://Sprites/Character Locked.png" id="6_0407a"]
+[ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="6_lkfh3"]
+[ext_resource type="Texture2D" uid="uid://d1clhs11d1a7l" path="res://Sprites/Portraits/Blank.png" id="7_pmxwf"]
 
-[node name="Control" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_wsohl"]
+line_spacing = -3.0
+font = ExtResource("6_lkfh3")
+font_color = Color(0.341176, 0.243137, 0.243137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fabno"]
+line_spacing = -3.0
+font = ExtResource("6_lkfh3")
+
+[node name="Character Select Panel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 174.0
+offset_bottom = 84.0
+script = ExtResource("1_0wxnq")
+
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.470588)
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 84.0
+mouse_filter = 2
+texture = ExtResource("1_guiq0")
 
 [node name="Button" type="TextureButton" parent="."]
-self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
-offset_left = 368.0
-offset_top = 376.0
-offset_right = 542.0
-offset_bottom = 460.0
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 84.0
 texture_normal = ExtResource("1_guiq0")
-script = ExtResource("2_v1gf7")
 
 [node name="Seal" type="TextureRect" parent="."]
-visible = false
 modulate = Color(0.635294, 0.635294, 0.635294, 0.27451)
 layout_mode = 0
-offset_left = 438.0
-offset_top = 384.0
-offset_right = 507.0
-offset_bottom = 453.0
+offset_left = 70.0
+offset_top = 8.0
+offset_right = 139.0
+offset_bottom = 77.0
 mouse_filter = 2
 texture = ExtResource("3_abbiu")
 
 [node name="Title" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 432.0
-offset_top = 383.0
-offset_right = 507.0
-offset_bottom = 408.0
+offset_left = 64.0
+offset_top = 7.0
+offset_right = 139.0
+offset_bottom = 32.0
 mouse_filter = 2
 texture = ExtResource("4_xcgvq")
 
 [node name="Quote" type="Label" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 415.0
-offset_top = 407.0
-offset_right = 535.0
-offset_bottom = 458.0
-theme_override_colors/font_color = Color(0.478431, 0.423529, 0.392157, 1)
+offset_left = 41.0
+offset_top = 30.0
+offset_right = 171.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.301961, 0.262745, 0.239216, 1)
 theme_override_colors/font_shadow_color = Color(0.643137, 0.643137, 0.643137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 9
+theme_override_fonts/font = ExtResource("5_y8k1c")
+theme_override_font_sizes/font_size = 16
 text = "\"If you're a match for me today, I promise you won't be for long.\""
+label_settings = SubResource("LabelSettings_wsohl")
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 370.0
-offset_top = 362.0
-offset_right = 434.0
-offset_bottom = 458.0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 66.0
+offset_bottom = 82.0
 mouse_filter = 2
-texture = ExtResource("5_ds475")
+texture = ExtResource("7_pmxwf")
 
 [node name="Requirement" type="Label" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 0
-offset_left = 383.0
-offset_top = 380.0
-offset_right = 527.0
-offset_bottom = 456.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 159.0
+offset_bottom = 69.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.643137, 0.643137, 0.643137, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("5_y8k1c")
+theme_override_font_sizes/font_size = 16
 text = "This character is not playable at this time. Check back later!"
+label_settings = SubResource("LabelSettings_fabno")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Lock" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 433.0
-offset_top = 397.0
-offset_right = 486.0
-offset_bottom = 442.0
+offset_left = 65.0
+offset_top = 21.0
+offset_right = 118.0
+offset_bottom = 66.0
 mouse_filter = 2
 texture = ExtResource("6_0407a")
+
+[node name="Dimmer" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.470588)
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 84.0
+mouse_filter = 2
+texture = ExtResource("1_guiq0")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_selected"]

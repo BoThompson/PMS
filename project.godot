@@ -27,6 +27,10 @@ window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/default_font_antialiasing=0
+
 [rendering]
 
 renderer/rendering_method="mobile"

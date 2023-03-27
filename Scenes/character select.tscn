@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj6cwp58v37kk"]
+[gd_scene load_steps=2 format=3 uid="uid://bj6cwp58v37kk"]
 
-[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="1_dym86"]
-[ext_resource type="PackedScene" uid="uid://clwe01igdnvgq" path="res://Prefabs/character_select_panel.tscn" id="1_efe7y"]
-[ext_resource type="Texture2D" uid="uid://d1clhs11d1a7l" path="res://Sprites/Portraits/Blank.png" id="2_eh33i"]
+[ext_resource type="PackedScene" uid="uid://6h68q7txb0d6" path="res://Prefabs/character_select_panel.tscn" id="1_efe7y"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -24,14 +23,7 @@ offset_left = 20.0
 offset_top = 60.0
 offset_right = 570.0
 offset_bottom = 530.0
-
-[node name="TextureRect" type="TextureRect" parent="Characters"]
-self_modulate = Color(0, 0, 0, 0.788235)
-layout_mode = 0
-offset_left = 6.0
-offset_right = 180.0
-offset_bottom = 84.0
-texture = ExtResource("1_dym86")
+mouse_filter = 2
 
 [node name="The Novice" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -39,39 +31,21 @@ offset_left = 4.0
 offset_top = -3.0
 offset_right = 178.0
 offset_bottom = 81.0
+title = "Novice"
+locked = true
 
-[node name="Portrait" parent="Characters/The Novice" index="3"]
-visible = true
+[node name="Portrait" parent="Characters/The Novice" index="5"]
 self_modulate = Color(0.290196, 0.309804, 0.286275, 1)
-texture = ExtResource("2_eh33i")
-
-[node name="Requirement" parent="Characters/The Novice" index="4"]
-visible = true
-
-[node name="Lock" parent="Characters/The Novice" index="5"]
-visible = false
 
 [node name="The Prodigy" parent="Characters" instance=ExtResource("1_efe7y")]
-self_modulate = Color(1, 1, 1, 1)
 layout_mode = 0
 offset_left = 188.0
 offset_top = -3.0
 offset_right = 362.0
 offset_bottom = 81.0
+title = "Prodigy"
 
-[node name="Seal" parent="Characters/The Prodigy" index="0"]
-visible = true
-
-[node name="Title" parent="Characters/The Prodigy" index="1"]
-visible = true
-
-[node name="Quote" parent="Characters/The Prodigy" index="2"]
-visible = true
-
-[node name="Portrait" parent="Characters/The Prodigy" index="3"]
-visible = true
-
-[node name="Lock" parent="Characters/The Prodigy" index="5"]
+[node name="Lock" parent="Characters/The Prodigy" index="7"]
 visible = false
 
 [node name="The3" parent="Characters" instance=ExtResource("1_efe7y")]
@@ -80,6 +54,7 @@ offset_left = 372.0
 offset_top = -3.0
 offset_right = 546.0
 offset_bottom = 81.0
+locked = true
 
 [node name="The4" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -87,6 +62,7 @@ offset_left = 4.0
 offset_top = 91.0
 offset_right = 178.0
 offset_bottom = 175.0
+locked = true
 
 [node name="The5" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -94,6 +70,7 @@ offset_left = 188.0
 offset_top = 91.0
 offset_right = 362.0
 offset_bottom = 175.0
+locked = true
 
 [node name="The6" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -101,6 +78,7 @@ offset_left = 372.0
 offset_top = 91.0
 offset_right = 546.0
 offset_bottom = 175.0
+locked = true
 
 [node name="The7" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -108,6 +86,7 @@ offset_left = 4.0
 offset_top = 185.0
 offset_right = 178.0
 offset_bottom = 269.0
+locked = true
 
 [node name="The8" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -115,6 +94,7 @@ offset_left = 188.0
 offset_top = 185.0
 offset_right = 362.0
 offset_bottom = 269.0
+locked = true
 
 [node name="The9" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -122,6 +102,7 @@ offset_left = 372.0
 offset_top = 185.0
 offset_right = 546.0
 offset_bottom = 269.0
+locked = true
 
 [node name="The10" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -129,6 +110,7 @@ offset_left = 4.0
 offset_top = 279.0
 offset_right = 178.0
 offset_bottom = 363.0
+locked = true
 
 [node name="The11" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -136,6 +118,7 @@ offset_left = 188.0
 offset_top = 279.0
 offset_right = 362.0
 offset_bottom = 363.0
+locked = true
 
 [node name="The12" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -143,6 +126,7 @@ offset_left = 372.0
 offset_top = 279.0
 offset_right = 546.0
 offset_bottom = 363.0
+locked = true
 
 [node name="The13" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -150,6 +134,7 @@ offset_left = 4.0
 offset_top = 373.0
 offset_right = 178.0
 offset_bottom = 457.0
+locked = true
 
 [node name="The14" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -157,6 +142,7 @@ offset_left = 188.0
 offset_top = 373.0
 offset_right = 362.0
 offset_bottom = 457.0
+locked = true
 
 [node name="The15" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -164,6 +150,7 @@ offset_left = 372.0
 offset_top = 373.0
 offset_right = 546.0
 offset_bottom = 457.0
+locked = true
 
 [node name="Details" type="Panel" parent="."]
 layout_mode = 0
@@ -174,3 +161,4 @@ offset_bottom = 520.0
 
 [editable path="Characters/The Novice"]
 [editable path="Characters/The Prodigy"]
+[editable path="Characters/The3"]

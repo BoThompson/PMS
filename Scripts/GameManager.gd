@@ -1,7 +1,7 @@
 extends Node
 
-var playerBoard : MatchBoard
-var oppBoard : MatchBoard
+var playerField : EnergyField
+var oppField : EnergyField
 
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
@@ -36,7 +36,7 @@ func reset_resources():
 	resources[1].fill(0)
 
 func reset_player_board():
-	playerBoard.reset()
+	playerField.reset()
 	
 func add_resource(resource, amt, player):
 	if player:
@@ -57,9 +57,9 @@ func select_action(is_player, action) -> bool:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		for orb in playerBoard.get_children():
+		for orb in playerField.get_children():
 			var c = orb.coordinate
-			var oo = playerBoard.orbs[c.x][c.y]
+			var oo = playerField.orbs[c.x][c.y]
 			if oo != null:
 				var oc = oo.coordinate
 				if c != oc:
