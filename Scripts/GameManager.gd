@@ -1,13 +1,17 @@
 extends Node
 
-var playerField : EnergyField
-var oppField : EnergyField
+var playerBoard : MatchBoard
+var oppBoard : MatchBoard
 
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
+
+
 signal playerResourcesChanged(resource_list)
 signal oppResourcesChanged(resource_list)
 
+signal player_active_time_updated(value, action_selected)
+signal opp_active_timer_up
 var resources
 var selected_actions
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +28,6 @@ func register_resource_board(board, is_player):
 	else:
 		oppResourceBoard = board
 		oppResourcesChanged.connect(board.on_resources_changed)
-		
-		
 func reset_resources():
 	resources = [[],[]]
 	resources[0].resize(6)
@@ -33,8 +35,8 @@ func reset_resources():
 	resources[0].fill(0)
 	resources[1].fill(0)
 
-func reset_player_field():
-	playerField.reset()
+func reset_player_board():
+	playerBoard.reset()
 	
 func add_resource(resource, amt, player):
 	if player:
@@ -55,9 +57,9 @@ func select_action(is_player, action) -> bool:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		for orb in playerField.get_children():
+		for orb in playerBoard.get_children():
 			var c = orb.coordinate
-			var oo = playerField.orbs[c.x][c.y]
+			var oo = playerBoard.orbs[c.x][c.y]
 			if oo != null:
 				var oc = oo.coordinate
 				if c != oc:

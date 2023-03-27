@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://f6pvjmto6q1n"]
+[gd_scene load_steps=19 format=3 uid="uid://dxam7l44u1rhe"]
 
 [ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_byjcr"]
 [ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_t4wfb"]
@@ -10,13 +10,13 @@
 [ext_resource type="Script" path="res://Scripts/ResourceBoard.gd" id="5_5oaww"]
 [ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="6_3fusw"]
 [ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="6_f6u7u"]
-[ext_resource type="Script" path="res://Scenes/AttackButton.gd" id="7_2hcn6"]
 [ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Sprites/Lit Defense.png" id="7_flvtl"]
 [ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Sprites/Lit Prepare.png" id="8_e227g"]
 [ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="8_mcqny"]
 [ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Sprites/Lit Qi.png" id="9_dolpg"]
 [ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Sprites/Lit Yin.png" id="10_82g46"]
 [ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Sprites/Lit Yang.png" id="11_rpsd3"]
+[ext_resource type="Script" path="res://Scripts/AttackButton.gd" id="16_nsnil"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uhc5x"]
 blend_mode = 1
@@ -334,7 +334,7 @@ offset_bottom = 365.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack"]
 material = SubResource("CanvasItemMaterial_uhc5x")
@@ -361,7 +361,7 @@ offset_bottom = 365.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack2"]
 material = SubResource("CanvasItemMaterial_uhc5x")
@@ -388,7 +388,7 @@ offset_bottom = 451.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack3"]
 material = SubResource("CanvasItemMaterial_uhc5x")
@@ -415,7 +415,7 @@ offset_bottom = 451.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack4"]
 material = SubResource("CanvasItemMaterial_uhc5x")
@@ -442,7 +442,7 @@ offset_bottom = 539.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack5"]
 material = SubResource("CanvasItemMaterial_uhc5x")
@@ -469,7 +469,7 @@ offset_bottom = 539.0
 texture_normal = ExtResource("1_byjcr")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("7_2hcn6")
+script = ExtResource("16_nsnil")
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack6"]
 material = SubResource("CanvasItemMaterial_uhc5x")
