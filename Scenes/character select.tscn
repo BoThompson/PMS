@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj6cwp58v37kk"]
+[gd_scene load_steps=11 format=3 uid="uid://b1a582rali5xt"]
 
-[ext_resource type="PackedScene" uid="uid://6h68q7txb0d6" path="res://Prefabs/character_select_panel.tscn" id="1_efe7y"]
+[ext_resource type="PackedScene" uid="uid://dd2x2rlkgplth" path="res://Prefabs/character_select_plate.tscn" id="1_efe7y"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="3_08ix2"]
+[ext_resource type="FontFile" uid="uid://ml5x4t3vqdb5" path="res://Fonts/WorthyPro.ttf" id="7_8vown"]
+[ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="9_g8l0x"]
+[ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="9_rec1t"]
+[ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="10_tfp66"]
+[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="12_7v3ov"]
+[ext_resource type="Texture2D" uid="uid://bkwwsiq17v4lt" path="res://Sprites/Abilities/default.png" id="13_dq5nk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h1xx1"]
+line_spacing = -3.0
+font = ExtResource("9_rec1t")
+font_color = Color(0.329412, 0.160784, 0.160784, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_hnupb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -25,43 +39,51 @@ offset_right = 570.0
 offset_bottom = 530.0
 mouse_filter = 2
 
-[node name="The Novice" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Inheritor" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -3.0
 offset_right = 178.0
 offset_bottom = 81.0
-title = "Novice"
-locked = true
-
-[node name="Portrait" parent="Characters/The Novice" index="5"]
-self_modulate = Color(0.290196, 0.309804, 0.286275, 1)
+character = "inheritor"
 
 [node name="The Prodigy" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 188.0
-offset_top = -3.0
-offset_right = 362.0
-offset_bottom = 81.0
-title = "Prodigy"
-
-[node name="Lock" parent="Characters/The Prodigy" index="7"]
-visible = false
-
-[node name="The3" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 372.0
-offset_top = -3.0
-offset_right = 546.0
-offset_bottom = 81.0
-locked = true
-
-[node name="The4" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 91.0
 offset_right = 178.0
 offset_bottom = 175.0
+character = "prodigy"
+
+[node name="Requirement" parent="Characters/The Prodigy" index="6"]
+theme_override_colors/font_shadow_color = Color(0.164706, 0.164706, 0.164706, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "LOCKED: Reach Jade Core stage to unlock this character."
+
+[node name="The Pacifist" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = -3.0
+offset_right = 362.0
+offset_bottom = 81.0
+locked = true
+
+[node name="Quote" parent="Characters/The Pacifist" index="4"]
+offset_left = 54.0
+offset_top = 29.0
+offset_right = 168.0
+offset_bottom = 94.0
+
+[node name="Requirement" parent="Characters/The Pacifist" index="6"]
+text = "LOCKED: Acquire a Lotus Wheel artifact to unlock this character!"
+
+[node name="The4" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 372.0
+offset_top = -3.0
+offset_right = 546.0
+offset_bottom = 81.0
 locked = true
 
 [node name="The5" parent="Characters" instance=ExtResource("1_efe7y")]
@@ -152,13 +174,273 @@ offset_right = 546.0
 offset_bottom = 457.0
 locked = true
 
-[node name="Details" type="Panel" parent="."]
+[node name="Character Select Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 580.0
 offset_top = 20.0
 offset_right = 940.0
 offset_bottom = 520.0
+script = ExtResource("3_08ix2")
 
-[editable path="Characters/The Novice"]
+[node name="Paper" type="ColorRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 355.0
+offset_bottom = 493.0
+color = Color(0.788235, 0.772549, 0.764706, 1)
+
+[node name="Title" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 23.5
+offset_right = 216.0
+offset_bottom = 48.5
+scale = Vector2(2, 2)
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("9_g8l0x")
+
+[node name="Seal" type="TextureRect" parent="Character Select Panel"]
+modulate = Color(0.721569, 0.380392, 0, 0.309804)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 180.5
+offset_right = 216.0
+offset_bottom = 249.5
+scale = Vector2(2, 2)
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("10_tfp66")
+
+[node name="Background" type="Label" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 91.0
+offset_right = 325.0
+offset_bottom = 187.0
+text = "Background:"
+label_settings = SubResource("LabelSettings_h1xx1")
+autowrap_mode = 2
+
+[node name="Background Label" type="Label" parent="Character Select Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 79.0
+offset_right = 325.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("7_8vown")
+text = "Background"
+autowrap_mode = 2
+
+[node name="Style" type="Label" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 187.0
+offset_right = 286.0
+offset_bottom = 297.0
+text = "Style:"
+label_settings = SubResource("LabelSettings_h1xx1")
+autowrap_mode = 2
+
+[node name="Element" type="Label" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 200.0
+offset_right = 286.0
+offset_bottom = 310.0
+text = "Element:"
+label_settings = SubResource("LabelSettings_h1xx1")
+autowrap_mode = 2
+
+[node name="Quirks" type="RichTextLabel" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 214.0
+offset_right = 336.0
+offset_bottom = 254.0
+theme_override_colors/default_color = Color(0.290196, 0.164706, 0.145098, 1)
+theme_override_fonts/normal_font = ExtResource("9_rec1t")
+theme_override_fonts/bold_font = ExtResource("9_rec1t")
+bbcode_enabled = true
+text = "Quirk"
+
+[node name="Sprite" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 294.0
+offset_right = 259.0
+offset_bottom = 380.0
+scale = Vector2(2, 2)
+texture = ExtResource("12_7v3ov")
+
+[node name="Ability1" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 295.0
+offset_right = 115.0
+offset_bottom = 329.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability2" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 335.0
+offset_right = 71.0
+offset_bottom = 369.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability3" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 335.0
+offset_right = 159.0
+offset_bottom = 369.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability4" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 377.0
+offset_right = 135.0
+offset_bottom = 411.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability5" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 377.0
+offset_right = 183.0
+offset_bottom = 411.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability6" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 377.0
+offset_right = 95.0
+offset_bottom = 411.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability7" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 377.0
+offset_right = 47.0
+offset_bottom = 411.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability8" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 425.0
+offset_right = 47.0
+offset_bottom = 459.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability9" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 425.0
+offset_right = 95.0
+offset_bottom = 459.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability10" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 425.0
+offset_right = 135.0
+offset_bottom = 459.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Ability11" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 425.0
+offset_right = 183.0
+offset_bottom = 459.0
+pivot_offset = Vector2(43, 12.5)
+texture = ExtResource("13_dq5nk")
+
+[node name="Line2D" type="Line2D" parent="Character Select Panel"]
+position = Vector2(127, 321)
+points = PackedVector2Array(-12, -10, 17, -10, 17, 16)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="Character Select Panel"]
+position = Vector2(115, 362)
+points = PackedVector2Array(12, -10, 5, -10, 5, 15)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="Character Select Panel"]
+position = Vector2(171, 362)
+points = PackedVector2Array(-12, -10, -4, -10, -4, 15)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D7" type="Line2D" parent="Character Select Panel"]
+position = Vector2(33, 414)
+points = PackedVector2Array(-2, -5, -2, 11)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D8" type="Line2D" parent="Character Select Panel"]
+position = Vector2(81, 414)
+points = PackedVector2Array(-2, -5, -2, 11)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D9" type="Line2D" parent="Character Select Panel"]
+position = Vector2(121, 414)
+points = PackedVector2Array(-2, -5, -2, 11)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D10" type="Line2D" parent="Character Select Panel"]
+position = Vector2(169, 414)
+points = PackedVector2Array(-2, -5, -2, 11)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D5" type="Line2D" parent="Character Select Panel"]
+position = Vector2(27, 362)
+points = PackedVector2Array(12, -10, 4, -10, 4, 15)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D6" type="Line2D" parent="Character Select Panel"]
+position = Vector2(83, 362)
+points = PackedVector2Array(-12, -10, -4, -10, -4, 15)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Character Select Panel"]
+position = Vector2(71, 321)
+points = PackedVector2Array(12, -10, -16, -10, -16, 16)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -7.0
+offset_right = 566.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 48
+text = "Choose Your Candidate"
+
+[editable path="Characters/The Inheritor"]
 [editable path="Characters/The Prodigy"]
-[editable path="Characters/The3"]
+[editable path="Characters/The Pacifist"]

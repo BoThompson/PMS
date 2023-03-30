@@ -14,6 +14,26 @@ signal player_active_time_updated(value, action_selected)
 signal opp_active_timer_up
 var resources
 var selected_actions
+
+const characters_data = preload("res://Data/characters.tres").data
+
+var attacks = {
+	#"NAME": {
+	#	"description":"DESCRIPTION IN BBCODE FORMAT"
+	#	"cost":[ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, FIRE, METAL, WATER, WOOD]
+	#	"target": 0 - Self, 1 - Single, 2 - AOE, 3 - All Enemies, 4 - ALL
+	"Fireball": {
+		"description":"A blast of flame dealing [stat name=damage factor=0.5 base=5] fire damage to one target.",
+		"costs":[0,0,0,10,0,5,0,0,0],
+		"target":1,
+		"function":fireball
+		
+	}
+}
+
+func fireball(targets):
+	pass
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	selected_actions = []

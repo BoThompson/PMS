@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://cupja8ry1exdd"]
+
+[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="1_accxg"]
+[ext_resource type="Script" path="res://Scripts/InfoPanel.gd" id="1_eyfyh"]
+[ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Sprites/Lit Defense.png" id="2_gei3t"]
+[ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Sprites/Lit Prepare.png" id="3_rv5l2"]
+[ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Sprites/Lit Qi.png" id="4_raoc3"]
+[ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Sprites/Lit Yin.png" id="5_5151a"]
+[ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Sprites/Lit Yang.png" id="6_hfxyk"]
+
+[node name="Info Panel" type="PopupPanel"]
+size = Vector2i(108, 100)
+visible = true
+script = ExtResource("1_eyfyh")
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 96.0
+
+[node name="Body" type="Label" parent="Vertical"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Description goes here."
+autowrap_mode = 2
+
+[node name="Okay Button" type="Button" parent="Vertical"]
+visible = false
+layout_mode = 2
+text = "Okay"
+
+[node name="Costs" type="HBoxContainer" parent="Vertical"]
+visible = false
+layout_mode = 2
+alignment = 2
+
+[node name="Attack" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Attack"]
+layout_mode = 2
+texture = ExtResource("1_accxg")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Attack"]
+layout_mode = 2
+text = "4"
+
+[node name="Defense" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Defense"]
+layout_mode = 2
+texture = ExtResource("2_gei3t")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Defense"]
+layout_mode = 2
+text = "4"
+
+[node name="Focus" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Focus"]
+layout_mode = 2
+texture = ExtResource("3_rv5l2")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Focus"]
+layout_mode = 2
+text = "4"
+
+[node name="Aura" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Aura"]
+layout_mode = 2
+texture = ExtResource("4_raoc3")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Aura"]
+layout_mode = 2
+text = "4"
+
+[node name="Yin" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Yin"]
+layout_mode = 2
+texture = ExtResource("5_5151a")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Yin"]
+layout_mode = 2
+text = "4"
+
+[node name="Yang" type="HBoxContainer" parent="Vertical/Costs"]
+visible = false
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Vertical/Costs/Yang"]
+layout_mode = 2
+texture = ExtResource("6_hfxyk")
+
+[node name="Value" type="Label" parent="Vertical/Costs/Yang"]
+layout_mode = 2
+text = "4"
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]

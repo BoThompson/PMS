@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dda82tko0s777"]
+
+[ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="1_tmqpl"]
+
+[resource]
+line_spacing = -3.0
+font = ExtResource("1_tmqpl")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.823529)

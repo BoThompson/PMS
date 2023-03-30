@@ -1,29 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://6h68q7txb0d6"]
+[gd_scene load_steps=11 format=3 uid="uid://dd2x2rlkgplth"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="1_0wxnq"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelectPlate.gd" id="1_5w84g"]
 [ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="1_guiq0"]
-[ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="3_abbiu"]
-[ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="4_xcgvq"]
+[ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Sprites/Seals/Default.png" id="3_ghym1"]
+[ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Sprites/Titles/Default.png" id="4_o3e15"]
 [ext_resource type="FontFile" uid="uid://3x1abt1jgvne" path="res://Fonts/GodsendPro.ttf" id="5_y8k1c"]
 [ext_resource type="Texture2D" uid="uid://c2fpg3ppj5ckk" path="res://Sprites/Character Locked.png" id="6_0407a"]
 [ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="6_lkfh3"]
-[ext_resource type="Texture2D" uid="uid://d1clhs11d1a7l" path="res://Sprites/Portraits/Blank.png" id="7_pmxwf"]
+[ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="7_em8ly"]
+[ext_resource type="LabelSettings" uid="uid://dda82tko0s777" path="res://UI/Styles/character select.tres" id="8_5ec5a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsohl"]
 line_spacing = -3.0
 font = ExtResource("6_lkfh3")
 font_color = Color(0.341176, 0.243137, 0.243137, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_fabno"]
-line_spacing = -3.0
-font = ExtResource("6_lkfh3")
-
 [node name="Character Select Panel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 174.0
 offset_bottom = 84.0
-script = ExtResource("1_0wxnq")
+script = ExtResource("1_5w84g")
 
 [node name="Shadow" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 0.470588)
@@ -40,14 +37,14 @@ offset_bottom = 84.0
 texture_normal = ExtResource("1_guiq0")
 
 [node name="Seal" type="TextureRect" parent="."]
-modulate = Color(0.635294, 0.635294, 0.635294, 0.27451)
+modulate = Color(0.321569, 0.192157, 0, 0.27451)
 layout_mode = 0
 offset_left = 70.0
 offset_top = 8.0
 offset_right = 139.0
 offset_bottom = 77.0
 mouse_filter = 2
-texture = ExtResource("3_abbiu")
+texture = ExtResource("3_ghym1")
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 0
@@ -56,7 +53,7 @@ offset_top = 7.0
 offset_right = 139.0
 offset_bottom = 32.0
 mouse_filter = 2
-texture = ExtResource("4_xcgvq")
+texture = ExtResource("4_o3e15")
 
 [node name="Quote" type="Label" parent="."]
 layout_mode = 0
@@ -71,19 +68,19 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("5_y8k1c")
 theme_override_font_sizes/font_size = 16
-text = "\"If you're a match for me today, I promise you won't be for long.\""
+text = "Quote goes here."
 label_settings = SubResource("LabelSettings_wsohl")
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
+offset_left = -2.0
 offset_top = -14.0
-offset_right = 66.0
+offset_right = 62.0
 offset_bottom = 82.0
 mouse_filter = 2
-texture = ExtResource("7_pmxwf")
+texture = ExtResource("7_em8ly")
 
 [node name="Requirement" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -101,7 +98,7 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("5_y8k1c")
 theme_override_font_sizes/font_size = 16
 text = "This character is not playable at this time. Check back later!"
-label_settings = SubResource("LabelSettings_fabno")
+label_settings = ExtResource("8_5ec5a")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
