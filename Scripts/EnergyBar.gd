@@ -1,13 +1,13 @@
-class_name ResourceBoard
-extends TextureRect
+extends Node2D
 
 
-
+enum BAR_DIRECTION {left, right, up, down}
 @export var signal_name : String
+@export var bar_direction : BAR_DIRECTION
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(signal_name in GameManager):
-		GameManager.get(signal_name).connect(_on_resources_changed)
+		GameManager.get(signal_name).connect(_on_value_changed)
 	else:
 		print_debug("Signal " + signal_name + " not found.")
 	pass # Replace with function body.
@@ -17,10 +17,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_resources_changed(resources):
-	$Attack.text = str(resources[0])
-	$Defense.text =  str(resources[1])
-	$Focus.text = str(resources[2])
-	$Qi.text = str(resources[3])
-	$Yin.text = str(resources[4])
-	$Yang.text = str(resources[5])
+func _on_value_changed(value):
+	$Fill.material.set_shader_parameter("cutoff", value)
+	$Fill.material.set_shader_parameter("direction", bar_direction)

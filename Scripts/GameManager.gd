@@ -9,6 +9,7 @@ var oppResourceBoard : ResourceBoard
 
 signal playerResourcesChanged(resource_list)
 signal oppResourcesChanged(resource_list)
+signal playerReadyChanged(value)
 
 signal player_active_time_updated(value, action_selected)
 signal opp_active_timer_up
@@ -74,8 +75,11 @@ func select_action(is_player, action) -> bool:
 		selected_actions[1] = action
 		return true
 
+var test_ready = 5
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
+	test_ready -= delta
+	playerReadyChanged.emit((5 - test_ready) / 5)
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		for orb in playerField.get_children():
 			var c = orb.coordinate

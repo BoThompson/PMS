@@ -106,7 +106,7 @@ data = {
 "sprite": "inheritor_idle.tscn",
 "title_image": "inheritor.png"
 },
-"background": "",
+"background": "A distant descendant of the creator of the Trials of Jade, the Inheritor is the son of a humble farmer. Imagine his surprise when his one precious inheritance, a brass medallion of a dragon's head, opened a portal to the Trials of Jade and sucked him in! With barely any cultivation training, how will he ever escape?",
 "element": "None",
 "quirks": ["Chosen for Greatness"],
 "quote": "\"I don't even know how I got here...\"",
@@ -149,10 +149,10 @@ data = {
 "pacifist": {
 "character_select": {
 "assets": {
-"portrait_image": "default.png",
-"seal_image": "default.png",
+"portrait_image": "pacifist.png",
+"seal_image": "pacifist.png",
 "sprite": "",
-"title_image": "default.png"
+"title_image": "pacifist.png"
 },
 "background": "",
 "element": "",

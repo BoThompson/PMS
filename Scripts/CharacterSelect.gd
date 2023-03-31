@@ -9,6 +9,7 @@ func _ready():
 
 func update_character(data):
 	$"Character Select Panel".update_character(data)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

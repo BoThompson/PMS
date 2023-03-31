@@ -33,7 +33,10 @@ func _on_mouse_entered():
 	tween.set_parallel()
 	tween.tween_property(self, "position", start_position + Vector2(-2, -2), .2)
 	tween.tween_property($Shadow, "position", Vector2(4, 4), .2)
-	get_parent().get_parent().update_character(data)
+	if locked:
+		get_parent().get_parent().update_character(null)
+	else:
+		get_parent().get_parent().update_character(data)
 	if locked:
 		tween.tween_property($Lock, "modulate:a", 0, .1)
 		var second = tween.chain()

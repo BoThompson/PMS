@@ -42,24 +42,45 @@ mouse_filter = 2
 [node name="The Inheritor" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 4.0
-offset_top = -3.0
+offset_top = -2.0
 offset_right = 178.0
-offset_bottom = 81.0
+offset_bottom = 82.0
 character = "inheritor"
 
-[node name="The Prodigy" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Novice" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 91.0
 offset_right = 178.0
 offset_bottom = 175.0
+character = "novice"
+locked = true
+
+[node name="The Prodigy" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 185.0
+offset_right = 178.0
+offset_bottom = 269.0
 character = "prodigy"
 
-[node name="Requirement" parent="Characters/The Prodigy" index="6"]
-theme_override_colors/font_shadow_color = Color(0.164706, 0.164706, 0.164706, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-text = "LOCKED: Reach Jade Core stage to unlock this character."
+[node name="The Scion" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 279.0
+offset_right = 178.0
+offset_bottom = 363.0
+character = "scion"
+locked = true
+
+[node name="The Mercenary" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 373.0
+offset_right = 178.0
+offset_bottom = 457.0
+character = "mercenary"
+locked = true
 
 [node name="The Pacifist" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
@@ -67,111 +88,87 @@ offset_left = 188.0
 offset_top = -3.0
 offset_right = 362.0
 offset_bottom = 81.0
+character = "pacifist"
+
+[node name="The Fallen" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 91.0
+offset_right = 362.0
+offset_bottom = 175.0
+character = "fallen"
 locked = true
 
-[node name="Quote" parent="Characters/The Pacifist" index="4"]
-offset_left = 54.0
-offset_top = 29.0
-offset_right = 168.0
-offset_bottom = 94.0
+[node name="The Farstrider" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 185.0
+offset_right = 362.0
+offset_bottom = 269.0
+character = "farstrider"
+locked = true
 
-[node name="Requirement" parent="Characters/The Pacifist" index="6"]
-text = "LOCKED: Acquire a Lotus Wheel artifact to unlock this character!"
+[node name="The Beast" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 279.0
+offset_right = 362.0
+offset_bottom = 363.0
+character = "beast"
+locked = true
 
-[node name="The4" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Reborn" parent="Characters" instance=ExtResource("1_efe7y")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 373.0
+offset_right = 362.0
+offset_bottom = 457.0
+character = "reborn"
+locked = true
+
+[node name="The Firebird" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 372.0
 offset_top = -3.0
 offset_right = 546.0
 offset_bottom = 81.0
+character = "firebird"
 locked = true
 
-[node name="The5" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 91.0
-offset_right = 362.0
-offset_bottom = 175.0
-locked = true
-
-[node name="The6" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Tortoise" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 372.0
 offset_top = 91.0
 offset_right = 546.0
 offset_bottom = 175.0
+character = "tortoise"
 locked = true
 
-[node name="The7" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 185.0
-offset_right = 178.0
-offset_bottom = 269.0
-locked = true
-
-[node name="The8" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 185.0
-offset_right = 362.0
-offset_bottom = 269.0
-locked = true
-
-[node name="The9" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Dragon" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 372.0
 offset_top = 185.0
 offset_right = 546.0
 offset_bottom = 269.0
+character = "dragon"
 locked = true
 
-[node name="The10" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 279.0
-offset_right = 178.0
-offset_bottom = 363.0
-locked = true
-
-[node name="The11" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 279.0
-offset_right = 362.0
-offset_bottom = 363.0
-locked = true
-
-[node name="The12" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Tiger" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 372.0
 offset_top = 279.0
 offset_right = 546.0
 offset_bottom = 363.0
+character = "tiger"
 locked = true
 
-[node name="The13" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 373.0
-offset_right = 178.0
-offset_bottom = 457.0
-locked = true
-
-[node name="The14" parent="Characters" instance=ExtResource("1_efe7y")]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 373.0
-offset_right = 362.0
-offset_bottom = 457.0
-locked = true
-
-[node name="The15" parent="Characters" instance=ExtResource("1_efe7y")]
+[node name="The Unicorn" parent="Characters" instance=ExtResource("1_efe7y")]
 layout_mode = 0
 offset_left = 372.0
 offset_top = 373.0
 offset_right = 546.0
 offset_bottom = 457.0
+character = "unicorn"
 locked = true
 
 [node name="Character Select Panel" type="Panel" parent="."]
@@ -440,7 +437,3 @@ offset_right = 566.0
 offset_bottom = 63.0
 theme_override_font_sizes/font_size = 48
 text = "Choose Your Candidate"
-
-[editable path="Characters/The Inheritor"]
-[editable path="Characters/The Prodigy"]
-[editable path="Characters/The Pacifist"]
