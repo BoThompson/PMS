@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1a582rali5xt"]
+[gd_scene load_steps=12 format=3 uid="uid://b1a582rali5xt"]
 
 [ext_resource type="PackedScene" uid="uid://dd2x2rlkgplth" path="res://Prefabs/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
+[ext_resource type="Texture2D" uid="uid://dmdyevuaoui02" path="res://Sprites/Wood Background.png" id="2_b21ge"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="3_08ix2"]
 [ext_resource type="FontFile" uid="uid://ml5x4t3vqdb5" path="res://Fonts/WorthyPro.ttf" id="7_8vown"]
 [ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="9_g8l0x"]
@@ -30,6 +31,29 @@ layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0.211765, 0.129412, 0.0666667, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("2_b21ge")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 486.0
+offset_right = 234.0
+offset_bottom = 839.0
+rotation = -0.568246
+color = Color(0.878431, 0.862745, 0.835294, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -68.0
+offset_top = 467.0
+offset_right = 238.0
+offset_bottom = 820.0
+rotation = -0.482612
 
 [node name="Characters" type="Control" parent="."]
 anchors_preset = 0
@@ -200,10 +224,10 @@ texture = ExtResource("9_g8l0x")
 [node name="Seal" type="TextureRect" parent="Character Select Panel"]
 modulate = Color(0.721569, 0.380392, 0, 0.309804)
 layout_mode = 0
-offset_left = 130.0
-offset_top = 180.5
-offset_right = 216.0
-offset_bottom = 249.5
+offset_left = 238.0
+offset_top = 298.0
+offset_right = 307.0
+offset_bottom = 367.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_tfp66")
@@ -229,11 +253,45 @@ theme_override_fonts/font = ExtResource("7_8vown")
 text = "Background"
 autowrap_mode = 2
 
+[node name="Style Label" type="Label" parent="Character Select Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 186.0
+offset_right = 343.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("7_8vown")
+text = "Style"
+autowrap_mode = 2
+
+[node name="Element Label" type="Label" parent="Character Select Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 200.0
+offset_right = 325.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("7_8vown")
+text = "Element"
+autowrap_mode = 2
+
+[node name="Quirks Label" type="Label" parent="Character Select Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 215.0
+offset_right = 332.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("7_8vown")
+text = "Quirks
+"
+autowrap_mode = 2
+
 [node name="Style" type="Label" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 36.0
+offset_left = 93.0
 offset_top = 187.0
-offset_right = 286.0
+offset_right = 343.0
 offset_bottom = 297.0
 text = "Style:"
 label_settings = SubResource("LabelSettings_h1xx1")
@@ -241,9 +299,9 @@ autowrap_mode = 2
 
 [node name="Element" type="Label" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 36.0
+offset_left = 93.0
 offset_top = 200.0
-offset_right = 286.0
+offset_right = 343.0
 offset_bottom = 310.0
 text = "Element:"
 label_settings = SubResource("LabelSettings_h1xx1")
@@ -251,9 +309,9 @@ autowrap_mode = 2
 
 [node name="Quirks" type="RichTextLabel" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 36.0
+offset_left = 93.0
 offset_top = 214.0
-offset_right = 336.0
+offset_right = 393.0
 offset_bottom = 254.0
 theme_override_colors/default_color = Color(0.290196, 0.164706, 0.145098, 1)
 theme_override_fonts/normal_font = ExtResource("9_rec1t")
@@ -263,9 +321,9 @@ text = "Quirk"
 
 [node name="Sprite" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 195.0
+offset_left = 192.0
 offset_top = 294.0
-offset_right = 259.0
+offset_right = 256.0
 offset_bottom = 380.0
 scale = Vector2(2, 2)
 texture = ExtResource("12_7v3ov")
@@ -437,3 +495,8 @@ offset_right = 566.0
 offset_bottom = 63.0
 theme_override_font_sizes/font_size = 48
 text = "Choose Your Candidate"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

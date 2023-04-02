@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,10 @@ func update_character(data):
 	$Style.text = data["style"]
 	$Background.text = data["background"]
 	$Element.text = data["element"]
+	if data["assets"]["sprite"] == "":
+		$Sprite.texture = null
+	else:
+		$Sprite.texture = load("res://Sprites/Battle Sprites/" + data["assets"]["sprite"])
 	var s : String
 	#TODO: Populate the quirks list
 	#TODO: Populate the abilities

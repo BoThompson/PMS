@@ -1,0 +1,213 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxjyj0cadyh64"]
+
+[ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_ng5ky"]
+[ext_resource type="Script" path="res://Addons/data_editor/data_editor_panel.gd" id="1_qxk6h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxk6h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Character Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 13.0
+offset_right = 106.0
+offset_bottom = 39.0
+text = "Characters"
+
+[node name="Scroll" type="ScrollContainer" parent="Panel"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 49.0
+offset_right = 222.0
+offset_bottom = 365.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Sprite Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 424.0
+offset_right = 370.0
+offset_bottom = 450.0
+text = "Sprite"
+
+[node name="Sprite" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 453.0
+offset_right = 416.0
+offset_bottom = 581.0
+texture = ExtResource("1_ng5ky")
+
+[node name="Portrait Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 424.0
+offset_right = 691.0
+offset_bottom = 450.0
+text = "Portrait"
+
+[node name="Portrait" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 453.0
+offset_right = 737.0
+offset_bottom = 645.0
+texture = ExtResource("1_ng5ky")
+
+[node name="Seal Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 745.0
+offset_right = 370.0
+offset_bottom = 771.0
+text = "Seal"
+
+[node name="Seal" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 774.0
+offset_right = 416.0
+offset_bottom = 902.0
+texture = ExtResource("1_ng5ky")
+
+[node name="Name Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 34.0
+offset_right = 515.0
+offset_bottom = 60.0
+text = "Name"
+
+[node name="Name" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 33.0
+offset_right = 820.0
+offset_bottom = 73.0
+placeholder_text = "Name Goes Here"
+
+[node name="Style Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 88.0
+offset_right = 515.0
+offset_bottom = 114.0
+text = "Name"
+
+[node name="Style" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 87.0
+offset_right = 820.0
+offset_bottom = 127.0
+placeholder_text = "Style Goes Here"
+
+[node name="Element Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 146.0
+offset_right = 515.0
+offset_bottom = 172.0
+text = "Name"
+
+[node name="Element" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 145.0
+offset_right = 820.0
+offset_bottom = 185.0
+placeholder_text = "Element Goes Here"
+
+[node name="Background Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 197.0
+offset_right = 511.0
+offset_bottom = 223.0
+text = "Background"
+
+[node name="Background" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 203.0
+offset_right = 1220.0
+offset_bottom = 373.0
+placeholder_text = "Background Goes Here"
+wrap_mode = 1
+
+[node name="Title Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 593.0
+offset_right = 375.0
+offset_bottom = 619.0
+text = "Title
+"
+
+[node name="Title" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 626.0
+offset_right = 517.0
+offset_bottom = 691.0
+texture = ExtResource("1_ng5ky")
+expand_mode = 1
+
+[node name="Abilities Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 387.0
+offset_right = 630.0
+offset_bottom = 413.0
+text = "Ability Tree"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1685.0
+offset_top = 998.0
+offset_right = 1785.0
+offset_bottom = 1058.0
+text = "RESET"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1802.0
+offset_top = 998.0
+offset_right = 1902.0
+offset_bottom = 1058.0
+text = "SAVE"
+
+[node name="Button3" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 381.0
+offset_right = 112.0
+offset_bottom = 413.0
+text = "+"
+
+[node name="Button4" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 381.0
+offset_right = 222.0
+offset_bottom = 413.0
+text = "-"

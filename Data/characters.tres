@@ -151,15 +151,15 @@ data = {
 "assets": {
 "portrait_image": "pacifist.png",
 "seal_image": "pacifist.png",
-"sprite": "",
+"sprite": "pacifist.png",
 "title_image": "pacifist.png"
 },
-"background": "",
-"element": "",
+"background": "Once this wandering monk of the Thousand Grain Temple was the favored heir to his Order until he allowed his pride to lead him to boastfulness. Now, he journeys as an exorcist freeing others of their violent impulses and searching for a treasure that will redeem him in his Abbot's eyes.",
+"element": "Yin",
 "quirks": [""],
 "quote": "\"Violence is your prison, but mercy is the key.\"",
-"requirement": "",
-"style": ""
+"requirement": "Acquire a Lotus Wheel artifact to unlock this character.",
+"style": "Buddha's Gentle Palm"
 }
 },
 "prodigy": {
@@ -167,7 +167,7 @@ data = {
 "assets": {
 "portrait_image": "prodigy.png",
 "seal_image": "prodigy.png",
-"sprite": "prodigy_idle.tscn",
+"sprite": "prodigy.png",
 "title_image": "prodigy.png"
 },
 "background": "The chosen disciple of a respected and ancient cultivator, the Cultivator has spent her whole life being tested and trained to be the best. Now, with the Trials of Jade opening for the first time in a thousand years, she has entered with the certainty that no other candidate can match her sheer potential.",

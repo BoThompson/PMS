@@ -27,6 +27,10 @@ window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/data_editor/plugin.cfg")
+
 [gui]
 
 theme/default_font_antialiasing=0
