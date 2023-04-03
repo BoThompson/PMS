@@ -3,6 +3,7 @@ extends Node
 
 var combatants = {}
 
+
 var playerField : EnergyField
 var oppField : EnergyField
 
@@ -24,18 +25,18 @@ const characters_data = preload("res://Data/characters.tres").data
 var actions = {
 	#"NAME": {
 	#	"description":"DESCRIPTION IN BBCODE FORMAT"
-	#	"cost":[ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, FIRE, METAL, WATER, WOOD]
+	#	"cost":[ANY, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, FIRE, METAL, WATER, WOOD]
 	#	"target": 0 - Self, 1 - Single, 2 - AOE, 3 - All Enemies, 4 - ALL
 	"fireball": {
 		"description":"A blast of flame dealing [stat name=damage factor=0.5 base=5] fire damage to one target.",
-		"cost":[0,0,0,5,0,3,0,0,0],
+		"cost":[0,0,0,0,5,0,3,0,0,0],
 		"target":1,
 		"function":"fireball"
 		
 	},
 	"punch": {
 		"description":"A blast of flame dealing [stat name=damage factor=0.5 base=5] fire damage to one target.",
-		"cost":[3,0,0,0,0,0,0,0,0],
+		"cost":[3,0,0,0,0,0,0,0,0,0],
 		"target":1,
 		"function":"punch"
 		
@@ -50,6 +51,7 @@ func _ready():
 	selected_actions = []
 	selected_actions.resize(2)
 	selected_actions.fill(null)
+	connect("playerReadyChanged", _on_player_ready_changed)
 	reset_resources()
 
 func register_resource_board(board, is_player):
@@ -77,11 +79,12 @@ func add_resource(resource, amt, player):
 		resources[1][resource] += amt
 		oppResourcesChanged.emit(resources[1])
 
-func select_action(is_player, action) -> bool:
-	if is_player:
+func select_action(id, action) -> bool:
+	if id == 0:
 		if test_ready <= 0:
 			initiate_action(0, action)
 		else:
+			combatants[0].set_action_label(action)
 			selected_actions[0] = action
 		return true
 	else:
@@ -97,13 +100,13 @@ func _process(delta):
 	playerReadyChanged.emit((ready_length - test_ready) / ready_length)
 	
 
-func _on_player_ready_changed():
-	if selected_actions[0] != null:
+func _on_player_ready_changed(value):
+	if value >= 1 and selected_actions[0] != null:
 		initiate_action(0, selected_actions[0])
 
 func initiate_action(id, action):
 	if id==0:
-		combatants[id].initiate_action(action)
+		combatants[id].initiate_action(action, combatants[1])
 
 func register_combatant(combatant, id):
 		combatants[id] = combatant
@@ -115,7 +118,7 @@ func default_action(id, action):
 		if test_ready <= 0:
 			initiate_action(0, action)
 		else:
-			selected_actions[0] = action
+			select_action(0, action)
 		return true
 	else:
 		selected_actions[1] = action
