@@ -16,7 +16,7 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
-				GameManager.select_action(true, action) #Player action, this name
+				GameManager.select_action(0, action) #Player action, this name
 			MOUSE_BUTTON_RIGHT:
 				display_information()
 	return
@@ -31,15 +31,15 @@ func display_information():
 		infoPanel.position.y = 5
 	infoPanel.set_title(action)
 	infoPanel.set_body(GameManager.actions[action].description)
-	infoPanel.set_costs(GameManager.actions[action].costs)
+	infoPanel.set_cost(GameManager.actions[action].cost)
 	get_tree().root.add_child(infoPanel)
 	infoPanel.popup()
 	
 func on_pressed():
 	GameManager.select_action(true, action) #Player action, this name
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	pass
 
 func set_costs(costs):
@@ -47,12 +47,25 @@ func set_costs(costs):
 
 func _on_resources_changed(values):
 	disabled = false
-	for i in range(len(values)):
-		if GameManager.actions[action].cost[i] > values[i]:
-			disabled = true	
+	var post_values = values.duplicate()
+	for i in range(1, len(values)):
+		if GameManager.actions[action].cost[i] > values[i-1]:
+			disabled = true
+		else:
+			post_values[i-1] -= GameManager.actions[action].cost[i]
+	
+	var any = GameManager.actions[action].cost[0]
+	if any > 0:
+		disabled = true
+		for v in post_values:
+			any -= v
+			if any <= 0:
+				disabled = false
+				break
+
 	if !disabled and autofire:
 		autofire = false
-		GameManager.initiate_action(0, action)
+		GameManager.default_action(0, action)
 	
 		
 func _on_auto_toggled(value):
@@ -62,10 +75,7 @@ func _on_auto_toggled(value):
 		GameManager.disconnect("playerReadyChanged", _on_ready_changed)
 
 func _on_ready_changed(value):
-	if value >= 1:
-		if disabled:
-			autofire = true
-		else:
-			GameManager.default_action(0, action)
+	if disabled:
+		autofire = true
 	else:
-		autofire = false
+		GameManager.default_action(0, action)
