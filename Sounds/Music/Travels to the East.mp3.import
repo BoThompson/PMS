@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj026k172ycxj"
+path="res://.godot/imported/Travels to the East.mp3-03490987cb67d3426b57e2ca5383defd.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Travels to the East.mp3"
+dest_files=["res://.godot/imported/Travels to the East.mp3-03490987cb67d3426b57e2ca5383defd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

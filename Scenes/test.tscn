@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxam7l44u1rhe"]
+[gd_scene load_steps=30 format=3 uid="uid://dxam7l44u1rhe"]
 
 [ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_byjcr"]
 [ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_t4wfb"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="13_3wxr7"]
 [ext_resource type="Script" path="res://Scripts/AttackButton.gd" id="16_nsnil"]
 [ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="18_trhod"]
+[ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="22_4yxpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnbc"]
 shader = ExtResource("6_xcn5i")
@@ -258,11 +259,17 @@ offset_top = 285.0
 offset_right = 698.0
 offset_bottom = 435.0
 
+[node name="TextureRect" type="TextureRect" parent="Control/Opponent Field"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("22_4yxpg")
+
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 546.0
-offset_top = 444.0
-offset_right = 696.0
+offset_top = 456.0
+offset_right = 712.0
 offset_bottom = 544.0
 text = "SHUFFLE!"
 script = ExtResource("6_3fusw")
@@ -270,8 +277,8 @@ swap_timer = 2.0
 
 [node name="Fill" type="ColorRect" parent="Control/Button"]
 layout_mode = 0
-offset_right = 150.0
-offset_bottom = 100.0
+offset_right = 166.0
+offset_bottom = 88.0
 mouse_filter = 1
 color = Color(1, 0, 0, 0.34902)
 
@@ -299,6 +306,7 @@ text = "5"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/Basic Attack"]
+layout_mode = 0
 offset_left = 173.0
 offset_top = 13.0
 offset_right = 210.0

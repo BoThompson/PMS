@@ -7,7 +7,7 @@ extends Control
 
 #############################################   Enums   ############################################
 enum OrbState {FALLING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
-enum OrbType {ATTACK, DEFENSE, PREPARE, QI, YIN, YANG}
+enum OrbType {ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY}
 enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
@@ -24,22 +24,25 @@ var deployed = true
 ####################################          Resources          ###################################
 ####################################################################################################
 
-var foreground_sprites = {
-	OrbType.ATTACK 	: preload("res://Sprites/Orbs/Attack FG.png"),
-	OrbType.DEFENSE : preload("res://Sprites/Orbs/Defense FG.png"),
-	OrbType.PREPARE : preload("res://Sprites/Orbs/Prepare FG.png"),
-	OrbType.QI 		: preload("res://Sprites/Orbs/Qi FG.png"),
-	OrbType.YIN 	: preload("res://Sprites/Orbs/Yin FG.png"),
-	OrbType.YANG 	: preload("res://Sprites/Orbs/Yang FG.png")
-}
-
-var background_sprites = {
-	OrbType.ATTACK 	: preload("res://Sprites/Orbs/Attack BG.png"),
-	OrbType.DEFENSE : preload("res://Sprites/Orbs/Defense BG.png"),
-	OrbType.PREPARE : preload("res://Sprites/Orbs/Prepare BG.png"),
-	OrbType.QI 		: preload("res://Sprites/Orbs/Qi BG.png"),
-	OrbType.YIN 	: preload("res://Sprites/Orbs/Yin BG.png"),
-	OrbType.YANG 	: preload("res://Sprites/Orbs/Yang BG.png")
+var animations = {
+	OrbType.ATTACK 	: {
+		"idle": "Attack Idle",	
+	},
+	OrbType.DEFENSE : {
+		"idle": "Defense Idle",	
+	},
+	OrbType.FOCUS 	: {
+		"idle": "Focus Idle",	
+	},
+	OrbType.AURA 	: {
+		"idle": "Aura Idle",	
+	},
+	OrbType.YIN 	: {
+		"idle": "Yin Idle",	
+	},
+	OrbType.YANG 	: {
+		"idle": "Yang Idle",	
+	},
 }
 
 ####################################################################################################	
@@ -47,8 +50,7 @@ var background_sprites = {
 ####################################################################################################
 
 func _on_change_type(value : OrbType):
-	$Background.texture = background_sprites[value]
-	$Foreground.texture = foreground_sprites[value]
+	$AnimationPlayer.play(animations[value].idle)
 	type = value
 	
 func _on_change_lit(value):
@@ -103,7 +105,7 @@ func fall(offset):
 
 	
 func shuffle():
-	type =randi_range(0, OrbType.size() - 1) as OrbType
+	type =randi_range(0, 5) as OrbType
 
 ####################################################################################################	
 #############################          Tween Resolution Methods         ############################
@@ -130,7 +132,7 @@ func enter_state(new_state):
 	match(state):
 		OrbState.FALLING:
 			tween = create_tween()
-			var final_position = 50*Vector2(coordinate.x,4-coordinate.y)
+			var final_position = 50*Vector2(coordinate.x,4-coordinate.y) + (Vector2.ONE * 36)
 			if(deployed):
 				modulate = Color(1,1,1,0)
 				tween.tween_property(self, "modulate", Color(1,1,1,1), .2 * -(final_position.y - position.y) / 50)
@@ -140,7 +142,7 @@ func enter_state(new_state):
 			field.add_active_orb(self)
 		OrbState.SWAPPING:
 			tween = create_tween()
-			var final_position = 50*Vector2(coordinate.x,4-coordinate.y)
+			var final_position = 50*Vector2(coordinate.x,4-coordinate.y) + (Vector2.ONE * 36)
 			tween.tween_property(self, "position", final_position, .25).set_ease(Tween.EASE_IN_OUT)
 			tween.tween_callback(_on_swap_complete)
 			field.add_active_orb(self)

@@ -193,7 +193,7 @@ func refresh() -> bool:
 			resolve_state = true
 			var orb = orb_prefab.instantiate()
 			orb.coordinate = Vector2i(col, field_size.y-gaps+i)
-			orb.position = Vector2(col * orb_size.x,  orb_size.y * (field_size.y+gaps-i) - orb_size.y/2 * field_size.y)
+			orb.position = Vector2(col * orb_size.x + 36,  orb_size.y * (field_size.y+gaps-i) - orb_size.y/2 * field_size.y + 36)
 			orbs[col][field_size.y-gaps+i] = orb
 			orb.field = self
 			add_child(orb)
