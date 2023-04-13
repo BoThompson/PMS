@@ -100,7 +100,7 @@ func get_coordinate(pos : Vector2):
 		return Vector2i(-1,-1)
 	else:
 		var result = ((pos - position) / Vector2(tile_size)).floor()
-		result.y = field_size.y - 1 - result.y
+		#result.y = field_size.y - 1 - result.y
 		return Vector2i(result)
 
 func clear_orb(coordinate):
@@ -165,7 +165,7 @@ func setup(fill):
 	if player:
 		GameManager.playerField = self
 	else:
-		GameManager.oppFoard = self
+		GameManager.oppField = self
 	
 	orbs_active = {}
 	clear_orbs(true)
@@ -187,19 +187,19 @@ func refresh() -> bool:
 			if orbs[col][row] == null:
 				gaps += 1
 			elif gaps > 0:
-				orb.fall(gaps)
+				orb.rise(gaps)
 				orbs[orb.coordinate.x][orb.coordinate.y] = orb
 		for i in range(gaps):
 			resolve_state = true
 			var orb = orb_prefab.instantiate()
 			orb.coordinate = Vector2i(col, field_size.y-gaps+i)
-			orb.position = Vector2(col * orb_size.x + 36,  orb_size.y * (field_size.y+gaps-i) - orb_size.y/2 * field_size.y + 36)
+			orb.position = Vector2(col * orb_size.x + 36,  orb_size.y * (field_size.y+i))
 			orbs[col][field_size.y-gaps+i] = orb
 			orb.field = self
 			add_child(orb)
 			orb.shuffle()
 			orb.name = "Orb [" + str(orb.coordinate.x) + ", " + str(orb.coordinate.y) + "]"
-			orb.fall(0)
+			orb.rise(0)
 		gaps = 0
 	return true
 

@@ -1,9 +1,8 @@
 extends "res://Scripts/EnergyBar.gd"
 
 var last_value = 0
-
-func _on_value_changed(value):
-	
+var has_alert : bool
+func update_bar(value):
 	$Fill.material.set_shader_parameter("cutoff", value)
 	$Fill.material.set_shader_parameter("direction", bar_direction)
 	
@@ -12,7 +11,8 @@ func _on_value_changed(value):
 	elif last_value < 1:
 			var tween = $Fill.create_tween()
 			tween.tween_property($Fill, "material:shader_parameter/tint", Vector3(1,1,1), .1)
-			tween.tween_property($Alert, "visible", true, .01)
+			if has_alert:
+				tween.tween_property($Alert, "visible", true, .01)
 			tween.tween_property($Fill, "material:shader_parameter/tint", Vector3(0,0,0), .1)
 			tween.play()
 	last_value = value

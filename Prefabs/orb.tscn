@@ -4,6 +4,110 @@
 [ext_resource type="Texture2D" uid="uid://c48osspl03038" path="res://Sprites/Orbs/Highlight.png" id="3_hs667"]
 [ext_resource type="Texture2D" uid="uid://be34tx8jpmeb1" path="res://Sprites/Orbs/Large Orbs.png" id="4_satmh"]
 
+[sub_resource type="Animation" id="Animation_ymjyj"]
+resource_name = "Attack Idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 64]
+}
+
+[sub_resource type="Animation" id="Animation_llk2s"]
+resource_name = "Aura Idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 128]
+}
+
+[sub_resource type="Animation" id="Animation_x2qwm"]
+resource_name = "Blood Idle"
+
+[sub_resource type="Animation" id="Animation_eyh4d"]
+resource_name = "Defense Idle"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 96]
+}
+
+[sub_resource type="Animation" id="Animation_k5lrq"]
+resource_name = "Earth Idle"
+
+[sub_resource type="Animation" id="Animation_diqbh"]
+resource_name = "Fire Idle"
+
+[sub_resource type="Animation" id="Animation_mp7mj"]
+resource_name = "Focus Idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 160]
+}
+
+[sub_resource type="Animation" id="Animation_6rqkd"]
+resource_name = "Fury Idle"
+
+[sub_resource type="Animation" id="Animation_8f2ae"]
+resource_name = "Metal Idle"
+
+[sub_resource type="Animation" id="Animation_g560c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+
+[sub_resource type="Animation" id="Animation_5vsmk"]
+resource_name = "Water Idle"
+
+[sub_resource type="Animation" id="Animation_0ig3q"]
+resource_name = "Wood Idle"
+
 [sub_resource type="Animation" id="Animation_n2a44"]
 resource_name = "Yang Idle"
 length = 1.5
@@ -38,108 +142,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0]
 }
 
-[sub_resource type="Animation" id="Animation_ymjyj"]
-resource_name = "Attack Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [64]
-}
-
-[sub_resource type="Animation" id="Animation_eyh4d"]
-resource_name = "Defense Idle"
-length = 1.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 96]
-}
-
-[sub_resource type="Animation" id="Animation_llk2s"]
-resource_name = "Aura Idle"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 128]
-}
-
-[sub_resource type="Animation" id="Animation_diqbh"]
-resource_name = "Fire Idle"
-
-[sub_resource type="Animation" id="Animation_0ig3q"]
-resource_name = "Wood Idle"
-
-[sub_resource type="Animation" id="Animation_k5lrq"]
-resource_name = "Earth Idle"
-
-[sub_resource type="Animation" id="Animation_5vsmk"]
-resource_name = "Water Idle"
-
-[sub_resource type="Animation" id="Animation_8f2ae"]
-resource_name = "Metal Idle"
-
-[sub_resource type="Animation" id="Animation_6rqkd"]
-resource_name = "Fury Idle"
-
-[sub_resource type="Animation" id="Animation_x2qwm"]
-resource_name = "Blood Idle"
-
-[sub_resource type="Animation" id="Animation_g560c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [64]
-}
-
-[sub_resource type="Animation" id="Animation_mp7mj"]
-resource_name = "Focus Idle"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 160]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrr1e"]
 _data = {
 "Attack Idle": SubResource("Animation_ymjyj"),
@@ -161,8 +163,6 @@ _data = {
 [node name="Orb" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("1_xxu65")
 
 [node name="Highlight" type="TextureRect" parent="."]
@@ -175,12 +175,12 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("3_hs667")
 
-<<<<<<< HEAD
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_satmh")
 hframes = 32
 vframes = 32
 frame = 64
+region_rect = Rect2(10, 10, 44, 44)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

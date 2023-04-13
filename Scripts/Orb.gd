@@ -6,7 +6,7 @@ extends Control
 ####################################################################################################
 
 #############################################   Enums   ############################################
-enum OrbState {FALLING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
+enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
 enum OrbType {ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY}
 enum OrbLit {UNLIT, LIT}
 
@@ -98,10 +98,9 @@ func swap(coord):
 func activate():
 	transition(OrbState.ACTIVATED)
 
-func fall(offset):
+func rise(offset):
 	coordinate.y -= offset
-	name = "Orb [" + str(coordinate.x) + ", " + str(coordinate.y) + "]"
-	transition(OrbState.FALLING)
+	transition(OrbState.RISING)
 
 	
 func shuffle():
@@ -130,19 +129,19 @@ func _on_fall_complete():
 func enter_state(new_state):
 	state = new_state
 	match(state):
-		OrbState.FALLING:
+		OrbState.RISING:
 			tween = create_tween()
-			var final_position = 50*Vector2(coordinate.x,4-coordinate.y) + (Vector2.ONE * 36)
+			var final_position = 50*Vector2(coordinate.x,coordinate.y) + (Vector2.ONE * 36)
 			if(deployed):
 				modulate = Color(1,1,1,0)
 				tween.tween_property(self, "modulate", Color(1,1,1,1), .2 * -(final_position.y - position.y) / 50)
 			deployed = false
-			tween.tween_property(self, "position", final_position, .2 * -(final_position.y - position.y) / 50).set_ease(Tween.EASE_IN)
+			tween.tween_property(self, "position", final_position, .15 * -(final_position.y - position.y) / 50).set_ease(Tween.EASE_IN)
 			tween.tween_callback(_on_fall_complete)
 			field.add_active_orb(self)
 		OrbState.SWAPPING:
 			tween = create_tween()
-			var final_position = 50*Vector2(coordinate.x,4-coordinate.y) + (Vector2.ONE * 36)
+			var final_position = 50*Vector2(coordinate.x,coordinate.y) + (Vector2.ONE * 36)
 			tween.tween_property(self, "position", final_position, .25).set_ease(Tween.EASE_IN_OUT)
 			tween.tween_callback(_on_swap_complete)
 			field.add_active_orb(self)
@@ -159,7 +158,7 @@ func enter_state(new_state):
 	
 func exit_state(old_state):
 	match(old_state):
-		OrbState.FALLING:
+		OrbState.RISING:
 			pass
 		OrbState.SWAPPING:
 			pass
@@ -178,7 +177,7 @@ func transition(forced_state):
 		enter_state(forced_state)
 	else:
 		match(state):
-			OrbState.FALLING:
+			OrbState.RISING:
 				enter_state(OrbState.SELECTABLE)
 			OrbState.SWAPPING:
 				pass

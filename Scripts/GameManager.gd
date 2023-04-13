@@ -11,16 +11,12 @@ var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
 
 
-signal playerResourcesChanged(resource_list)
-signal oppResourcesChanged(resource_list)
-signal playerReadyChanged(value)
-
-signal player_active_time_updated(value, action_selected)
-signal opp_active_timer_up
 var resources
 var selected_actions = [null, null]
 
 const characters_data = preload("res://Data/characters.tres").data
+
+const character_hud = preload("res://Prefabs/character_hud.tscn")
 
 var actions = {
 	#"NAME": {
@@ -51,16 +47,8 @@ func _ready():
 	selected_actions = []
 	selected_actions.resize(2)
 	selected_actions.fill(null)
-	connect("playerReadyChanged", _on_player_ready_changed)
 	reset_resources()
 
-func register_resource_board(board, is_player):
-	if is_player:
-		playerResourceBoard = board
-		playerResourcesChanged.connect(board.on_resources_changed)
-	else:
-		oppResourceBoard = board
-		oppResourcesChanged.connect(board.on_resources_changed)
 func reset_resources():
 	resources = [[],[]]
 	resources[0].resize(6)
@@ -71,55 +59,46 @@ func reset_resources():
 func reset_player_field():
 	playerField.reset()
 	
-func add_resource(resource, amt, player):
-	if player:
-		resources[0][resource] += amt
-		playerResourcesChanged.emit(resources[0])
-	else:
-		resources[1][resource] += amt
-		oppResourcesChanged.emit(resources[1])
+func add_resource(resource, amt, id):
+	combatants[id].resources[resource] += amt
 
 func select_action(id, action) -> bool:
-	if id == 0:
-		if test_ready <= 0:
-			initiate_action(0, action)
-		else:
-			combatants[0].set_action_label(action)
-			selected_actions[0] = action
-		return true
+	if combatants[id].ready_time_remaining <= 0:
+		queue_action(id, action)
 	else:
-		selected_actions[1] = action
-		return true
+		combatants[id].set_action_label(action)
+		selected_actions[id] = action
+	return true
 
-const ready_length = 8
-var test_ready = ready_length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	test_ready -= delta
-	playerReadyChanged.emit((ready_length - test_ready) / ready_length)
+	pass
 	
+func get_opponent(id) -> Combatant:
+	if id == 0:
+		return combatants[1]
+	else:
+		return combatants[0]
+		
+func _on_ready_changed(id : int, value : float):
+	if value >= 1 and selected_actions[id] != null:
+		queue_action(selected_actions[id], get_opponent(id))
 
-func _on_player_ready_changed(value):
-	if value >= 1 and selected_actions[0] != null:
-		initiate_action(0, selected_actions[0])
+func queue_action(id, action):
+	var opp = get_opponent(id)
+	combatants[0].queue_action(action, get_opponent(id))
 
-func initiate_action(id, action):
-	if id==0:
-		combatants[id].initiate_action(action, combatants[1])
-
-func register_combatant(combatant, id):
-		combatants[id] = combatant
+func register_combatant(combatant : Combatant):
+	combatants[combatant.id] = combatant
+	combatant.ready_time_changed.connect(_on_ready_changed)
+	var hud = character_hud.instantiate()
+	hud.setup(combatant)
+	combatant.ready_time_changed.connect(hud._on_ready_time_changed)
+	combatant.life_changed.connect(hud._on_life_changed)
 
 func default_action(id, action):
-	if id == 0:
-		if selected_actions[0] != null:
-			return false
-		if test_ready <= 0:
-			initiate_action(0, action)
-		else:
-			select_action(0, action)
-		return true
-	else:
-		selected_actions[1] = action
-		return true
+	if selected_actions[id] != null:
+		return false
+	select_action(id, action)
+	return true
