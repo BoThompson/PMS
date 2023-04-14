@@ -1,20 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxam7l44u1rhe"]
+[gd_scene load_steps=14 format=3 uid="uid://dph6p0yp4poyv"]
 
-[ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_byjcr"]
-[ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_t4wfb"]
-[ext_resource type="Texture2D" uid="uid://evvyjt6yn1cg" path="res://Sprites/Stage.png" id="2_mpuml"]
-[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="2_wex7p"]
-[ext_resource type="Texture2D" uid="uid://un4mnqlwn5d3" path="res://Sprites/Water Rat.png" id="4_dtmbl"]
-[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="4_mhs8h"]
-[ext_resource type="Script" path="res://Scripts/EnergyField.gd" id="4_mredb"]
-[ext_resource type="Script" path="res://Scripts/Combatant.gd" id="4_ukgyw"]
-[ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="6_3fusw"]
-[ext_resource type="PackedScene" uid="uid://b8jhw32ocpdg5" path="res://Prefabs/character_hud.tscn" id="6_dsy1j"]
-[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="6_f6u7u"]
-[ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="8_mcqny"]
-[ext_resource type="Script" path="res://Scripts/AttackButton.gd" id="16_nsnil"]
-[ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="22_4yxpg"]
-[ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="26_wva6y"]
+[ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_rogob"]
+[ext_resource type="Texture2D" uid="uid://evvyjt6yn1cg" path="res://Sprites/Stage.png" id="2_by7dw"]
+[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="7_8cxlf"]
+[ext_resource type="Script" path="res://Scripts/EnergyField.gd" id="8_21wm4"]
+[ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="9_vjvfl"]
+[ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="10_3l8dk"]
+[ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="11_bn0u3"]
+[ext_resource type="Script" path="res://Scripts/AttackButton.gd" id="12_sh62a"]
+[ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="13_4q38a"]
+[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="14_3t8vp"]
+[ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="15_x6r4t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulhfr"]
 font_size = 13
@@ -26,54 +22,25 @@ light_mode = 1
 [node name="Battle Scene" type="Node2D"]
 position = Vector2(0, -1)
 
-[node name="Battleground" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="."]
 position = Vector2(-9, -14)
 
-[node name="Environment" type="Sprite2D" parent="Battleground"]
+[node name="Sky" type="Sprite2D" parent="Environment"]
 modulate = Color(0.0627451, 0.0745098, 0.141176, 1)
 position = Vector2(489, 104)
 scale = Vector2(960, 179.967)
-texture = ExtResource("1_t4wfb")
+texture = ExtResource("1_rogob")
 
-[node name="Environment3" type="Sprite2D" parent="Battleground"]
+[node name="Ground" type="Sprite2D" parent="Environment"]
 modulate = Color(0.0941176, 0.14902, 0.0941176, 1)
 position = Vector2(489, 388)
 scale = Vector2(960, 448)
-texture = ExtResource("1_t4wfb")
+texture = ExtResource("1_rogob")
 
-[node name="Environment2" type="Sprite2D" parent="Battleground"]
+[node name="Stage" type="Sprite2D" parent="Environment"]
 position = Vector2(492, 222)
 scale = Vector2(1, 0.768)
-texture = ExtResource("2_mpuml")
-
-[node name="Player" type="Sprite2D" parent="Battleground"]
-position = Vector2(381, 183)
-texture = ExtResource("2_wex7p")
-script = ExtResource("4_ukgyw")
-
-[node name="Label" type="Label" parent="Battleground/Player"]
-offset_left = -47.0
-offset_top = -61.0
-offset_right = 29.0
-offset_bottom = -35.0
-text = "No Action"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Enemy" type="Sprite2D" parent="Battleground"]
-position = Vector2(587, 192)
-texture = ExtResource("4_dtmbl")
-script = ExtResource("4_ukgyw")
-id = 1
-
-[node name="Label" type="Label" parent="Battleground/Enemy"]
-offset_left = -47.0
-offset_top = -61.0
-offset_right = 29.0
-offset_bottom = -35.0
-text = "No Action"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("2_by7dw")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -83,22 +50,14 @@ offset_top = -14.0
 offset_right = 31.0
 offset_bottom = 26.0
 
-[node name="Character HUD" parent="Control" instance=ExtResource("6_dsy1j")]
-
-[node name="Resource Board" parent="Control/Character HUD" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 158.0
-offset_bottom = 126.0
-
 [node name="Player Field" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 267.0
 offset_top = 276.0
 offset_right = 539.0
 offset_bottom = 548.0
-texture = ExtResource("4_mhs8h")
-script = ExtResource("4_mredb")
+texture = ExtResource("7_8cxlf")
+script = ExtResource("8_21wm4")
 player = true
 
 [node name="Opponent Field" type="TextureRect" parent="Control"]
@@ -107,7 +66,7 @@ offset_left = 548.0
 offset_top = 285.0
 offset_right = 713.0
 offset_bottom = 450.0
-texture = ExtResource("22_4yxpg")
+texture = ExtResource("9_vjvfl")
 
 [node name="Shuffle Button" type="Button" parent="Control"]
 layout_mode = 0
@@ -116,7 +75,7 @@ offset_top = 456.0
 offset_right = 712.0
 offset_bottom = 544.0
 text = "SHUFFLE!"
-script = ExtResource("6_3fusw")
+script = ExtResource("10_3l8dk")
 swap_timer = 2.0
 
 [node name="Fill" type="ColorRect" parent="Control/Shuffle Button"]
@@ -133,11 +92,11 @@ offset_left = 17.0
 offset_top = 285.0
 offset_right = 257.0
 offset_bottom = 333.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "punch"
 
 [node name="Label" type="Label" parent="Control/Basic Attack"]
@@ -175,7 +134,7 @@ offset_top = 11.0
 offset_right = 230.0
 offset_bottom = 35.0
 focus_mode = 0
-theme = ExtResource("26_wva6y")
+theme = ExtResource("13_4q38a")
 
 [node name="TextureRect" type="TextureRect" parent="Control/Basic Attack"]
 layout_mode = 0
@@ -183,7 +142,7 @@ offset_left = 21.0
 offset_top = 32.0
 offset_right = 34.0
 offset_bottom = 45.0
-texture = ExtResource("6_f6u7u")
+texture = ExtResource("14_3t8vp")
 expand_mode = 1
 
 [node name="Attack2" type="TextureButton" parent="Control"]
@@ -193,18 +152,18 @@ offset_left = 17.0
 offset_top = 339.0
 offset_right = 137.0
 offset_bottom = 387.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack2"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack2"]
 layout_mode = 0
@@ -222,18 +181,18 @@ offset_left = 141.0
 offset_top = 339.0
 offset_right = 261.0
 offset_bottom = 387.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack3"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack3"]
 layout_mode = 0
@@ -251,18 +210,18 @@ offset_left = 17.0
 offset_top = 390.0
 offset_right = 137.0
 offset_bottom = 438.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack4"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack4"]
 layout_mode = 0
@@ -280,18 +239,18 @@ offset_left = 141.0
 offset_top = 390.0
 offset_right = 261.0
 offset_bottom = 438.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack5"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack5"]
 layout_mode = 0
@@ -309,18 +268,18 @@ offset_left = 17.0
 offset_top = 442.0
 offset_right = 137.0
 offset_bottom = 490.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack6"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack6"]
 layout_mode = 0
@@ -338,18 +297,18 @@ offset_left = 141.0
 offset_top = 442.0
 offset_right = 261.0
 offset_bottom = 490.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack7"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack7"]
 layout_mode = 0
@@ -367,18 +326,18 @@ offset_left = 17.0
 offset_top = 493.0
 offset_right = 137.0
 offset_bottom = 541.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack8"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack8"]
 layout_mode = 0
@@ -396,18 +355,18 @@ offset_left = 141.0
 offset_top = 493.0
 offset_right = 261.0
 offset_bottom = 541.0
-texture_normal = ExtResource("1_byjcr")
-texture_disabled = ExtResource("4_mhs8h")
+texture_normal = ExtResource("11_bn0u3")
+texture_disabled = ExtResource("7_8cxlf")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("16_nsnil")
+script = ExtResource("12_sh62a")
 action = "fireball"
 
 [node name="UnlitAttack" type="Sprite2D" parent="Control/Attack9"]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_mcqny")
+texture = ExtResource("15_x6r4t")
 
 [node name="Label" type="Label" parent="Control/Attack9"]
 layout_mode = 0
@@ -436,5 +395,3 @@ color = Color(0, 0, 0, 1)
 [connection signal="gui_input" from="Control/Attack7" to="Control/Attack7" method="_on_gui_input"]
 [connection signal="gui_input" from="Control/Attack8" to="Control/Attack8" method="_on_gui_input"]
 [connection signal="gui_input" from="Control/Attack9" to="Control/Attack9" method="_on_gui_input"]
-
-[editable path="Control/Character HUD"]

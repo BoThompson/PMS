@@ -18,6 +18,8 @@ const characters_data = preload("res://Data/characters.tres").data
 
 const character_hud = preload("res://Prefabs/character_hud.tscn")
 
+const combatant_prefab = preload("res://Prefabs/combatant.tscn")
+
 var actions = {
 	#"NAME": {
 	#	"description":"DESCRIPTION IN BBCODE FORMAT"
@@ -102,3 +104,8 @@ func default_action(id, action):
 		return false
 	select_action(id, action)
 	return true
+
+func add_combatant(combatant_name, is_player, on_left):
+	var combatant = combatant_prefab.instantiate()
+	combatant.setup(characters_data[combatant_name])
+	
