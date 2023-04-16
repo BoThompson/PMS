@@ -10,8 +10,6 @@ var oppField : EnergyField
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
 
-
-var resources
 var selected_actions = [null, null]
 
 const characters_data = preload("res://Data/characters.tres").data
@@ -49,20 +47,13 @@ func _ready():
 	selected_actions = []
 	selected_actions.resize(2)
 	selected_actions.fill(null)
-	reset_resources()
 
-func reset_resources():
-	resources = [[],[]]
-	resources[0].resize(6)
-	resources[1].resize(6)
-	resources[0].fill(0)
-	resources[1].fill(0)
 
 func reset_player_field():
 	playerField.reset()
 	
 func add_resource(resource, amt, id):
-	combatants[id].resources[resource] += amt
+	combatants[id].add_resource(resource, amt)
 
 func select_action(id, action) -> bool:
 	if combatants[id].ready_time_remaining <= 0:
@@ -96,6 +87,11 @@ func register_combatant(combatant : Combatant):
 	combatant.ready_time_changed.connect(_on_ready_changed)
 	var hud = character_hud.instantiate()
 	hud.setup(combatant)
+	get_tree().root.add_child(hud)
+	if combatant.is_player():
+		hud.position = Vector2(10,10)
+	else:
+		hud.position = Vector2(780, 10)
 	combatant.ready_time_changed.connect(hud._on_ready_time_changed)
 	combatant.life_changed.connect(hud._on_life_changed)
 
@@ -107,5 +103,5 @@ func default_action(id, action):
 
 func add_combatant(combatant_name, is_player, on_left):
 	var combatant = combatant_prefab.instantiate()
-	combatant.setup(characters_data[combatant_name])
+	combatant.setup(CharStats.load(characters_data[combatant_name]), is_player, on_left)
 	

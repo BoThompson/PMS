@@ -147,7 +147,7 @@ func remove_active_orb(orb):
 		
 
 func add_resource(type, amt):
-	GameManager.add_resource(type, amt, player)
+	GameManager.add_resource(type, amt, 0)
 
 ####################################################################################################	
 ##################################          State Methods          #################################

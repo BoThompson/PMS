@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8jhw32ocpdg5"]
+[gd_scene load_steps=15 format=3 uid="uid://b8jhw32ocpdg5"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterHud.gd" id="1_oytnk"]
 [ext_resource type="PackedScene" uid="uid://ytckkkf7seq4" path="res://Prefabs/resource_board.tscn" id="2_4t26j"]
 [ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="9_hiomi"]
 [ext_resource type="Texture2D" uid="uid://oxrllwr8vo2h" path="res://Sprites/Empty Ready Bar.png" id="10_1fkc4"]
 [ext_resource type="Shader" path="res://Shaders/Bar_Fill.gdshader" id="11_p50ki"]
+[ext_resource type="Texture2D" uid="uid://bueprtcdf0sf0" path="res://Sprites/Life Bar Background.png" id="12_4o368"]
 [ext_resource type="Texture2D" uid="uid://vw257cf3orjl" path="res://Sprites/Full Ready Bar.png" id="12_yjmnr"]
+[ext_resource type="Texture2D" uid="uid://bbrvq3o061eam" path="res://Sprites/Life Bar Fill.png" id="13_0oq7m"]
 [ext_resource type="Texture2D" uid="uid://b3iwo37y6etyq" path="res://Sprites/Combat Go Alert.png" id="13_nvpat"]
 [ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="14_h3abs"]
 [ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="15_xvnbp"]
@@ -15,36 +17,40 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnbc"]
 shader = ExtResource("11_p50ki")
 shader_parameter/cutoff = 0.719
-shader_parameter/direction = 2
+shader_parameter/direction = 0
 shader_parameter/tint = Vector3(0, 0, 0)
 
 [node name="Character HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 6.0
-offset_top = 11.0
-offset_right = 46.0
-offset_bottom = 51.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_oytnk")
 
 [node name="Resource Board" parent="." instance=ExtResource("2_4t26j")]
 layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 166.0
+offset_bottom = 198.0
 
 [node name="Ready Bar" type="Node2D" parent="."]
-position = Vector2(21, 94)
+position = Vector2(12, 80)
 script = ExtResource("9_hiomi")
 signal_name = "playerReadyChanged"
 bar_direction = 2
 
 [node name="Background" type="TextureRect" parent="Ready Bar"]
+offset_top = 1.0
 offset_right = 33.0
-offset_bottom = 172.0
+offset_bottom = 173.0
 texture = ExtResource("10_1fkc4")
 
 [node name="Fill" type="TextureRect" parent="Ready Bar"]
 material = SubResource("ShaderMaterial_mqnbc")
+offset_top = 1.0
 offset_right = 33.0
-offset_bottom = 172.0
+offset_bottom = 173.0
 texture = ExtResource("12_yjmnr")
 
 [node name="Alert" type="TextureRect" parent="Ready Bar"]
@@ -57,10 +63,8 @@ texture = ExtResource("13_nvpat")
 
 [node name="Character Plate" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 14.0
-offset_right = 183.0
-offset_bottom = 98.0
+offset_right = 174.0
+offset_bottom = 84.0
 texture = ExtResource("14_h3abs")
 
 [node name="Portrait" type="TextureRect" parent="Character Plate"]
@@ -89,22 +93,20 @@ offset_bottom = 77.0
 texture = ExtResource("17_cwx2f")
 
 [node name="Life Bar" type="Node2D" parent="Character Plate"]
-position = Vector2(49, 44)
+position = Vector2(47, 36)
 script = ExtResource("9_hiomi")
 signal_name = "playerReadyChanged"
-bar_direction = 2
 
 [node name="Background" type="TextureRect" parent="Character Plate/Life Bar"]
-offset_right = 33.0
-offset_bottom = 172.0
-texture = ExtResource("10_1fkc4")
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("12_4o368")
 
 [node name="Fill" type="TextureRect" parent="Character Plate/Life Bar"]
-visible = false
 material = SubResource("ShaderMaterial_mqnbc")
-offset_right = 33.0
-offset_bottom = 172.0
-texture = ExtResource("12_yjmnr")
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("13_0oq7m")
 
 [node name="Affects" type="Control" parent="Character Plate"]
 anchors_preset = 0

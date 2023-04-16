@@ -9,21 +9,24 @@ var ready_time_remaining : float
 var ready_timer : float
 
 var stats : CharStats #Current stats of the entity
-
+var resources : Array[int]
 var action_tween : Tween
 
-
+signal resources_changed(resource : int, amount : int)
 signal ready_time_changed(id : int, value : float)
 signal life_changed(id : int, value : float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameManager.register_combatant(self)
-	set_action_label("No Action")
 	pass # Replace with function body.
 
 
-func setup(data):
-	stats = CharStats(data)
+func setup(cs, player, left):
+	stats = cs
+	stats.player = player
+	resources = []
+	resources.resize(11)
+	GameManager.register_combatant(self)
+	set_action_label("No Action")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -79,3 +82,7 @@ func set_action_label(action):
 
 func is_player() -> bool:
 	return stats.player
+
+func add_resources(type : int, amount : int):
+	resources[type] += amount
+	resources_changed.emit(type, resources[type])

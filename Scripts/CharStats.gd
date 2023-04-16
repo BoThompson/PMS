@@ -34,15 +34,17 @@ var inventory
 
 var actions : Array[String] #[0] is the basic attack, 1-8 are the optional ones
 
-func CharStats(dataset):
-	data = dataset
-	health = 100
-	max_health = 100
-	mind = 1
-	body = 1
-	spirit = 1
-	attack = 1
-	defense = 1
-	qi_attack = 1
-	qi_defense = 1
+static func load(dataset):
+	var cs = CharStats.new()
+	cs.data = dataset
+	cs.health = 100
+	cs.max_health = 100
+	cs.mind = 1
+	cs.body = 1
+	cs.spirit = 1
+	cs.attack = 1
+	cs.defense = 1
+	cs.qi_attack = 1
+	cs.qi_defense = 1
+	return cs
 	

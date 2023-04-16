@@ -7,5 +7,3 @@
 script = ExtResource("1_hnqnr")
 
 [node name="Battle Scene" parent="." instance=ExtResource("1_40j58")]
-
-[editable path="Battle Scene"]
