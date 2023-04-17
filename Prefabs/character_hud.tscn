@@ -67,6 +67,16 @@ offset_right = 174.0
 offset_bottom = 84.0
 texture = ExtResource("14_h3abs")
 
+[node name="Seal" type="TextureRect" parent="Character Plate"]
+modulate = Color(1, 1, 1, 0.396078)
+self_modulate = Color(0.278431, 0.117647, 0.054902, 1)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 77.0
+texture = ExtResource("17_cwx2f")
+
 [node name="Portrait" type="TextureRect" parent="Character Plate"]
 layout_mode = 0
 offset_left = -2.0
@@ -82,15 +92,6 @@ offset_top = 8.0
 offset_right = 138.0
 offset_bottom = 33.0
 texture = ExtResource("16_fo8j5")
-
-[node name="Seal" type="TextureRect" parent="Character Plate"]
-modulate = Color(1, 1, 1, 0.396078)
-layout_mode = 0
-offset_left = 56.0
-offset_top = 8.0
-offset_right = 125.0
-offset_bottom = 77.0
-texture = ExtResource("17_cwx2f")
 
 [node name="Life Bar" type="Node2D" parent="Character Plate"]
 position = Vector2(47, 36)

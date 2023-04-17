@@ -147,7 +147,7 @@ func remove_active_orb(orb):
 		
 
 func add_resource(type, amt):
-	GameManager.add_resource(type, amt, 0)
+	GameManager.battle.add_resource(type, amt, 0)
 
 ####################################################################################################	
 ##################################          State Methods          #################################
@@ -163,9 +163,9 @@ func setup(fill):
 		row.resize(field_size.y)
 		orbs.append(row)
 	if player:
-		GameManager.playerField = self
+		GameManager.battle.playerField = self
 	else:
-		GameManager.oppField = self
+		GameManager.battle.oppField = self
 	
 	orbs_active = {}
 	clear_orbs(true)

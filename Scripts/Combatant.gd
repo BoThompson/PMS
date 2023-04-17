@@ -12,7 +12,7 @@ var stats : CharStats #Current stats of the entity
 var resources : Array[int]
 var action_tween : Tween
 
-signal resources_changed(resource : int, amount : int)
+signal resources_changed(values)
 signal ready_time_changed(id : int, value : float)
 signal life_changed(id : int, value : float)
 # Called when the node enters the scene tree for the first time.
@@ -23,9 +23,12 @@ func _ready():
 func setup(cs, player, left):
 	stats = cs
 	stats.player = player
+	if player:
+		id = 0
+	else:
+		id = 1
 	resources = []
 	resources.resize(11)
-	GameManager.register_combatant(self)
 	set_action_label("No Action")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,6 +86,9 @@ func set_action_label(action):
 func is_player() -> bool:
 	return stats.player
 
-func add_resources(type : int, amount : int):
+func add_resource(type : int, amount : int):
 	resources[type] += amount
-	resources_changed.emit(type, resources[type])
+	resources_changed.emit(resources)
+	for c in resources_changed.get_connections():
+		print(c)
+	

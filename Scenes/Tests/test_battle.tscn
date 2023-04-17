@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfu371j838qav"]
 
-[ext_resource type="PackedScene" uid="uid://dph6p0yp4poyv" path="res://Scenes/battle.tscn" id="1_40j58"]
+[ext_resource type="PackedScene" uid="uid://23mn8sv8pdc6" path="res://Scenes/battle.tscn" id="1_40j58"]
 [ext_resource type="Script" path="res://Scripts/Test/test_battle.gd" id="1_hnqnr"]
 
 [node name="Test Battle" type="Node2D"]
 script = ExtResource("1_hnqnr")
+left_combatant = "prodigy"
+right_combatant = "pacifist"
 
 [node name="Battle Scene" parent="." instance=ExtResource("1_40j58")]

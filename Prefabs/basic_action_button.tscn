@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://ban8ifinocwgg"]
+
+[ext_resource type="Texture2D" uid="uid://bm5na4oh82hg2" path="res://Sprites/UI/Actions/Basic Action Frame.png" id="2_vq2id"]
+[ext_resource type="Script" path="res://Scripts/ActionButton.gd" id="3_5mcfa"]
+[ext_resource type="Texture2D" uid="uid://ce1f06udy010s" path="res://Sprites/UI/Actions/Basic Strike.png" id="3_dsg6l"]
+[ext_resource type="Texture2D" uid="uid://yhf0l01mwqxx" path="res://Sprites/UI/Actions/Action Cost.png" id="4_f5kq3"]
+[ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="4_wncvn"]
+[ext_resource type="Texture2D" uid="uid://dhmdujws05cn" path="res://Sprites/UI/Yang Cost Icon.png" id="5_a1w6q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0yoi6"]
+line_spacing = -20.0
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.560784)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ulhfr"]
+font_size = 13
+
+[node name="Basic Action Button" type="TextureButton"]
+self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
+offset_right = 240.0
+offset_bottom = 48.0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_5mcfa")
+action = "punch"
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 44.0
+texture = ExtResource("2_vq2id")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 1.0
+offset_right = 239.0
+offset_bottom = 43.0
+texture = ExtResource("3_dsg6l")
+expand_mode = 1
+
+[node name="Action Resource Cost" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 34.0
+offset_bottom = 50.0
+texture = ExtResource("4_f5kq3")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Action Resource Cost"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="Action Resource Cost/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "5"
+label_settings = SubResource("LabelSettings_0yoi6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Action Resource Cost/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_a1w6q")
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 13.0
+offset_right = 210.0
+offset_bottom = 34.0
+text = "AUTO"
+label_settings = SubResource("LabelSettings_ulhfr")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 83.0
+offset_bottom = 21.0
+text = "Action Name"
+label_settings = SubResource("LabelSettings_ulhfr")
+
+[node name="AutoCheck" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 11.0
+offset_right = 230.0
+offset_bottom = 35.0
+focus_mode = 0
+theme = ExtResource("4_wncvn")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="toggled" from="AutoCheck" to="." method="_on_auto_toggled"]

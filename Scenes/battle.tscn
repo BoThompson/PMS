@@ -1,26 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://dph6p0yp4poyv"]
+[gd_scene load_steps=8 format=3 uid="uid://23mn8sv8pdc6"]
 
 [ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_rogob"]
+[ext_resource type="Script" path="res://Scripts/BattleScene.gd" id="1_x426s"]
 [ext_resource type="Texture2D" uid="uid://evvyjt6yn1cg" path="res://Sprites/Stage.png" id="2_by7dw"]
 [ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="7_8cxlf"]
 [ext_resource type="Script" path="res://Scripts/EnergyField.gd" id="8_21wm4"]
 [ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="9_vjvfl"]
 [ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="10_3l8dk"]
-[ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="11_bn0u3"]
-[ext_resource type="Script" path="res://Scripts/AttackButton.gd" id="12_sh62a"]
-[ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="13_4q38a"]
-[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="14_3t8vp"]
-[ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="15_x6r4t"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ulhfr"]
-font_size = 13
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uhc5x"]
-blend_mode = 1
-light_mode = 1
 
 [node name="Battle Scene" type="Node2D"]
 position = Vector2(0, -1)
+script = ExtResource("1_x426s")
 
 [node name="Environment" type="Node2D" parent="."]
 position = Vector2(-9, -14)
@@ -42,7 +32,7 @@ position = Vector2(492, 222)
 scale = Vector2(1, 0.768)
 texture = ExtResource("2_by7dw")
 
-[node name="Control" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -9.0
@@ -50,7 +40,7 @@ offset_top = -14.0
 offset_right = 31.0
 offset_bottom = 26.0
 
-[node name="Player Field" type="TextureRect" parent="Control"]
+[node name="Player Field" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_left = 267.0
 offset_top = 276.0
@@ -60,7 +50,7 @@ texture = ExtResource("7_8cxlf")
 script = ExtResource("8_21wm4")
 player = true
 
-[node name="Opponent Field" type="TextureRect" parent="Control"]
+[node name="Opponent Field" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_left = 548.0
 offset_top = 285.0
@@ -68,7 +58,7 @@ offset_right = 713.0
 offset_bottom = 450.0
 texture = ExtResource("9_vjvfl")
 
-[node name="Shuffle Button" type="Button" parent="Control"]
+[node name="Shuffle Button" type="Button" parent="HUD"]
 layout_mode = 0
 offset_left = 546.0
 offset_top = 456.0
@@ -78,304 +68,12 @@ text = "SHUFFLE!"
 script = ExtResource("10_3l8dk")
 swap_timer = 2.0
 
-[node name="Fill" type="ColorRect" parent="Control/Shuffle Button"]
+[node name="Fill" type="ColorRect" parent="HUD/Shuffle Button"]
 layout_mode = 0
 offset_right = 166.0
 offset_bottom = 88.0
 mouse_filter = 1
 color = Color(1, 0, 0, 0.34902)
-
-[node name="Basic Attack" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 17.0
-offset_top = 285.0
-offset_right = 257.0
-offset_bottom = 333.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "punch"
-
-[node name="Label" type="Label" parent="Control/Basic Attack"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 26.0
-offset_right = 30.0
-offset_bottom = 52.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Control/Basic Attack"]
-layout_mode = 0
-offset_left = 173.0
-offset_top = 13.0
-offset_right = 210.0
-offset_bottom = 34.0
-text = "AUTO"
-label_settings = SubResource("LabelSettings_ulhfr")
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Control/Basic Attack"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 91.0
-offset_bottom = 28.0
-text = "Action Name"
-label_settings = SubResource("LabelSettings_ulhfr")
-
-[node name="AutoCheck" type="CheckBox" parent="Control/Basic Attack"]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 11.0
-offset_right = 230.0
-offset_bottom = 35.0
-focus_mode = 0
-theme = ExtResource("13_4q38a")
-
-[node name="TextureRect" type="TextureRect" parent="Control/Basic Attack"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 32.0
-offset_right = 34.0
-offset_bottom = 45.0
-texture = ExtResource("14_3t8vp")
-expand_mode = 1
-
-[node name="Attack2" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 17.0
-offset_top = 339.0
-offset_right = 137.0
-offset_bottom = 387.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack2"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack2"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack3" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 141.0
-offset_top = 339.0
-offset_right = 261.0
-offset_bottom = 387.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack3"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack3"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack4" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 17.0
-offset_top = 390.0
-offset_right = 137.0
-offset_bottom = 438.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack4"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack4"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack5" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 141.0
-offset_top = 390.0
-offset_right = 261.0
-offset_bottom = 438.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack5"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack5"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack6" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 17.0
-offset_top = 442.0
-offset_right = 137.0
-offset_bottom = 490.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack6"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack6"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack7" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 141.0
-offset_top = 442.0
-offset_right = 261.0
-offset_bottom = 490.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack7"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack7"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack8" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 17.0
-offset_top = 493.0
-offset_right = 137.0
-offset_bottom = 541.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack8"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack8"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
-
-[node name="Attack9" type="TextureButton" parent="Control"]
-self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
-layout_mode = 0
-offset_left = 141.0
-offset_top = 493.0
-offset_right = 261.0
-offset_bottom = 541.0
-texture_normal = ExtResource("11_bn0u3")
-texture_disabled = ExtResource("7_8cxlf")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("12_sh62a")
-action = "fireball"
-
-[node name="UnlitAttack" type="Sprite2D" parent="Control/Attack9"]
-material = SubResource("CanvasItemMaterial_uhc5x")
-position = Vector2(68, 63)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_x6r4t")
-
-[node name="Label" type="Label" parent="Control/Attack9"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 51.0
-offset_right = 68.0
-offset_bottom = 77.0
-text = "5"
-horizontal_alignment = 1
 
 [node name="Blinder" type="ColorRect" parent="."]
 visible = false
@@ -383,15 +81,5 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 1)
 
-[connection signal="button_down" from="Control/Shuffle Button" to="Control/Shuffle Button" method="on_swap_pressed"]
-[connection signal="button_up" from="Control/Shuffle Button" to="Control/Shuffle Button" method="on_swap_released"]
-[connection signal="gui_input" from="Control/Basic Attack" to="Control/Basic Attack" method="_on_gui_input"]
-[connection signal="toggled" from="Control/Basic Attack/AutoCheck" to="Control/Basic Attack" method="_on_auto_toggled"]
-[connection signal="gui_input" from="Control/Attack2" to="Control/Attack2" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack3" to="Control/Attack3" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack4" to="Control/Attack4" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack5" to="Control/Attack5" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack6" to="Control/Attack6" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack7" to="Control/Attack7" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack8" to="Control/Attack8" method="_on_gui_input"]
-[connection signal="gui_input" from="Control/Attack9" to="Control/Attack9" method="_on_gui_input"]
+[connection signal="button_down" from="HUD/Shuffle Button" to="HUD/Shuffle Button" method="on_swap_pressed"]
+[connection signal="button_up" from="HUD/Shuffle Button" to="HUD/Shuffle Button" method="on_swap_released"]
