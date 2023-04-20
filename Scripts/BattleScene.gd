@@ -70,6 +70,8 @@ func add_combatant(combatant_name, is_player, on_left):
 	var data = GameManager.characters_data[combatant_name]
 	var cs = CharStats.load(data)
 	combatant.setup(cs, is_player, on_left)
+	if !on_left:
+		combatant.position.x = 960 - combatant.position.x
 	register_combatant(combatant)
 	get_tree().root.add_child(combatant)
 

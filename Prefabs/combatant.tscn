@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bciwo8oxgo48"]
 
-[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="1_0eido"]
+[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Sprites/Battle Sprites/default.png" id="1_8eptv"]
 [ext_resource type="Script" path="res://Scripts/Combatant.gd" id="2_s11au"]
 
 [node name="Combatant" type="Sprite2D"]
 position = Vector2(381, 183)
-texture = ExtResource("1_0eido")
+texture = ExtResource("1_8eptv")
 script = ExtResource("2_s11au")
 
 [node name="Label" type="Label" parent="."]

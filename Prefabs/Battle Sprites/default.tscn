@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6j1pfu11r32m"]
+
+[ext_resource type="Script" path="res://Scripts/BattleSprite.gd" id="1_4jykv"]
+[ext_resource type="Texture2D" uid="uid://b8u07nese0f5n" path="res://Sprites/Battle Sprites/Pacifist.png" id="2_vdtte"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_vladq"]
+
+[node name="BattleSprite" type="Node2D"]
+script = ExtResource("1_4jykv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, -39)
+texture = ExtResource("2_vdtte")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_vladq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

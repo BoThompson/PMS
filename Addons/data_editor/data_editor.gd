@@ -7,7 +7,7 @@ var mod_data
 
 func _enter_tree():
 	panel = preload("res://Addons/data_editor/data_editor.tscn").instantiate() as DataEditorPanel
-	var data = load("res://Data/characters.tres").data as Dictionary
+	var data = load("res://Data/characters.json").data as Dictionary
 	panel.populate_list(data)
 	get_editor_interface().get_editor_main_screen().add_child(panel)
 

@@ -22,11 +22,14 @@ func _ready():
 
 func setup(cs, player, left):
 	stats = cs
+	texture = load("res://Sprites/Battle Sprites/" + cs.data["character_select"]["assets"]["sprite"])
 	stats.player = player
 	if player:
 		id = 0
 	else:
 		id = 1
+	if !left:
+		flip_h = true
 	resources = []
 	resources.resize(11)
 	set_action_label("No Action")

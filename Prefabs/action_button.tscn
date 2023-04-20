@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://qr85d64a8xht"]
 
 [ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_5ie32"]
 [ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="2_8jqi4"]

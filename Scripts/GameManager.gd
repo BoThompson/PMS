@@ -1,7 +1,7 @@
 extends Node
 
 
-const characters_data = preload("res://Data/characters.tres").data
+const characters_data = preload("res://Data/characters.json").data
 
 var battle = null
 

@@ -41,24 +41,20 @@ signal_name = "playerReadyChanged"
 bar_direction = 2
 
 [node name="Background" type="TextureRect" parent="Ready Bar"]
-offset_top = 1.0
 offset_right = 33.0
-offset_bottom = 173.0
+offset_bottom = 172.0
 texture = ExtResource("10_1fkc4")
 
 [node name="Fill" type="TextureRect" parent="Ready Bar"]
 material = SubResource("ShaderMaterial_mqnbc")
-offset_top = 1.0
 offset_right = 33.0
-offset_bottom = 173.0
+offset_bottom = 172.0
 texture = ExtResource("12_yjmnr")
 
 [node name="Alert" type="TextureRect" parent="Ready Bar"]
 visible = false
-offset_left = 3.0
-offset_top = 93.0
-offset_right = 30.0
-offset_bottom = 121.0
+offset_right = 27.0
+offset_bottom = 28.0
 texture = ExtResource("13_nvpat")
 
 [node name="Character Plate" type="TextureRect" parent="."]

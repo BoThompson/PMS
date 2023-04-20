@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsmeb8q7mxr0o"]
+
+[ext_resource type="Texture2D" uid="uid://yhf0l01mwqxx" path="res://Sprites/UI/Actions/Action Cost.png" id="1_727kp"]
+[ext_resource type="Texture2D" uid="uid://dhmdujws05cn" path="res://Sprites/UI/Yang Cost Icon.png" id="2_b1j0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0yoi6"]
+line_spacing = -20.0
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.560784)
+
+[node name="Resource Cost Marker" type="NinePatchRect"]
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 34.0
+offset_bottom = 50.0
+texture = ExtResource("1_727kp")
+patch_margin_left = 22
+patch_margin_top = 13
+patch_margin_right = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="."]
+layout_direction = 3
+layout_mode = 2
+offset_left = 17.0
+offset_top = -2.0
+offset_right = 27.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 16
+text = "1"
+label_settings = SubResource("LabelSettings_0yoi6")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 1
+
+[node name="Icon Shadow" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.607843)
+layout_mode = 2
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 19.0
+texture = ExtResource("2_b1j0c")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 2.0
+offset_right = 27.0
+offset_bottom = 18.0
+texture = ExtResource("2_b1j0c")

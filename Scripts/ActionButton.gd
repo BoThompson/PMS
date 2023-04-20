@@ -8,8 +8,8 @@ var infoPanelPrefab = preload("res://Prefabs/info_panel.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#_on_resources_changed(GameManager.combatants[0].resources)
-	set_costs(GameManager.scene.actions[action].cost)
-	GameManager.connect("playerResourcesChanged", _on_resources_changed)
+	#set_costs(GameManager.scene.actions[action].cost)
+	#GameManager.connect("playerResourcesChanged", _on_resources_changed)
 	pass # Replace with function body.
 
 func _on_gui_input(event):
