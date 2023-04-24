@@ -15,8 +15,8 @@ var oppResourceBoard : ResourceBoard
 
 var combatants = {}
 var selected_actions = [null, null]
-const character_hud = preload("res://Prefabs/character_hud.tscn")
-
+const player_hud = preload("res://Prefabs/player_hud.tscn")
+const enemy_hud = preload("res://Prefabs/enemy_hud.tscn")
 
 
 func fireball(targets):
@@ -72,7 +72,7 @@ func add_combatant(combatant_name, is_player, on_left):
 	combatant.setup(cs, is_player, on_left)
 	if !on_left:
 		combatant.position.x = 960 - combatant.position.x
-	register_combatant(combatant)
+	register_combatant(combatant, on_left)
 	get_tree().root.add_child(combatant)
 
 func get_opponent(id) -> Combatant:
@@ -89,11 +89,15 @@ func queue_action(id, action):
 	var opp = get_opponent(id)
 	combatants[0].queue_action(action, get_opponent(id))
 
-func register_combatant(combatant : Combatant):
+func register_combatant(combatant : Combatant, on_left : bool):
 	combatants[combatant.id] = combatant
 	combatant.ready_time_changed.connect(_on_ready_changed)
-	var hud = character_hud.instantiate()
-	hud.setup(combatant)
+	var hud
+	if on_left:
+		hud = player_hud.instantiate()
+	else:
+		hud = enemy_hud.instantiate()
+	hud.setup(combatant, on_left)
 	get_tree().root.add_child(hud)
 	if combatant.is_player():
 		hud.position = Vector2(10,10)

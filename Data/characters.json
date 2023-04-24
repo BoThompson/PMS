@@ -15,7 +15,8 @@
 			"quote": "",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"beast": {
 		"character_select": {
@@ -33,7 +34,8 @@
 			"quote": "*Aroooo?*",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"dragon": {
 		"character_select": {
@@ -51,7 +53,8 @@
 			"quote": "You would deny me entry? Where water goes, so too shall I.",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	}, 
 	"fallen": {
 		"character_select": {
@@ -69,7 +72,8 @@
 			"quote": "\"This takes blood, sweat, and tears. They don't have to be mine.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"farstrider": {
 		"character_select": {
@@ -87,7 +91,8 @@
 			"quote": "\"You have no idea the long road I have walked to get this far.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"firebird": {
 		"character_select": {
@@ -105,7 +110,8 @@
 			"quote": "\"Burn away those who would oppose you.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"inheritor": {
 		"character_select": {
@@ -123,7 +129,8 @@
 			"quote": "\"I don't even know how I got here...\"",
 			"requirement": "None",
 			"style": "Accidental Combat"
-		}
+		},
+		"basic":"strike"
 	},
 	"mercenary": {
 		"character_select": {
@@ -141,7 +148,8 @@
 			"quote": "\"If you can't sell it, I'm not interested.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"novice": {
 		"character_select": {
@@ -159,7 +167,8 @@
 			"quote": "\"I may not be the best, but I'll do my best!\"",
 			"requirement": "Complete one trial with The Inheritor.",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"pacifist": {
 		"character_select": {
@@ -177,7 +186,8 @@
 			"quote": "\"Violence is your prison, but mercy is the key.\"",
 			"requirement": "Acquire a Lotus Wheel artifact to unlock this character.",
 			"style": "Buddha's Gentle Palm"
-		}
+		},
+		"basic":"strike"
 	},
 	"prodigy": {
 		"character_select": {
@@ -196,7 +206,8 @@
 			"quote": "\"If you're a match for me now, I promise you won't be for long.\"",
 			"requirement": "Reach Jade Core stage to unlock this character.",
 			"style": "Adaptable Fists"
-		}
+		},
+		"basic":"strike"
 	},
 	"reborn": {
 		"character_select": {
@@ -214,7 +225,8 @@
 			"quote": "\"This place... it's so familiar.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"scion": {
 		"character_select": {
@@ -232,7 +244,8 @@
 			"quote": "\"Some people were simply born to succeed.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"tiger": {
 		"character_select": {
@@ -250,7 +263,8 @@
 			"quote": "Do not fear my roar, fear the jaws will that soon follow.",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"tortoise": {
 		"character_select": {
@@ -268,7 +282,8 @@
 			"quote": "\"Crush that which may be opposed, weather that which may not.\"",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	},
 	"unicorn": {
 		"character_select": {
@@ -286,6 +301,7 @@
 			"quote": "Do not understimate the power of fortune and chance.",
 			"requirement": "",
 			"style": ""
-		}
+		},
+		"basic":"strike"
 	}
 }

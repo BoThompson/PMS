@@ -19,8 +19,9 @@ func _on_ready_time_changed(_id, value):
 func _on_life_changed(_id, value):
 	$"Character Plate/Life Bar".update_value(value)		
 
-func setup(combatant: Combatant):
+func setup(combatant: Combatant, on_left : bool):
 	self.combatant = combatant
+		
 	$"Character Plate/Portrait".texture = load("res://Sprites/Portraits/" + combatant.stats.data["character_select"]["assets"]["portrait_image"])
 	$"Character Plate/Title".texture = load("res://Sprites/Titles/" + combatant.stats.data["character_select"]["assets"]["title_image"])
 	$"Character Plate/Seal".texture = load("res://Sprites/Seals/" + combatant.stats.data["character_select"]["assets"]["seal_image"])
