@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://de4dixhcj17yb"]
+
+[ext_resource type="Texture2D" uid="uid://ci3wu6jvef5vn" path="res://Sprites/Map Background.png" id="1_kfh2f"]
+[ext_resource type="Texture2D" uid="uid://bghtrcjwy606w" path="res://Sprites/Map Portal.png" id="2_4kr1a"]
+[ext_resource type="Script" path="res://Scripts/MapDestination.gd" id="3_mg0j4"]
+[ext_resource type="Texture2D" uid="uid://byf6hhgunilco" path="res://Sprites/Map Tower.png" id="4_30cgs"]
+[ext_resource type="Texture2D" uid="uid://2deby5b4tfwd" path="res://Sprites/Map Dot.png" id="5_uxh47"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MapBackground" type="Sprite2D" parent="."]
+texture = ExtResource("1_kfh2f")
+centered = false
+
+[node name="MapPortal" type="Sprite2D" parent="."]
+position = Vector2(482, 282)
+texture = ExtResource("2_4kr1a")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapTower" type="Sprite2D" parent="."]
+position = Vector2(688, 287)
+texture = ExtResource("4_30cgs")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot2" type="Sprite2D" parent="."]
+position = Vector2(623, 334)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot3" type="Sprite2D" parent="."]
+position = Vector2(602, 341)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot4" type="Sprite2D" parent="."]
+position = Vector2(578, 338)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot5" type="Sprite2D" parent="."]
+position = Vector2(554, 330)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot6" type="Sprite2D" parent="."]
+position = Vector2(534, 320)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0
+
+[node name="MapDot" type="Sprite2D" parent="."]
+position = Vector2(646, 327)
+texture = ExtResource("5_uxh47")
+script = ExtResource("3_mg0j4")
+offset_height = 4.0

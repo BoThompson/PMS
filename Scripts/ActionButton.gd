@@ -3,6 +3,7 @@ extends TextureButton
 
 @export var action : String
 @export var primary_action : bool
+var data
 var autofire : bool
 var infoPanelPrefab = preload("res://Prefabs/info_panel.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -79,3 +80,16 @@ func _on_ready_changed(value):
 		autofire = true
 	else:
 		GameManager.default_action(0, action)
+
+func setup_costs(curr_costs):
+	for i in range(data.costs):
+		if data.costs[i] != 0:
+			#TODO: Complete this loading process
+			return
+
+func setup(name):
+	action = name
+	data = GameManager.get_action_data(name)
+	$Icon.texture = load("res://Sprites/UI/Actions/"+data.icon)
+	setup_costs(data.costs)
+	pass

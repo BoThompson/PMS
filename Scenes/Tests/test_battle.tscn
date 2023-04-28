@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfu371j838qav"]
+[gd_scene load_steps=3 format=3 uid="uid://cfu371j838qav"]
 
 [ext_resource type="PackedScene" uid="uid://23mn8sv8pdc6" path="res://Scenes/battle.tscn" id="1_40j58"]
 [ext_resource type="Script" path="res://Scripts/Test/test_battle.gd" id="1_hnqnr"]
-[ext_resource type="PackedScene" uid="uid://ban8ifinocwgg" path="res://Prefabs/basic_action_button.tscn" id="3_8hkli"]
 
 [node name="Test Battle" type="Node2D"]
 script = ExtResource("1_hnqnr")
@@ -10,19 +9,3 @@ left_combatant = "prodigy"
 right_combatant = "pacifist"
 
 [node name="Battle Scene" parent="." instance=ExtResource("1_40j58")]
-
-[node name="Basic Action Button" parent="." instance=ExtResource("3_8hkli")]
-offset_left = 9.0
-offset_top = 274.0
-offset_right = 249.0
-offset_bottom = 322.0
-
-[node name="Label3" parent="Basic Action Button" index="3"]
-offset_left = 165.0
-offset_top = 9.0
-offset_bottom = 35.0
-
-[node name="Label2" parent="Basic Action Button" index="4"]
-text = "Strike"
-
-[editable path="Basic Action Button"]

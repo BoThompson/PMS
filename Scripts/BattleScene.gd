@@ -2,8 +2,8 @@ extends Node2D
 
 
 const action_button_prefab = preload("res://Prefabs/action_button.tscn")
-const primary_action_button_prefab = preload("res://Prefabs/basic_action_button.tscn")
-var buttons = [null]
+const basic_action_button_prefab = preload("res://Prefabs/basic_action_button.tscn")
+var action_buttons = [null]
 
 const combatant_prefab = preload("res://Prefabs/combatant.tscn")
 var playerField : EnergyField
@@ -44,22 +44,24 @@ var actions = {
 }
 
 
-func add_action_button(name, primary):
+func add_action_button(action):
+	var name = action.name
+	var primary = action.basic
 	if primary:
-		if buttons[0] != null:
-			buttons[0].queue_free()
-		buttons[0] = primary_action_button_prefab.instantiate()
-		$HUD.add_child(buttons[0])
-		buttons[0].position = Vector2(15, 285)
-		buttons[0].setup(name)
-	elif len(buttons) >= 9:
+		if action_buttons[0] != null:
+			action_buttons[0].queue_free()
+		action_buttons[0] = basic_action_button_prefab.instantiate()
+		$HUD.add_child(action_buttons[0])
+		action_buttons[0].position = Vector2(15, 285)
+		action_buttons[0].setup(name)
+	elif len(action_buttons) >= 9:
 		print("ERROR: Attempted to add too many action buttons.")
 	else:
-		var idx = len(buttons)
-		buttons.append(action_button_prefab.instantiate())
-		$HUD.add_child(buttons[idx])
-		buttons[idx].position = Vector2(15 + 130 * (idx % 2), 295 + 58 * int(idx/2))
-		buttons[idx].setup(name)
+		var idx = len(action_buttons)
+		action_buttons.append(action_button_prefab.instantiate())
+		$HUD.add_child(action_buttons[idx])
+		action_buttons[idx].position = Vector2(15 + 130 * (idx % 2), 295 + 58 * int(idx/2))
+		action_buttons[idx].setup(name)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -97,6 +99,10 @@ func register_combatant(combatant : Combatant, on_left : bool):
 		hud = player_hud.instantiate()
 	else:
 		hud = enemy_hud.instantiate()
+	#setup the buttons
+	if combatant.is_player():
+		for action in combatant.actions:
+			var button = add_action_button(action)
 	hud.setup(combatant, on_left)
 	get_tree().root.add_child(hud)
 	if combatant.is_player():
@@ -104,7 +110,13 @@ func register_combatant(combatant : Combatant, on_left : bool):
 	else:
 		hud.position = Vector2(780, 10)
 
-
+func spawn_action_button(action):
+	var button
+	if len(action_buttons) == 0:
+		button = basic_action_button_prefab.instantiate()
+	else:
+		button = action_button_prefab.instantiate()
+		
 func default_action(id, action):
 	if selected_actions[id] != null:
 		return false

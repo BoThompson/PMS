@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu5p6nh62pekd"]
+
+[ext_resource type="Texture2D" uid="uid://2deby5b4tfwd" path="res://Sprites/Map Dot.png" id="1_ab8gn"]
+
+[node name="Dot" type="Sprite2D"]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ab8gn")

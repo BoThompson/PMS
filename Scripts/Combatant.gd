@@ -11,6 +11,7 @@ var ready_timer : float
 var stats : CharStats #Current stats of the entity
 var resources : Array[int]
 var action_tween : Tween
+var actions = []
 
 signal resources_changed(values)
 signal ready_time_changed(id : int, value : float)
@@ -33,6 +34,9 @@ func setup(cs, player, left):
 	resources = []
 	resources.resize(11)
 	set_action_label("No Action")
+	var action = {"name": cs.data["basic"], "basic": true}
+	actions.append(action)
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
