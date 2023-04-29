@@ -5,7 +5,8 @@ extends TextureButton
 @export var primary_action : bool
 var data
 var autofire : bool
-var infoPanelPrefab = preload("res://Prefabs/info_panel.tscn")
+var info_panel_prefab = preload("res://Prefabs/info_panel.tscn")
+var resource_cost_prefab = preload("res://Prefabs/resource_cost_marker.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#_on_resources_changed(GameManager.combatants[0].resources)
@@ -17,13 +18,13 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
-				GameManager.select_action(0, action) #Player action, this name
+				GameManager.battle.select_action(0, action) #Player action, this name
 			MOUSE_BUTTON_RIGHT:
 				display_information()
 	return
 	
 func display_information():
-	var infoPanel = infoPanelPrefab.instantiate()
+	var infoPanel = info_panel_prefab.instantiate()
 	infoPanel.set_min_size(Vector2(250, 50))
 	infoPanel.position = position - Vector2(50, 50)
 	if infoPanel.position.x < 0:
@@ -50,12 +51,12 @@ func _on_resources_changed(values):
 	disabled = false
 	var post_values = values.duplicate()
 	for i in range(1, len(values)):
-		if GameManager.actions[action].cost[i] > values[i-1]:
+		if data.costs[i] > values[i-1]:
 			disabled = true
 		else:
-			post_values[i-1] -= GameManager.actions[action].cost[i]
+			post_values[i-1] -= data.costs[i]
 	
-	var any = GameManager.actions[action].cost[0]
+	var any = data.costs[0]
 	if any > 0:
 		disabled = true
 		for v in post_values:
@@ -63,7 +64,7 @@ func _on_resources_changed(values):
 			if any <= 0:
 				disabled = false
 				break
-
+	show_disabled(disabled)
 	if !disabled and autofire:
 		autofire = false
 		GameManager.default_action(0, action)
@@ -71,10 +72,16 @@ func _on_resources_changed(values):
 		
 func _on_auto_toggled(value):
 	if value:
-		GameManager.connect("playerReadyChanged", _on_ready_changed)
+		GameManager.battle.combatants[0].ready_time_changed.connect(_on_ready_changed)
 	else:
-		GameManager.disconnect("playerReadyChanged", _on_ready_changed)
+		GameManager.battle.combatants[0].ready_time_changed.connect(_on_ready_changed)
 
+func show_disabled(disable):
+	if disable:
+		modulate = Color.DARK_GRAY
+	else:
+		modulate = Color.WHITE
+		
 func _on_ready_changed(value):
 	if disabled:
 		autofire = true
@@ -82,14 +89,22 @@ func _on_ready_changed(value):
 		GameManager.default_action(0, action)
 
 func setup_costs(curr_costs):
-	for i in range(data.costs):
+	var offset = Vector2(6,31)
+	for i in range(len(data.costs)):
 		if data.costs[i] != 0:
-			#TODO: Complete this loading process
-			return
-
+			var marker = resource_cost_prefab.instantiate()
+			marker.position = offset
+			marker.setup(i+1, data.costs[i+1])
+			add_child(marker)
+			offset.x += marker.size.x + 3
+	
 func setup(name):
 	action = name
 	data = GameManager.get_action_data(name)
 	$Icon.texture = load("res://Sprites/UI/Actions/"+data.icon)
+	$"Name Label".text = name.capitalize()
 	setup_costs(data.costs)
+	disabled = true
+	show_disabled(disabled)
+	GameManager.battle.combatants[0].resources_changed.connect(_on_resources_changed)
 	pass

@@ -22,13 +22,13 @@ stretch_mode = 0
 script = ExtResource("3_5tmmj")
 action = "fireball"
 
-[node name="UnlitAttack" type="Sprite2D" parent="."]
+[node name="Icon" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_uycon")
 
-[node name="Label" type="Label" parent="."]
+[node name="Name Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 51.0

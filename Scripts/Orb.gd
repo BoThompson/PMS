@@ -7,7 +7,7 @@ extends Control
 
 #############################################   Enums   ############################################
 enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
-enum OrbType {ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY}
+enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY}
 enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
@@ -104,7 +104,7 @@ func rise(offset):
 
 	
 func shuffle():
-	type =randi_range(0, 5) as OrbType
+	type =randi_range(1, 6) as OrbType
 
 ####################################################################################################	
 #############################          Tween Resolution Methods         ############################

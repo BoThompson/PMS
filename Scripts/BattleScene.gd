@@ -1,6 +1,6 @@
 extends Node2D
 
-
+class_name BattleScene
 const action_button_prefab = preload("res://Prefabs/action_button.tscn")
 const basic_action_button_prefab = preload("res://Prefabs/basic_action_button.tscn")
 var action_buttons = [null]
@@ -18,30 +18,9 @@ var selected_actions = [null, null]
 const player_hud = preload("res://Prefabs/player_hud.tscn")
 const enemy_hud = preload("res://Prefabs/enemy_hud.tscn")
 
-
 func fireball(targets):
 	pass
 	
-var actions = {
-	#"NAME": {
-	#	"description":"DESCRIPTION IN BBCODE FORMAT"
-	#	"cost":[ANY, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, FIRE, METAL, WATER, WOOD]
-	#	"target": 0 - Self, 1 - Single, 2 - AOE, 3 - All Enemies, 4 - ALL
-	"fireball": {
-		"description":"A blast of flame dealing [stat name=damage factor=0.5 base=5] fire damage to one target.",
-		"cost":[0,0,0,0,5,0,3,0,0,0],
-		"target":1,
-		"function":"fireball"
-		
-	},
-	"punch": {
-		"description":"A blast of flame dealing [stat name=damage factor=0.5 base=5] fire damage to one target.",
-		"cost":[3,0,0,0,0,0,0,0,0,0],
-		"target":1,
-		"function":"punch"
-		
-	}
-}
 
 
 func add_action_button(action):
@@ -89,7 +68,7 @@ func _on_ready_changed(id : int, value : float):
 
 func queue_action(id, action):
 	var opp = get_opponent(id)
-	combatants[0].queue_action(action, get_opponent(id))
+	combatants[0].queue_action({"name":action, "target":get_opponent(id)})
 
 func register_combatant(combatant : Combatant, on_left : bool):
 	combatants[combatant.id] = combatant
