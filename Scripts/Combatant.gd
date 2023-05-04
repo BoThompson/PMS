@@ -6,7 +6,7 @@ var occupied : bool
 var current_action = 0
 var queued_actions = []
 var ready_time_remaining : float
-var ready_timer : float
+@export var ready_timer : float
 
 var stats : CharStats #Current stats of the entity
 var resources : Array[int]
@@ -22,6 +22,7 @@ func _ready():
 
 
 func setup(cs, player, left):
+	ready_time_remaining = ready_timer
 	stats = cs
 	texture = load("res://Sprites/Battle Sprites/" + cs.data["character_select"]["assets"]["sprite"])
 	stats.player = player

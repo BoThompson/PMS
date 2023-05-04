@@ -53,8 +53,10 @@ texture = ExtResource("12_yjmnr")
 
 [node name="Alert" type="TextureRect" parent="Ready Bar"]
 visible = false
-offset_right = 27.0
-offset_bottom = 28.0
+offset_left = 2.0
+offset_top = 93.0
+offset_right = 29.0
+offset_bottom = 121.0
 texture = ExtResource("13_nvpat")
 
 [node name="Character Plate" type="TextureRect" parent="."]

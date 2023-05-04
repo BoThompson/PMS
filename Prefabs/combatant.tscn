@@ -7,6 +7,7 @@
 position = Vector2(381, 183)
 texture = ExtResource("1_8eptv")
 script = ExtResource("2_s11au")
+ready_timer = 5.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = -47.0

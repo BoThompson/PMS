@@ -13,11 +13,13 @@ func _process(delta):
 func _on_resources_changed(values):
 	if combatant.is_player():
 		$"Resource Board"._on_resources_changed(values)
+		
 func _on_ready_time_changed(_id, value):
-	$"Ready Bar".update_value(value)
+	$"Ready Bar".update_bar(1-value)
+	$"Ready Bar/Alert".visible = (value <= 0)
 	
 func _on_life_changed(_id, value):
-	$"Character Plate/Life Bar".update_value(value)		
+	$"Character Plate/Life Bar".update_bar(value)		
 
 func setup(combatant: Combatant, on_left : bool):
 	self.combatant = combatant
