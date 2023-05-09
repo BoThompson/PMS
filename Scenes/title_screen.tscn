@@ -1,6 +1,92 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyrieupoi7g2l"]
+[gd_scene load_steps=17 format=3 uid="uid://cyrieupoi7g2l"]
 
+[ext_resource type="Script" path="res://WIP/Test Title/TitleScreen.gd" id="1_c1cdu"]
 [ext_resource type="Texture2D" uid="uid://5jcaj3ccw2nc" path="res://Sprites/Title.png" id="1_xoqtd"]
+[ext_resource type="Texture2D" uid="uid://2dn7ue0krshg" path="res://WIP/Test Title/Background.png" id="3_cf3r5"]
+[ext_resource type="Script" path="res://WIP/Test Title/TitleElement.gd" id="4_87s2s"]
+[ext_resource type="Texture2D" uid="uid://b30ouhs6prbv0" path="res://WIP/Test Title/Title Logo.png" id="5_oq7xq"]
+[ext_resource type="Texture2D" uid="uid://brbflkp2n5y5o" path="res://WIP/Test Title/Gate BG.png" id="5_q5xwh"]
+[ext_resource type="Texture2D" uid="uid://cylcwmj2mpoeb" path="res://WIP/Test Title/Gate.png" id="6_pexux"]
+[ext_resource type="Texture2D" uid="uid://gyedxpeyid6t" path="res://WIP/Test Title/Ground Ripple.png" id="7_y6gi8"]
+[ext_resource type="Texture2D" uid="uid://cagfidgfwtfx" path="res://WIP/Test Title/Woman.png" id="8_4q8e5"]
+[ext_resource type="Texture2D" uid="uid://bmj7218efobkb" path="res://WIP/Test Title/Sword.png" id="9_n3h17"]
+
+[sub_resource type="Animation" id="Animation_twec5"]
+resource_name = "Ripple"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_5nip0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikub7"]
+_data = {
+"RESET": SubResource("Animation_5nip0"),
+"Ripple": SubResource("Animation_twec5")
+}
+
+[sub_resource type="Animation" id="Animation_aid1w"]
+resource_name = "Standard"
+length = 0.99
+loop_mode = 1
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_714wi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhm28"]
+_data = {
+"RESET": SubResource("Animation_714wi"),
+"Standard": SubResource("Animation_aid1w")
+}
 
 [node name="Title Screen" type="Control"]
 layout_mode = 3
@@ -9,9 +95,70 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c1cdu")
 
 [node name="Placeholder" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.403922)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_xoqtd")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(480, 270)
+texture = ExtResource("3_cf3r5")
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(805, 187)
+texture = ExtResource("5_oq7xq")
+script = ExtResource("4_87s2s")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(37, 21)
+texture = ExtResource("5_q5xwh")
+centered = false
+script = ExtResource("4_87s2s")
+max_offset = Vector2(20, 20)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+texture = ExtResource("6_pexux")
+centered = false
+script = ExtResource("4_87s2s")
+max_offset = Vector2(15, 15)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(314, 512)
+texture = ExtResource("7_y6gi8")
+hframes = 3
+vframes = 4
+script = ExtResource("4_87s2s")
+max_offset = Vector2(15, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "Ripple"
+libraries = {
+"": SubResource("AnimationLibrary_ikub7")
+}
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(452, 402)
+texture = ExtResource("9_n3h17")
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(325, 344)
+texture = ExtResource("8_4q8e5")
+hframes = 4
+vframes = 3
+frame = 1
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+autoplay = "Standard"
+libraries = {
+"": SubResource("AnimationLibrary_vhm28")
+}
