@@ -5,6 +5,7 @@
 
 [node name="Combatant" type="Sprite2D"]
 position = Vector2(381, 183)
+scale = Vector2(2, 2)
 texture = ExtResource("1_8eptv")
 script = ExtResource("2_s11au")
 ready_timer = 5.0

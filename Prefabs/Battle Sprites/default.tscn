@@ -10,6 +10,7 @@ script = ExtResource("1_4jykv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(17, -39)
+scale = Vector2(2, 2)
 texture = ExtResource("2_vdtte")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

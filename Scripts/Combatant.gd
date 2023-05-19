@@ -56,7 +56,7 @@ func aura_blast(target):
 	print("Aura blast at " + target)
 
 	
-func punch(target):
+func strike(target):
 	occupied = true
 	target.occupied = true
 	print("Punch at " + target.name)
@@ -80,13 +80,15 @@ func try_next_action():
 
 func queue_action(action):
 	queued_actions.append(action)
+	if len(queued_actions) == 1:
+		$Label.text = action.name
 
 func initiate_action(action):
 	$Label.text = "No Action"
 	current_action = action
 	match action.name:
 		"aura blast": aura_blast(action.target)
-		"punch": punch(action.target)
+		"strike": strike(action.target)
 
 func set_action_label(action):
 	$Label.text = action
