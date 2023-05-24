@@ -181,6 +181,8 @@ func try_next_action():
 
 func queue_action(action):
 	queued_actions.append(action)
+	if len(queued_actions) == 1:
+		$Label.text = action.name
 
 func initiate_action(action):
 	$Label.text = "No Action"
