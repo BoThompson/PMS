@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyrieupoi7g2l"]
+[gd_scene load_steps=17 format=3 uid="uid://b3ayman5fj78e"]
 
 [ext_resource type="Script" path="res://WIP/Test Title/TitleScreen.gd" id="1_c1cdu"]
-[ext_resource type="Texture2D" uid="uid://5jcaj3ccw2nc" path="res://Sprites/Title.png" id="1_xoqtd"]
+[ext_resource type="Texture2D" uid="uid://5jcaj3ccw2nc" path="res://Sprites/Title.png" id="2_gidcd"]
 [ext_resource type="Texture2D" uid="uid://2dn7ue0krshg" path="res://WIP/Test Title/Background.png" id="3_cf3r5"]
 [ext_resource type="Script" path="res://WIP/Test Title/TitleElement.gd" id="4_87s2s"]
 [ext_resource type="Texture2D" uid="uid://b30ouhs6prbv0" path="res://WIP/Test Title/Title Logo.png" id="5_oq7xq"]
@@ -102,7 +102,7 @@ modulate = Color(1, 1, 1, 0.403922)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_xoqtd")
+texture = ExtResource("2_gidcd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

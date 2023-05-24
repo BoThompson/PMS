@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://qr85d64a8xht"]
+[gd_scene load_steps=6 format=3 uid="uid://ccn5obiscrij5"]
 
 [ext_resource type="Texture2D" uid="uid://d2dj4pv8p4ymb" path="res://icon.svg" id="1_5ie32"]
-[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="2_8jqi4"]
+[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="2_28yhi"]
 [ext_resource type="Script" path="res://Scripts/ActionButton.gd" id="3_5tmmj"]
-[ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="4_uycon"]
+[ext_resource type="Texture2D" uid="uid://bkeqbpirlkgyk" path="res://Sprites/Unlit Attack.png" id="4_0a62g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uhc5x"]
 blend_mode = 1
@@ -16,7 +16,7 @@ offset_top = 339.0
 offset_right = 137.0
 offset_bottom = 387.0
 texture_normal = ExtResource("1_5ie32")
-texture_disabled = ExtResource("2_8jqi4")
+texture_disabled = ExtResource("2_28yhi")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_5tmmj")
@@ -26,7 +26,7 @@ action = "fireball"
 material = SubResource("CanvasItemMaterial_uhc5x")
 position = Vector2(68, 63)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_uycon")
+texture = ExtResource("4_0a62g")
 
 [node name="Name Label" type="Label" parent="."]
 layout_mode = 0

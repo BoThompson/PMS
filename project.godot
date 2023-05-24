@@ -26,6 +26,7 @@ window/size/viewport_height=540
 window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
@@ -39,3 +40,6 @@ theme/default_font_antialiasing=0
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/lossless_compression/force_png=true
+anti_aliasing/quality/screen_space_aa=1
+2d/snap/snap_2d_vertices_to_pixel=true

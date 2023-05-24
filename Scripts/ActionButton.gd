@@ -54,7 +54,7 @@ func _on_resources_changed(values):
 		if data.costs[i] > values[i-1]:
 			disabled = true
 		else:
-			post_values[i-1] -= data.costs[i]
+			post_values[i-1] -= int(data.costs[i])
 	
 	var any = data.costs[0]
 	if any > 0:

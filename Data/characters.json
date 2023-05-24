@@ -16,7 +16,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"beast": {
 		"character_select": {
@@ -35,7 +38,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"dragon": {
 		"character_select": {
@@ -54,7 +60,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	}, 
 	"fallen": {
 		"character_select": {
@@ -73,7 +82,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"farstrider": {
 		"character_select": {
@@ -92,7 +104,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"firebird": {
 		"character_select": {
@@ -111,7 +126,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"inheritor": {
 		"character_select": {
@@ -130,7 +148,10 @@
 			"requirement": "None",
 			"style": "Accidental Combat"
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"mercenary": {
 		"character_select": {
@@ -149,7 +170,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"novice": {
 		"character_select": {
@@ -168,7 +192,10 @@
 			"requirement": "Complete one trial with The Inheritor.",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"pacifist": {
 		"character_select": {
@@ -187,7 +214,10 @@
 			"requirement": "Acquire a Lotus Wheel artifact to unlock this character.",
 			"style": "Buddha's Gentle Palm"
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"prodigy": {
 		"character_select": {
@@ -207,7 +237,10 @@
 			"requirement": "Reach Jade Core stage to unlock this character.",
 			"style": "Adaptable Fists"
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"reborn": {
 		"character_select": {
@@ -226,7 +259,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"scion": {
 		"character_select": {
@@ -245,7 +281,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"tiger": {
 		"character_select": {
@@ -264,7 +303,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"tortoise": {
 		"character_select": {
@@ -283,7 +325,10 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
 	},
 	"unicorn": {
 		"character_select": {
@@ -302,6 +347,31 @@
 			"requirement": "",
 			"style": ""
 		},
-		"basic":"strike"
+		"combat": {
+			"battle_sprite": "default.tscn",
+			"basic":"strike"
+		}
+	},
+	"training dummy": {
+		"character_select": {
+			"assets": {
+				"portrait_image": "default.png",
+				"seal_image": "default.png",
+				"sprite": "",
+				"title_image": "default.png"
+			},
+			"background": "",
+			"element": "",
+			"quirks": [
+				""
+			],
+			"quote": "Do not understimate the power of fortune and chance.",
+			"requirement": "",
+			"style": ""
+		},
+		"combat": {
+			"battle_sprite": "training dummy.tscn",
+			"basic":"strike"
+		}
 	}
 }

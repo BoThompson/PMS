@@ -1,15 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1a582rali5xt"]
+[gd_scene load_steps=12 format=3 uid="uid://c52hh4qgjcboc"]
 
-[ext_resource type="PackedScene" uid="uid://dd2x2rlkgplth" path="res://Prefabs/character_select_plate.tscn" id="1_efe7y"]
+[ext_resource type="PackedScene" path="res://Prefabs/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
-[ext_resource type="Texture2D" uid="uid://dmdyevuaoui02" path="res://Sprites/Wood Background.png" id="2_b21ge"]
+[ext_resource type="Texture2D" uid="uid://dmdyevuaoui02" path="res://Sprites/Wood Background.png" id="2_xk4qg"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="3_08ix2"]
+[ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="5_d6dja"]
+[ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="6_lfk4n"]
 [ext_resource type="FontFile" uid="uid://ml5x4t3vqdb5" path="res://Fonts/WorthyPro.ttf" id="7_8vown"]
-[ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="9_g8l0x"]
 [ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="9_rec1t"]
-[ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="10_tfp66"]
-[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="12_7v3ov"]
-[ext_resource type="Texture2D" uid="uid://bkwwsiq17v4lt" path="res://Sprites/Abilities/default.png" id="13_dq5nk"]
+[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="9_xh26g"]
+[ext_resource type="Texture2D" uid="uid://bkwwsiq17v4lt" path="res://Sprites/Abilities/default.png" id="10_edeqm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1xx1"]
 line_spacing = -3.0
@@ -36,7 +36,7 @@ color = Color(0.211765, 0.129412, 0.0666667, 1)
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 540.0
-texture = ExtResource("2_b21ge")
+texture = ExtResource("2_xk4qg")
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 0
@@ -219,7 +219,7 @@ offset_right = 216.0
 offset_bottom = 48.5
 scale = Vector2(2, 2)
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("9_g8l0x")
+texture = ExtResource("5_d6dja")
 
 [node name="Seal" type="TextureRect" parent="Character Select Panel"]
 modulate = Color(0.721569, 0.380392, 0, 0.309804)
@@ -230,7 +230,7 @@ offset_right = 307.0
 offset_bottom = 367.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("10_tfp66")
+texture = ExtResource("6_lfk4n")
 
 [node name="Background" type="Label" parent="Character Select Panel"]
 layout_mode = 0
@@ -326,7 +326,7 @@ offset_top = 294.0
 offset_right = 256.0
 offset_bottom = 380.0
 scale = Vector2(2, 2)
-texture = ExtResource("12_7v3ov")
+texture = ExtResource("9_xh26g")
 
 [node name="Ability1" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -335,7 +335,7 @@ offset_top = 295.0
 offset_right = 115.0
 offset_bottom = 329.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability2" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -344,7 +344,7 @@ offset_top = 335.0
 offset_right = 71.0
 offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability3" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -353,7 +353,7 @@ offset_top = 335.0
 offset_right = 159.0
 offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability4" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -362,7 +362,7 @@ offset_top = 377.0
 offset_right = 135.0
 offset_bottom = 411.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability5" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -371,7 +371,7 @@ offset_top = 377.0
 offset_right = 183.0
 offset_bottom = 411.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability6" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -380,7 +380,7 @@ offset_top = 377.0
 offset_right = 95.0
 offset_bottom = 411.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability7" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -389,7 +389,7 @@ offset_top = 377.0
 offset_right = 47.0
 offset_bottom = 411.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability8" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -398,7 +398,7 @@ offset_top = 425.0
 offset_right = 47.0
 offset_bottom = 459.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability9" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -407,7 +407,7 @@ offset_top = 425.0
 offset_right = 95.0
 offset_bottom = 459.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability10" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -416,7 +416,7 @@ offset_top = 425.0
 offset_right = 135.0
 offset_bottom = 459.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Ability11" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
@@ -425,7 +425,7 @@ offset_top = 425.0
 offset_right = 183.0
 offset_bottom = 459.0
 pivot_offset = Vector2(43, 12.5)
-texture = ExtResource("13_dq5nk")
+texture = ExtResource("10_edeqm")
 
 [node name="Line2D" type="Line2D" parent="Character Select Panel"]
 position = Vector2(127, 321)

@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://23mn8sv8pdc6"]
+[gd_scene load_steps=8 format=3 uid="uid://d05dijsworafq"]
 
-[ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="1_rogob"]
 [ext_resource type="Script" path="res://Scripts/BattleScene.gd" id="1_x426s"]
-[ext_resource type="Texture2D" uid="uid://evvyjt6yn1cg" path="res://Sprites/Stage.png" id="2_by7dw"]
-[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="7_8cxlf"]
+[ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="2_rlcml"]
+[ext_resource type="Texture2D" uid="uid://evvyjt6yn1cg" path="res://Sprites/Stage.png" id="3_1f5wp"]
+[ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="4_8w1kc"]
+[ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="6_8ian1"]
 [ext_resource type="Script" path="res://Scripts/EnergyField.gd" id="8_21wm4"]
-[ext_resource type="Texture2D" uid="uid://dd04bcubv3ksw" path="res://Sprites/Mini Field.png" id="9_vjvfl"]
 [ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="10_3l8dk"]
 
 [node name="Battle Scene" type="Node2D"]
@@ -19,18 +19,18 @@ position = Vector2(-9, -14)
 modulate = Color(0.0627451, 0.0745098, 0.141176, 1)
 position = Vector2(489, 104)
 scale = Vector2(960, 179.967)
-texture = ExtResource("1_rogob")
+texture = ExtResource("2_rlcml")
 
 [node name="Ground" type="Sprite2D" parent="Environment"]
 modulate = Color(0.0941176, 0.14902, 0.0941176, 1)
 position = Vector2(489, 388)
 scale = Vector2(960, 448)
-texture = ExtResource("1_rogob")
+texture = ExtResource("2_rlcml")
 
 [node name="Stage" type="Sprite2D" parent="Environment"]
 position = Vector2(492, 222)
 scale = Vector2(1, 0.768)
-texture = ExtResource("2_by7dw")
+texture = ExtResource("3_1f5wp")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -40,13 +40,21 @@ offset_top = -14.0
 offset_right = 31.0
 offset_bottom = 26.0
 
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 266.0
+offset_right = 983.0
+offset_bottom = 570.0
+color = Color(0.141176, 0.054902, 0, 1)
+
 [node name="Player Field" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_left = 267.0
 offset_top = 276.0
 offset_right = 539.0
 offset_bottom = 548.0
-texture = ExtResource("7_8cxlf")
+texture = ExtResource("4_8w1kc")
 script = ExtResource("8_21wm4")
 player = true
 
@@ -56,7 +64,7 @@ offset_left = 548.0
 offset_top = 285.0
 offset_right = 713.0
 offset_bottom = 450.0
-texture = ExtResource("9_vjvfl")
+texture = ExtResource("6_8ian1")
 
 [node name="Shuffle Button" type="Button" parent="HUD"]
 layout_mode = 0

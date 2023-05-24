@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ban8ifinocwgg"]
+[gd_scene load_steps=6 format=3 uid="uid://c6v1h32jc481p"]
 
-[ext_resource type="Texture2D" uid="uid://bm5na4oh82hg2" path="res://Sprites/UI/Actions/Basic Action Frame.png" id="2_vq2id"]
+[ext_resource type="Texture2D" uid="uid://bm5na4oh82hg2" path="res://Sprites/UI/Actions/Basic Action Frame.png" id="2_5qsd8"]
 [ext_resource type="Script" path="res://Scripts/ActionButton.gd" id="3_5mcfa"]
-[ext_resource type="Texture2D" uid="uid://ce1f06udy010s" path="res://Sprites/UI/Actions/Basic Strike.png" id="3_dsg6l"]
+[ext_resource type="Texture2D" uid="uid://ce1f06udy010s" path="res://Sprites/UI/Actions/Basic Strike.png" id="3_vyg7d"]
 [ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="4_wncvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulhfr"]
@@ -21,7 +21,7 @@ action = "punch"
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 44.0
-texture = ExtResource("2_vq2id")
+texture = ExtResource("2_5qsd8")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -30,7 +30,7 @@ offset_left = 58.0
 offset_top = 1.0
 offset_right = 239.0
 offset_bottom = 43.0
-texture = ExtResource("3_dsg6l")
+texture = ExtResource("3_vyg7d")
 expand_mode = 1
 
 [node name="Auto Label" type="Label" parent="."]

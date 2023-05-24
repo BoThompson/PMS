@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cupja8ry1exdd"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="1_accxg"]
+[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Scenes/Sprites/Lit Attack.png" id="1_accxg"]
 [ext_resource type="Script" path="res://Scripts/InfoPanel.gd" id="1_eyfyh"]
-[ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Sprites/Lit Defense.png" id="2_gei3t"]
-[ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Sprites/Lit Prepare.png" id="3_rv5l2"]
-[ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Sprites/Lit Qi.png" id="4_raoc3"]
-[ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Sprites/Lit Yin.png" id="5_5151a"]
-[ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Sprites/Lit Yang.png" id="6_hfxyk"]
+[ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Scenes/Sprites/Lit Defense.png" id="2_gei3t"]
+[ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Scenes/Sprites/Lit Prepare.png" id="3_rv5l2"]
+[ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Scenes/Sprites/Lit Qi.png" id="4_raoc3"]
+[ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Scenes/Sprites/Lit Yin.png" id="5_5151a"]
+[ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Scenes/Sprites/Lit Yang.png" id="6_hfxyk"]
 
 [node name="Info Panel" type="PopupPanel"]
 size = Vector2i(108, 100)

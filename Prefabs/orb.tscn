@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4nalrcj0f7hx"]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Orb.gd" id="1_xxu65"]
-[ext_resource type="Texture2D" uid="uid://c48osspl03038" path="res://Sprites/Orbs/Highlight.png" id="3_hs667"]
-[ext_resource type="Texture2D" uid="uid://be34tx8jpmeb1" path="res://Sprites/Orbs/Large Orbs.png" id="4_satmh"]
+[ext_resource type="Texture2D" uid="uid://c48osspl03038" path="res://Scenes/Sprites/Orbs/Highlight.png" id="3_hs667"]
+[ext_resource type="Texture2D" uid="uid://be34tx8jpmeb1" path="res://Scenes/Sprites/Orbs/Large Orbs.png" id="4_satmh"]
 
 [sub_resource type="Animation" id="Animation_ymjyj"]
 resource_name = "Attack Idle"

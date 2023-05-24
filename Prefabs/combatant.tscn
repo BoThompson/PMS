@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bciwo8oxgo48"]
+[gd_scene load_steps=3 format=3 uid="uid://12s1kxxjpwxn"]
 
-[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Sprites/Battle Sprites/default.png" id="1_8eptv"]
+[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Sprites/Battle Sprites/default.png" id="1_fjm4k"]
 [ext_resource type="Script" path="res://Scripts/Combatant.gd" id="2_s11au"]
 
 [node name="Combatant" type="Sprite2D"]
 position = Vector2(381, 183)
-texture = ExtResource("1_8eptv")
+texture = ExtResource("1_fjm4k")
 script = ExtResource("2_s11au")
 ready_timer = 5.0
 
@@ -17,3 +17,5 @@ offset_bottom = -35.0
 text = "No Action"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Animator" type="AnimationPlayer" parent="."]

@@ -35,6 +35,4 @@ func setup(combatant: Combatant, on_left : bool):
 	if !combatant.is_player():
 		$"Resource Board".queue_free()
 	else:
-		print("Before: " + str(combatant.resources_changed.get_connections()))
 		combatant.resources_changed.connect(_on_resources_changed)
-		print("After: " + str(combatant.resources_changed.get_connections()))
