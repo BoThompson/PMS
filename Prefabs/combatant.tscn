@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://12s1kxxjpwxn"]
 
-[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Sprites/Battle Sprites/default.png" id="1_fjm4k"]
+[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Scenes/Sprites/Battle Sprites/default.png" id="1_fjm4k"]
 [ext_resource type="Script" path="res://Scripts/Combatant.gd" id="2_s11au"]
 
 [node name="Combatant" type="Sprite2D"]
