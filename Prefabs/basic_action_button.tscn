@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6v1h32jc481p"]
 
-[ext_resource type="Texture2D" uid="uid://bm5na4oh82hg2" path="res://Scenes/Sprites/UI/Actions/Basic Action Frame.png" id="2_5qsd8"]
+[ext_resource type="Texture2D" uid="uid://bm5na4oh82hg2" path="res://Sprites/UI/Actions/Basic Action Frame.png" id="2_5qsd8"]
 [ext_resource type="Script" path="res://Scripts/ActionButton.gd" id="3_5mcfa"]
-[ext_resource type="Texture2D" uid="uid://ce1f06udy010s" path="res://Scenes/Sprites/UI/Actions/Basic Strike.png" id="3_vyg7d"]
+[ext_resource type="Texture2D" uid="uid://ce1f06udy010s" path="res://Sprites/UI/Actions/Basic Strike.png" id="3_vyg7d"]
 [ext_resource type="Theme" uid="uid://cv28okruofgr" path="res://UI/Basic.tres" id="4_wncvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ulhfr"]

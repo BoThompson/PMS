@@ -1,19 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://12s1kxxjpwxn"]
+[gd_scene load_steps=2 format=3 uid="uid://12s1kxxjpwxn"]
 
-[ext_resource type="Texture2D" uid="uid://cas3dv2cx21ow" path="res://Scenes/Sprites/Battle Sprites/default.png" id="1_fjm4k"]
 [ext_resource type="Script" path="res://Scripts/Combatant.gd" id="2_s11au"]
 
 [node name="Combatant" type="Sprite2D"]
 position = Vector2(381, 183)
-texture = ExtResource("1_fjm4k")
 script = ExtResource("2_s11au")
 ready_timer = 5.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = -47.0
-offset_top = -61.0
-offset_right = 29.0
-offset_bottom = -35.0
+z_index = 2
+offset_left = -35.0
+offset_top = -122.0
+offset_right = 41.0
+offset_bottom = -96.0
 text = "No Action"
 horizontal_alignment = 1
 vertical_alignment = 1

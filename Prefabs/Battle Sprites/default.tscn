@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1ijqhphli1g2"]
 
 [ext_resource type="Script" path="res://Scripts/BattleSprite.gd" id="1_4jykv"]
-[ext_resource type="Texture2D" uid="uid://b8u07nese0f5n" path="res://Sprites/Battle Sprites/Pacifist.png" id="2_vdtte"]
+[ext_resource type="Texture2D" uid="uid://b8u07nese0f5n" path="res://Sprites/Battle Sprites/pacifist.png" id="2_vdtte"]
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_vladq"]
 

@@ -131,14 +131,17 @@ func strike_hit(_count):
 	action_target.damage(10)
 
 func approach_target(tween) -> Tween:
+	#TODO: Set up a position marker on combatants to show where "infront of them" should be
 	var target_pos = position + (action_target.global_position - global_position)
-	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, position, target_pos, .4, tween)
+	target_pos -= Vector2(100, 0) * sign(target_pos)
+	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, position, target_pos, .2, tween)
 	action_tween = tweens[0]
 	return tweens[1]
 
 func retreat_target(tween) -> Tween:
 	var target_pos = position + (action_target.global_position - global_position)
-	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, target_pos, position, .4, tween)
+	target_pos -= Vector2(100, 0) * sign(target_pos)
+	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, target_pos, position, .2, tween)
 	action_tween = tweens[0]
 	return tweens[1]
 	

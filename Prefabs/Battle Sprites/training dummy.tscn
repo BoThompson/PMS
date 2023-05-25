@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c1gh0xisrfbp7"]
 
 [ext_resource type="Script" path="res://Scripts/BattleSprite.gd" id="1_l6v65"]
-[ext_resource type="Texture2D" uid="uid://d0lka6igggogw" path="res://Sprites/Battle Sprites/Training Dummy.png" id="2_3rgjr"]
+[ext_resource type="Texture2D" uid="uid://d0lka6igggogw" path="res://Sprites/Battle Sprites/training dummy.png" id="2_3rgjr"]
 [ext_resource type="Shader" path="res://Shaders/character.gdshader" id="2_3tpr6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_16oli"]

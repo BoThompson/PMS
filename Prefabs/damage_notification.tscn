@@ -1,21 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnnw8061xn6re"]
+[gd_scene load_steps=2 format=3 uid="uid://d1fdpfjmka2fh"]
 
 [ext_resource type="Script" path="res://Scripts/DamageNotification.gd" id="1_aloxk"]
-[ext_resource type="FontFile" uid="uid://dp5p3vlaqhaod" path="res://Fonts/EquipmentPro.ttf" id="2_kurjj"]
 
 [node name="Damage Notification" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(407, 190)
 script = ExtResource("1_aloxk")
 
 [node name="Text" type="RichTextLabel" parent="."]
-offset_left = 1.0
-offset_right = 81.0
-offset_bottom = 50.0
+offset_right = 31.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("2_kurjj")
 theme_override_font_sizes/normal_font_size = 24
-text = "234234"
 fit_content = true
