@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8u07nese0f5n"
-path="res://.godot/imported/Pacifist.png-f221141ca1ba2f8de774cf03cd4b64fc.ctex"
+uid="uid://b3a0e1m2d2grr"
+path="res://.godot/imported/scroll roll.png-243490aaeb930cafce331a59116fe984.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Battle Sprites/Pacifist.png"
-dest_files=["res://.godot/imported/Pacifist.png-f221141ca1ba2f8de774cf03cd4b64fc.ctex"]
+source_file="res://UI/Event/scroll roll.png"
+dest_files=["res://.godot/imported/scroll roll.png-243490aaeb930cafce331a59116fe984.ctex"]
 
 [params]
 

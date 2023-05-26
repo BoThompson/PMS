@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6f8th8h5r78i"]
+
+[ext_resource type="Script" path="res://EventScroll.gd" id="1_eshvr"]
+[ext_resource type="Texture2D" uid="uid://ckkgtobc3ksyb" path="res://UI/Event/scroll ninepatch.png" id="2_t07rw"]
+[ext_resource type="Texture2D" uid="uid://b3a0e1m2d2grr" path="res://UI/Event/scroll roll.png" id="3_yfiac"]
+[ext_resource type="Texture2D" uid="uid://booetwtcj341s" path="res://UI/Event/long frame.png" id="4_wq8q1"]
+[ext_resource type="Texture2D" uid="uid://25lhhwrllr1l" path="res://UI/Event/long mask.png" id="5_ydml0"]
+[ext_resource type="Texture2D" uid="uid://crxfgarexqn8g" path="res://UI/Event/short frame.png" id="6_wroi5"]
+[ext_resource type="Texture2D" uid="uid://bvox2ndf12c26" path="res://UI/Event/short mask.png" id="7_m8vm2"]
+
+[node name="Event Scroll" type="Control"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eshvr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 20.0
+offset_right = 928.0
+offset_bottom = 530.0
+texture = ExtResource("2_t07rw")
+region_rect = Rect2(0, 0, 3, 3)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 533.0
+texture = ExtResource("3_yfiac")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 879.0
+offset_top = 5.0
+offset_right = 959.0
+offset_bottom = 533.0
+texture = ExtResource("3_yfiac")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Panels" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Double Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 21.0
+offset_right = 459.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("4_wq8q1")
+
+[node name="Mask" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("5_ydml0")
+
+[node name="Contents" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("5_ydml0")
+
+[node name="Top Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 21.0
+offset_right = 459.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 133)
+texture = ExtResource("6_wroi5")
+
+[node name="Mask" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 126.5)
+texture = ExtResource("7_m8vm2")
+
+[node name="Contents" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 126.5)
+texture = ExtResource("7_m8vm2")
+
+[node name="Bottom Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 21.0
+offset_right = 459.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 375)
+texture = ExtResource("6_wroi5")
+flip_v = true
+
+[node name="Mask" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 381.5)
+texture = ExtResource("7_m8vm2")
+flip_v = true
+
+[node name="Contents" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 381.5)
+texture = ExtResource("7_m8vm2")
+flip_v = true
