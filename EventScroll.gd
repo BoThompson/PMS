@@ -8,16 +8,19 @@ func _ready():
 
 func unroll(full : bool):
 	var tween = create_tween()
+	$Animator.play("slide")
+	$Animator.advance(.3)
 	if full:
-		tween.tween_property(self, "position", Vector2.ZERO, 1)
+		tween.tween_property(self, "position", Vector2.ZERO, .5)
 		fully_unrolled = true
 	else:
-		tween.tween_property(self, "position", Vector2(480,0), 1)
+		tween.tween_property(self, "position", Vector2(480,0), .5)
 	tween.play()
 
 
 func roll():
 	var tween = create_tween()
+	$Animator.play("slide")
 	tween.tween_property(self, "position", Vector2(960,0), 1)
 	tween.play()
 	

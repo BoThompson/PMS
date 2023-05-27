@@ -157,14 +157,18 @@ func strike(target):
 	$BattleSprite.on_hit.connect(strike_hit)
 	print("Strike start at  " + action_target.name)
 	action_tween = create_tween()
-	var tween_tail = approach_target(action_tween)
+	var tween_tail = tween_melee_attack(action_tween, "Strike")
+	action_tween.play()
+
+func tween_melee_attack(tween, animation_name):
+	var tween_tail = approach_target(tween)
 	tween_tail = tween_tail.chain()
-	tween_action_animation(tween_tail, "Strike")
+	tween_action_animation(tween_tail, animation_name)
 	tween_tail = tween_tail.chain()
 	tween_tail = retreat_target(tween_tail)
 	tween_tail = tween_tail.chain()
 	tween_tail.tween_callback(end_action)
-	action_tween.play()
+	return tween_tail
 	
 func end_action():
 	for conn in $BattleSprite.on_hit.get_connections():
@@ -176,11 +180,14 @@ func end_action():
 func try_next_action():
 	if occupied:
 		return
-	if len(queued_actions) == 0:
+	if len(queued_actions) == 0 and !GameManager.battle.retrieve_selected_action(id):
+		return
+	if !can_afford_action(queued_actions.front()):
 		return
 	var action = queued_actions.pop_front()
 	pay_action_costs(action)
 	initiate_action(action)
+	ready_time_remaining = ready_timer
 
 func queue_action(action):
 	queued_actions.append(action)
@@ -204,6 +211,23 @@ func add_resource(type : int, amount : int):
 	resources[type] += amount
 	resources_changed.emit(resources)
 
+func can_afford_action(action) -> bool:
+	var high_idx = -1
+	var costs = GameManager.get_action_data(action.name).costs
+	var resources = Array(self.resources)
+	for i in range(len(resources)):
+		resources[i] -= costs[i+1]
+		if resources[i] < 0:
+			return false
+		if costs[0] != 0 and (high_idx == -1 or resources[i] > resources[high_idx]):
+			high_idx = i
+			
+			
+	if high_idx != -1 and resources[high_idx] < int(costs[0]):
+		return false
+		
+	return true
+		
 func pay_action_costs(action):
 	var changed = false
 	var high_idx = -1

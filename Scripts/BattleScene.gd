@@ -64,7 +64,7 @@ func get_opponent(id) -> Combatant:
 		
 func _on_ready_changed(id : int, value : float):
 	if value >= 1 and selected_actions[id] != null:
-		queue_action(selected_actions[id], get_opponent(id))
+		queue_action(id, selected_actions[id])
 
 func queue_action(id, action):
 	var opp = get_opponent(id)
@@ -109,6 +109,12 @@ func _ready():
 	selected_actions.resize(2)
 	selected_actions.fill(null)
 
+func retrieve_selected_action(id):
+	if selected_actions[id] != null:
+		queue_action(id, selected_actions[id])
+		return true
+	else:
+		return false
 
 func reset_player_field():
 	playerField.reset()

@@ -67,14 +67,14 @@ func _on_resources_changed(values):
 	show_disabled(disabled)
 	if !disabled and autofire:
 		autofire = false
-		GameManager.default_action(0, action)
+		GameManager.battle.default_action(0, action)
 	
 		
-func _on_auto_toggled(value):
-	if value:
+func _on_auto_toggled(button_pressed : bool):
+	if button_pressed:
 		GameManager.battle.combatants[0].ready_time_changed.connect(_on_ready_changed)
 	else:
-		GameManager.battle.combatants[0].ready_time_changed.connect(_on_ready_changed)
+		GameManager.battle.combatants[0].ready_time_changed.disconnect(_on_ready_changed)
 
 func show_disabled(disable):
 	if disable:
@@ -82,11 +82,11 @@ func show_disabled(disable):
 	else:
 		modulate = Color.WHITE
 		
-func _on_ready_changed(value):
+func _on_ready_changed(id, value):
 	if disabled:
 		autofire = true
 	else:
-		GameManager.default_action(0, action)
+		GameManager.battle.default_action(0, action)
 
 func setup_costs(curr_costs):
 	var offset = Vector2(6,31)
