@@ -1,7 +1,7 @@
 extends "res://Scripts/EnergyBar.gd"
 
 var last_value = 0
-var has_alert : bool
+@export var has_alert : bool
 
 func _ready():
 	$Fill.set_material($Fill.get_material().duplicate(true))
@@ -14,7 +14,7 @@ func update_bar(value):
 	$Fill.material.set_shader_parameter("cutoff", value)
 	$Fill.material.set_shader_parameter("direction", bar_direction)
 	
-	if value < 1:
+	if value < 1 and has_alert:
 		$Alert.visible = false
 	elif last_value < 1:
 			var tween = create_tween()

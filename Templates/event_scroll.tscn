@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6f8th8h5r78i"]
+
+[ext_resource type="Script" path="res://EventScroll.gd" id="1_xmgd1"]
+[ext_resource type="Texture2D" uid="uid://ckkgtobc3ksyb" path="res://UI/Event/scroll ninepatch.png" id="2_6x3ca"]
+[ext_resource type="Texture2D" uid="uid://booetwtcj341s" path="res://UI/Event/long frame.png" id="3_f5qny"]
+[ext_resource type="Texture2D" uid="uid://25lhhwrllr1l" path="res://UI/Event/long mask.png" id="4_o8u5x"]
+[ext_resource type="Texture2D" uid="uid://crxfgarexqn8g" path="res://UI/Event/short frame.png" id="5_syrsm"]
+[ext_resource type="Texture2D" uid="uid://bvox2ndf12c26" path="res://UI/Event/short mask.png" id="6_lykms"]
+[ext_resource type="Texture2D" uid="uid://b3a0e1m2d2grr" path="res://UI/Event/scroll roll.png" id="7_thlpn"]
+
+[sub_resource type="Animation" id="Animation_5bjl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left Roll:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right Roll:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_gvjhn"]
+resource_name = "slide"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left Roll:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right Roll:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb0gd"]
+_data = {
+"RESET": SubResource("Animation_5bjl8"),
+"slide": SubResource("Animation_gvjhn")
+}
+
+[node name="Event Scroll" type="Control"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmgd1")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 20.0
+offset_right = 760.0
+offset_bottom = 530.0
+texture = ExtResource("2_6x3ca")
+region_rect = Rect2(0, 0, 3, 3)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Panels" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -168.0
+offset_right = -128.0
+offset_bottom = 40.0
+
+[node name="Double Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 463.0
+offset_top = 21.0
+offset_right = 842.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("3_f5qny")
+metadata/_edit_lock_ = true
+
+[node name="Mask" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("4_o8u5x")
+metadata/_edit_lock_ = true
+
+[node name="Contents" type="Sprite2D" parent="Panels/Double Event Panel"]
+position = Vector2(188, 254)
+texture = ExtResource("4_o8u5x")
+metadata/_edit_lock_ = true
+
+[node name="Top Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 463.0
+offset_top = 21.0
+offset_right = 842.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 133)
+texture = ExtResource("5_syrsm")
+metadata/_edit_lock_ = true
+
+[node name="Mask" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 126.5)
+texture = ExtResource("6_lykms")
+metadata/_edit_lock_ = true
+
+[node name="Contents" type="Sprite2D" parent="Panels/Top Event Panel"]
+position = Vector2(188, 126.5)
+texture = ExtResource("6_lykms")
+metadata/_edit_lock_ = true
+
+[node name="Bottom Event Panel" type="Control" parent="Panels"]
+visible = false
+anchors_preset = 0
+offset_left = 463.0
+offset_top = 21.0
+offset_right = 842.0
+offset_bottom = 529.0
+
+[node name="Frame" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 375)
+texture = ExtResource("5_syrsm")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="Mask" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 381.5)
+texture = ExtResource("6_lykms")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="Contents" type="Sprite2D" parent="Panels/Bottom Event Panel"]
+position = Vector2(188, 381.5)
+texture = ExtResource("6_lykms")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="Left Roll" type="Sprite2D" parent="."]
+position = Vector2(115, 5)
+texture = ExtResource("7_thlpn")
+centered = false
+hframes = 4
+
+[node name="Right Roll" type="Sprite2D" parent="."]
+position = Vector2(721, 5)
+texture = ExtResource("7_thlpn")
+centered = false
+flip_h = true
+hframes = 4
+frame = 3
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tb0gd")
+}

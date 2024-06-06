@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c52hh4qgjcboc"]
 
-[ext_resource type="PackedScene" path="res://Prefabs/character_select_plate.tscn" id="1_efe7y"]
+[ext_resource type="PackedScene" path="res://Templates/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
 [ext_resource type="Texture2D" uid="uid://dmdyevuaoui02" path="res://Sprites/Wood Background.png" id="2_xk4qg"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="3_08ix2"]

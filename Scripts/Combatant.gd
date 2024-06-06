@@ -5,8 +5,11 @@ class_name Combatant
 var occupied : bool
 var current_action = 0
 var queued_actions = []
-var ready_time_remaining : float
-@export var ready_timer : float
+var active_time_remaining : float
+@export var active_timer : float
+
+enum ActivityState {READY, GATHER, ACTION, BLITZ}
+var activity : ActivityState = ActivityState.READY
 
 var stats : CharStats #Current stats of the entity
 var resources : Array[int]
@@ -24,10 +27,10 @@ var reposition_progress = 0.0
 var reposition_from : Vector2
 var reposition_to : Vector2
 
-var damage_notification_prefab = preload("res://Prefabs/damage_notification.tscn")
+var damage_notification_template = preload("res://Templates/damage_notification.tscn")
 
 signal resources_changed(values)
-signal ready_time_changed(id : int, value : float)
+signal active_time_changed(id : int, value : float)
 signal life_changed(id : int, value : float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,14 +38,15 @@ func _ready():
 
 
 func setup(cs, player, left):
-	ready_time_remaining = ready_timer
+	active_time_remaining = active_timer
 	stats = cs
 	texture = null
-	var prefab = load("res://Prefabs/Battle Sprites/" + cs.data["combat"]["battle_sprite"])
-	var bsprite = prefab.instantiate()
-	
+	var template = load("res://Templates/Battle Sprites/" + cs.data["combat"]["battle_sprite"])
+	var bsprite = template.instantiate()
 	add_child(bsprite)
 	stats.player = player
+	
+	GameManager.battle
 	if player:
 		id = 0
 	else:
@@ -61,13 +65,13 @@ func setup(cs, player, left):
 func _process(delta):
 	if reposition_state != RepositionState.NONE:
 		reposition()
-	if ready_time_remaining > 0:
-		ready_time_remaining -= delta
-		if ready_time_remaining <= 0:
-			ready_time_remaining = 0
+	if active_time_remaining > 0:
+		active_time_remaining -= delta
+		if active_time_remaining <= 0:
+			active_time_remaining = 0
 			try_next_action()
-		ready_time_changed.emit(id, ready_time_remaining / ready_timer)
-	if !occupied and ready_time_remaining == 0:
+		active_time_changed.emit(id, active_time_remaining / active_timer)
+	if !occupied and active_time_remaining == 0:
 		try_next_action()
 	pass
 
@@ -111,13 +115,14 @@ func deliver_strike():
 func damage(amount, type = DamageType.PHYSICAL):
 	#TODO: Implement defense
 	#TODO: Implement damage types
+	stats.health -= amount
 	if(amount > 0):
 		$BattleSprite/Animator.play("Hurt")
-		var dam_notify = damage_notification_prefab.instantiate()
+		var dam_notify = damage_notification_template.instantiate()
 		dam_notify.global_position = position - Vector2(0, 50)
 		dam_notify.get_node("Text").text = str(amount)
 		get_tree().root.add_child(dam_notify)
-	stats.health -= amount
+		life_changed.emit(id, float(stats.health) / stats.max_health)
 	if stats.health <= 0:
 		return true
 		die()
@@ -187,7 +192,7 @@ func try_next_action():
 	var action = queued_actions.pop_front()
 	pay_action_costs(action)
 	initiate_action(action)
-	ready_time_remaining = ready_timer
+	active_time_remaining = active_timer
 
 func queue_action(action):
 	queued_actions.append(action)
@@ -216,7 +221,7 @@ func can_afford_action(action) -> bool:
 	var costs = GameManager.get_action_data(action.name).costs
 	var resources = Array(self.resources)
 	for i in range(len(resources)):
-		resources[i] -= costs[i+1]
+		resources[i] -= int(costs[i+1])
 		if resources[i] < 0:
 			return false
 		if costs[0] != 0 and (high_idx == -1 or resources[i] > resources[high_idx]):

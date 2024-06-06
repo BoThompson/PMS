@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8qconbxis6d8"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterHud.gd" id="1_fox88"]
+[ext_resource type="PackedScene" path="res://Templates/resource_board.tscn" id="2_cy1ji"]
+[ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="3_03syp"]
+[ext_resource type="Texture2D" uid="uid://oxrllwr8vo2h" path="res://Sprites/Empty Ready Bar.png" id="4_vdwyv"]
+[ext_resource type="Shader" path="res://Shaders/Bar_Fill.gdshader" id="5_jhpw0"]
+[ext_resource type="Texture2D" uid="uid://vw257cf3orjl" path="res://Sprites/Full Ready Bar.png" id="6_w7max"]
+[ext_resource type="Texture2D" uid="uid://b3iwo37y6etyq" path="res://Sprites/Combat Go Alert.png" id="7_el2iw"]
+[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="8_cmbcj"]
+[ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Sprites/Seals/Default.png" id="9_whdwu"]
+[ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="10_xhnk4"]
+[ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Sprites/Titles/Default.png" id="11_mt27e"]
+[ext_resource type="Texture2D" uid="uid://bueprtcdf0sf0" path="res://Sprites/Life Bar Background.png" id="12_34l7e"]
+[ext_resource type="Texture2D" uid="uid://bbrvq3o061eam" path="res://Sprites/Life Bar Fill.png" id="13_pu5dh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnbc"]
+shader = ExtResource("5_jhpw0")
+shader_parameter/cutoff = 0.719
+shader_parameter/direction = 0
+shader_parameter/tint = Vector3(0, 0, 0)
+
+[node name="Character HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fox88")
+
+[node name="Resource Board" parent="." instance=ExtResource("2_cy1ji")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 166.0
+offset_bottom = 198.0
+
+[node name="Ready Bar" type="Node2D" parent="."]
+position = Vector2(134, 80)
+script = ExtResource("3_03syp")
+has_alert = true
+signal_name = "playerReadyChanged"
+bar_direction = 2
+
+[node name="Background" type="TextureRect" parent="Ready Bar"]
+offset_right = 33.0
+offset_bottom = 172.0
+texture = ExtResource("4_vdwyv")
+
+[node name="Fill" type="TextureRect" parent="Ready Bar"]
+material = SubResource("ShaderMaterial_mqnbc")
+offset_right = 33.0
+offset_bottom = 172.0
+texture = ExtResource("6_w7max")
+
+[node name="Alert" type="TextureRect" parent="Ready Bar"]
+visible = false
+offset_right = 27.0
+offset_bottom = 28.0
+texture = ExtResource("7_el2iw")
+
+[node name="Character Plate" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 84.0
+texture = ExtResource("8_cmbcj")
+
+[node name="Seal" type="TextureRect" parent="Character Plate"]
+modulate = Color(1, 1, 1, 0.396078)
+self_modulate = Color(0.278431, 0.117647, 0.054902, 1)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 77.0
+texture = ExtResource("9_whdwu")
+
+[node name="Portrait" type="TextureRect" parent="Character Plate"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = -14.0
+offset_right = 176.0
+offset_bottom = 82.0
+texture = ExtResource("10_xhnk4")
+flip_h = true
+
+[node name="Title" type="TextureRect" parent="Character Plate"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 122.0
+offset_bottom = 33.0
+texture = ExtResource("11_mt27e")
+
+[node name="Life Bar" type="Node2D" parent="Character Plate"]
+position = Vector2(7, 36)
+script = ExtResource("3_03syp")
+signal_name = "playerReadyChanged"
+
+[node name="Background" type="TextureRect" parent="Character Plate/Life Bar"]
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("12_34l7e")
+
+[node name="Fill" type="TextureRect" parent="Character Plate/Life Bar"]
+material = SubResource("ShaderMaterial_mqnbc")
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("13_pu5dh")
+
+[node name="Affects" type="Control" parent="Character Plate"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

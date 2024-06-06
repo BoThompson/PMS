@@ -1,0 +1,257 @@
+[gd_scene load_steps=33 format=3 uid="uid://bcq6r0jksgolo"]
+
+[ext_resource type="Script" path="res://Scripts/Orb.gd" id="1_e5v27"]
+[ext_resource type="Texture2D" uid="uid://c48osspl03038" path="res://Sprites/Orbs/Highlight.png" id="2_dohfe"]
+[ext_resource type="Texture2D" uid="uid://b0cf4kn3q2uml" path="res://Sprites/Orb Marker.png" id="3_h8rm0"]
+[ext_resource type="Texture2D" uid="uid://be34tx8jpmeb1" path="res://Sprites/Orbs/Large Orbs.png" id="3_xuub2"]
+
+[sub_resource type="Animation" id="Animation_ymjyj"]
+resource_name = "Attack Marked"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 64]
+}
+
+[sub_resource type="Animation" id="Animation_llk2s"]
+resource_name = "Aura Marked"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 128]
+}
+
+[sub_resource type="Animation" id="Animation_x2qwm"]
+resource_name = "Blood Marked"
+
+[sub_resource type="Animation" id="Animation_eyh4d"]
+resource_name = "Defense Marked"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 96]
+}
+
+[sub_resource type="Animation" id="Animation_k5lrq"]
+resource_name = "Earth Marked"
+
+[sub_resource type="Animation" id="Animation_diqbh"]
+resource_name = "Fire Marked"
+
+[sub_resource type="Animation" id="Animation_mp7mj"]
+resource_name = "Focus Marked"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 160]
+}
+
+[sub_resource type="Animation" id="Animation_6rqkd"]
+resource_name = "Fury Marked"
+
+[sub_resource type="Animation" id="Animation_8f2ae"]
+resource_name = "Metal Marked"
+
+[sub_resource type="Animation" id="Animation_g560c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+
+[sub_resource type="Animation" id="Animation_5vsmk"]
+resource_name = "Water Marked"
+
+[sub_resource type="Animation" id="Animation_0ig3q"]
+resource_name = "Wood Marked"
+
+[sub_resource type="Animation" id="Animation_n2a44"]
+resource_name = "Yang Marked"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 32]
+}
+
+[sub_resource type="Animation" id="Animation_14jdm"]
+resource_name = "Yin Marked"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ekdjm"]
+resource_name = "Attack Idle"
+
+[sub_resource type="Animation" id="Animation_qfv5k"]
+resource_name = "Aura Idle"
+
+[sub_resource type="Animation" id="Animation_46rvu"]
+resource_name = "Earth Idle"
+
+[sub_resource type="Animation" id="Animation_7047n"]
+resource_name = "Water Idle"
+
+[sub_resource type="Animation" id="Animation_mxcvn"]
+resource_name = "Fire Idle"
+
+[sub_resource type="Animation" id="Animation_0hdt2"]
+resource_name = "Fury Idle"
+
+[sub_resource type="Animation" id="Animation_bpcgi"]
+resource_name = "Wood Idle"
+
+[sub_resource type="Animation" id="Animation_61jtn"]
+resource_name = "Metal Idle"
+
+[sub_resource type="Animation" id="Animation_pkxfy"]
+resource_name = "Blood Idle"
+
+[sub_resource type="Animation" id="Animation_ymxlb"]
+resource_name = "Defense Idle"
+
+[sub_resource type="Animation" id="Animation_5yyvx"]
+resource_name = "Focus Idle"
+
+[sub_resource type="Animation" id="Animation_m1a40"]
+resource_name = "Yang Idle"
+
+[sub_resource type="Animation" id="Animation_qixhh"]
+resource_name = "Yin Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrr1e"]
+_data = {
+"Attack Idle": SubResource("Animation_ekdjm"),
+"Attack Marked": SubResource("Animation_ymjyj"),
+"Aura Idle": SubResource("Animation_qfv5k"),
+"Aura Marked": SubResource("Animation_llk2s"),
+"Blood Idle": SubResource("Animation_pkxfy"),
+"Blood Marked": SubResource("Animation_x2qwm"),
+"Defense Idle": SubResource("Animation_ymxlb"),
+"Defense Marked": SubResource("Animation_eyh4d"),
+"Earth Idle": SubResource("Animation_46rvu"),
+"Earth Marked": SubResource("Animation_k5lrq"),
+"Fire Idle": SubResource("Animation_mxcvn"),
+"Fire Marked": SubResource("Animation_diqbh"),
+"Focus Idle": SubResource("Animation_5yyvx"),
+"Focus Marked": SubResource("Animation_mp7mj"),
+"Fury Idle": SubResource("Animation_0hdt2"),
+"Fury Marked": SubResource("Animation_6rqkd"),
+"Metal Idle": SubResource("Animation_61jtn"),
+"Metal Marked": SubResource("Animation_8f2ae"),
+"RESET": SubResource("Animation_g560c"),
+"Water Idle": SubResource("Animation_7047n"),
+"Water Marked": SubResource("Animation_5vsmk"),
+"Wood Idle": SubResource("Animation_bpcgi"),
+"Wood Marked": SubResource("Animation_0ig3q"),
+"Yang Idle": SubResource("Animation_m1a40"),
+"Yang Marked": SubResource("Animation_n2a44"),
+"Yin Idle": SubResource("Animation_qixhh"),
+"Yin Marked": SubResource("Animation_14jdm")
+}
+
+[node name="Orb" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e5v27")
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_dohfe")
+
+[node name="Marker" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h8rm0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_xuub2")
+hframes = 32
+vframes = 32
+frame = 64
+region_rect = Rect2(10, 10, 44, 44)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrr1e")
+}

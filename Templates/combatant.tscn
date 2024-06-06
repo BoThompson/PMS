@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://12s1kxxjpwxn"]
+
+[ext_resource type="Script" path="res://Scripts/Combatant.gd" id="1_4l5kb"]
+
+[node name="Combatant" type="Sprite2D"]
+position = Vector2(340, 183)
+script = ExtResource("1_4l5kb")
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+offset_left = -35.0
+offset_top = -122.0
+offset_right = 41.0
+offset_bottom = -96.0
+text = "No Action"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Animator" type="AnimationPlayer" parent="."]

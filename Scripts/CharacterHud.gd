@@ -13,10 +13,7 @@ func _process(delta):
 func _on_resources_changed(values):
 	if combatant.is_player():
 		$"Resource Board"._on_resources_changed(values)
-		
-func _on_ready_time_changed(_id, value):
-	$"Ready Bar".update_bar(1-value)
-	$"Ready Bar/Alert".visible = (value <= 0)
+
 	
 func _on_life_changed(_id, value):
 	$"Character Plate/Life Bar".update_bar(value)		
@@ -29,7 +26,6 @@ func setup(combatant: Combatant, on_left : bool):
 	$"Character Plate/Seal".texture = load("res://Sprites/Seals/" + combatant.stats.data["character_select"]["assets"]["seal_image"])
 	
 	$"Ready Bar".initialize_bar(combatant.stats.health / combatant.stats.max_health)
-	combatant.ready_time_changed.connect(_on_ready_time_changed)
 	combatant.life_changed.connect(_on_life_changed)
 	#TODO - Put Affects here
 	if !combatant.is_player():

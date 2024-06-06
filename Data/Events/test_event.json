@@ -1,0 +1,20 @@
+{
+	"phase_count":3,
+	"phase_list":["arrival", "enter_pool", "avoid_pool"],
+	"phases":{
+		"arrival":{
+			"type":"choice",
+			"img_format":"top",
+			"image":"test_image1.png",
+			"text":"The small island you have arrived on is heavily wooded with a mile wide pool dominating the center. It is only as you draw closer that you recognize what the pool contains... It's pure, unaligned Qi for the taking! Enough to speed your progression significantly!",
+			"choices":["enter_pool", "avoid_pool"]
+		},
+		"enter_pool":{
+			"type":"random",
+			"img_format":"bottom",
+			"image":"test_image1.png",
+			"text":"You enter the pool and begin cultivating the unaligned Qi. You can feel your power growing!",
+			"callbacks":{"method":"gain_qi"}
+		}
+	}
+}

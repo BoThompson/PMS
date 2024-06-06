@@ -5,8 +5,8 @@ extends TextureButton
 @export var primary_action : bool
 var data
 var autofire : bool
-var info_panel_prefab = preload("res://Prefabs/info_panel.tscn")
-var resource_cost_prefab = preload("res://Prefabs/resource_cost_marker.tscn")
+var info_panel_template = preload("res://Templates/info_panel.tscn")
+var resource_cost_template = preload("res://Templates/resource_cost_marker.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#_on_resources_changed(GameManager.combatants[0].resources)
@@ -24,7 +24,7 @@ func _on_gui_input(event):
 	return
 	
 func display_information():
-	var infoPanel = info_panel_prefab.instantiate()
+	var infoPanel = info_panel_template.instantiate()
 	infoPanel.set_min_size(Vector2(250, 50))
 	infoPanel.position = position - Vector2(50, 50)
 	if infoPanel.position.x < 0:
@@ -92,7 +92,7 @@ func setup_costs(curr_costs):
 	var offset = Vector2(6,31)
 	for i in range(len(data.costs)):
 		if data.costs[i] != 0:
-			var marker = resource_cost_prefab.instantiate()
+			var marker = resource_cost_template.instantiate()
 			marker.position = offset
 			marker.setup(i+1, data.costs[i+1])
 			add_child(marker)

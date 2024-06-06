@@ -238,7 +238,7 @@
 			"style": "Adaptable Fists"
 		},
 		"combat": {
-			"battle_sprite": "default.tscn",
+			"battle_sprite": "prodigy.tscn",
 			"basic":"strike"
 		}
 	},

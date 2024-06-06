@@ -1,13 +1,12 @@
 extends Node2D
 
 class_name BattleScene
-const action_button_prefab = preload("res://Prefabs/action_button.tscn")
-const basic_action_button_prefab = preload("res://Prefabs/basic_action_button.tscn")
+const action_button_template = preload("res://Templates/action_button.tscn")
+const basic_action_button_template = preload("res://Templates/basic_action_button.tscn")
 var action_buttons = [null]
 
-const combatant_prefab = preload("res://Prefabs/combatant.tscn")
-var playerField : EnergyField
-var oppField : EnergyField
+const combatant_template = preload("res://Templates/combatant.tscn")
+var energy_field : EnergyField
 
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
@@ -15,8 +14,8 @@ var oppResourceBoard : ResourceBoard
 
 var combatants = {}
 var selected_actions = [null, null]
-const player_hud = preload("res://Prefabs/player_hud.tscn")
-const enemy_hud = preload("res://Prefabs/enemy_hud.tscn")
+const player_hud = preload("res://Templates/player_hud.tscn")
+const enemy_hud = preload("res://Templates/enemy_hud.tscn")
 
 func fireball(targets):
 	pass
@@ -29,7 +28,7 @@ func add_action_button(action):
 	if primary:
 		if action_buttons[0] != null:
 			action_buttons[0].queue_free()
-		action_buttons[0] = basic_action_button_prefab.instantiate()
+		action_buttons[0] = basic_action_button_template.instantiate()
 		$HUD.add_child(action_buttons[0])
 		action_buttons[0].position = Vector2(15, 285)
 		action_buttons[0].setup(name)
@@ -37,7 +36,7 @@ func add_action_button(action):
 		print("ERROR: Attempted to add too many action buttons.")
 	else:
 		var idx = len(action_buttons)
-		action_buttons.append(action_button_prefab.instantiate())
+		action_buttons.append(action_button_template.instantiate())
 		$HUD.add_child(action_buttons[idx])
 		action_buttons[idx].position = Vector2(15 + 130 * (idx % 2), 295 + 58 * int(idx/2))
 		action_buttons[idx].setup(name)
@@ -47,10 +46,11 @@ func _process(delta):
 	pass
 
 func add_combatant(combatant_name, is_player, on_left):
-	var combatant = combatant_prefab.instantiate()
+	var combatant = combatant_template.instantiate()
 	var data = GameManager.characters_data[combatant_name]
 	var cs = CharStats.load(data)
 	combatant.setup(cs, is_player, on_left)
+	combatant.position.y += 25
 	if !on_left:
 		combatant.position.x = 960 - combatant.position.x
 	register_combatant(combatant, on_left)
@@ -61,10 +61,7 @@ func get_opponent(id) -> Combatant:
 		return combatants[1]
 	else:
 		return combatants[0]
-		
-func _on_ready_changed(id : int, value : float):
-	if value >= 1 and selected_actions[id] != null:
-		queue_action(id, selected_actions[id])
+
 
 func queue_action(id, action):
 	var opp = get_opponent(id)
@@ -72,7 +69,6 @@ func queue_action(id, action):
 
 func register_combatant(combatant : Combatant, on_left : bool):
 	combatants[combatant.id] = combatant
-	combatant.ready_time_changed.connect(_on_ready_changed)
 	var hud
 	if on_left:
 		hud = player_hud.instantiate()
@@ -92,9 +88,9 @@ func register_combatant(combatant : Combatant, on_left : bool):
 func spawn_action_button(action):
 	var button
 	if len(action_buttons) == 0:
-		button = basic_action_button_prefab.instantiate()
+		button = basic_action_button_template.instantiate()
 	else:
-		button = action_button_prefab.instantiate()
+		button = action_button_template.instantiate()
 		
 func default_action(id, action):
 	if selected_actions[id] != null:
@@ -116,8 +112,8 @@ func retrieve_selected_action(id):
 	else:
 		return false
 
-func reset_player_field():
-	playerField.reset()
+func reset_energy_field():
+	energy_field.reset()
 	
 func add_resource(resource, amt, id):
 	combatants[id].add_resource(resource, amt)

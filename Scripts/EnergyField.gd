@@ -6,7 +6,7 @@ class_name EnergyField
 ####################################################################################################
 
 enum FieldState {INACTIVE, SETUP, SELECTING, SWAPPING, EVALUATING, REFRESHING}
-var orb_prefab = preload("res://Prefabs/orb.tscn")
+var orb_template = preload("res://Templates/orb.tscn")
 var orbs : Array
 var orbs_active : Dictionary
 var start_coordinate : Vector2i
@@ -16,9 +16,14 @@ var refresh_required : bool
 var resolve_state : bool
 
 var orb_size = Vector2i(50, 50)
-var field_size = Vector2i(5, 5)
+var field_size = Vector2i(FIELD_WIDTH, FIELD_HEIGHT)
 @export var player : bool
 
+const FIELD_WIDTH = 9
+const FIELD_HEIGHT = 5
+
+signal gathering()
+signal board_evaluated()
 ####################################################################################################	
 ################################           Default Methods           ###############################
 ####################################################################################################
@@ -162,10 +167,7 @@ func setup(fill):
 		var row : Array[Orb] = []
 		row.resize(field_size.y)
 		orbs.append(row)
-	if player:
-		GameManager.battle.playerField = self
-	else:
-		GameManager.battle.oppField = self
+	GameManager.battle.energy_field = self
 	
 	orbs_active = {}
 	clear_orbs(true)
@@ -191,7 +193,7 @@ func refresh() -> bool:
 				orbs[orb.coordinate.x][orb.coordinate.y] = orb
 		for i in range(gaps):
 			resolve_state = true
-			var orb = orb_prefab.instantiate()
+			var orb = orb_template.instantiate()
 			orb.coordinate = Vector2i(col, field_size.y-gaps+i)
 			orb.position = Vector2(col * orb_size.x + 36,  orb_size.y * (field_size.y+i))
 			orbs[col][field_size.y-gaps+i] = orb
@@ -203,6 +205,23 @@ func refresh() -> bool:
 		gaps = 0
 	return true
 
+func new_evaluate(remove_orbs) -> bool:
+	#Sweep by columns first
+	#For i -> field_size.x
+		#For j -> field_size.y
+			##Efficiency escape if j + 3 - seq_length >= field_size.y BREAK
+			#if col_type != orb[i][j].type
+				#If seq_length >= 3
+					#Add sequence to list
+				#col_type = orb[i][j].type
+				#seq_length = 1
+				#sequence = [[(i,j), orb[i][j] ]]
+			#else
+				#seq_length += 1
+				#sequence.append([(i,j), orb[i][j] ])
+				
+	#Sweep by rows second
+	return false
 	
 func evaluate(remove_orbs) -> bool:
 	var sequences = []
@@ -223,8 +242,8 @@ func evaluate(remove_orbs) -> bool:
 	
 	for col in range(field_size.x):
 		for row in range(field_size.y):
-			if(row+2 < field_size.x
-			and !v_checked[col+row*field_size.x]
+			if(row+2 < field_size.y
+			and !v_checked[row+col*field_size.y]
 			and orbs[col][row]
 			and orbs[col][row+1] 
 			and orbs[col][row+2] 
@@ -239,19 +258,19 @@ func evaluate(remove_orbs) -> bool:
 				sequence = []
 				for n in range(3):
 					sequence.append(Vector2i(col, row+n))
-					activated[col+(row+n)*field_size.x] = true
-					v_checked[col+(row+n)*field_size.x] = true
+					activated[row+(col+n)*field_size.y] = true
+					v_checked[row+(col+n)*field_size.y] = true
 				
 				#Loop from 3 on to check if this pattern extends until the end of the field, stop
 				#at the first failed piece
 				var n = 3
 				while(true):
-					if(row+n < field_size.x
+					if(col+n < field_size.x
 					and orbs[col][row+n]
 					and orbs[col][row].type == orbs[col][row+n].type):
 						sequence.append(Vector2i(col, row+n))
-						activated[col+(row+n)*field_size.x] = true
-						v_checked[col+(row+n)*field_size.x] = true
+						activated[row+(col+n)*field_size.y] = true
+						v_checked[row+(col+n)*field_size.y] = true
 						n += 1
 					else:
 						break
@@ -259,8 +278,8 @@ func evaluate(remove_orbs) -> bool:
 				#Add it to the sequences list
 				sequences.append(sequence)
 				
-			if(col+2 < field_size.y
-			and !h_checked[col+row*field_size.x]
+			if(col+2 < field_size.x
+			and !h_checked[row+col*field_size.y]
 			and orbs[col][row] 
 			and orbs[col+1][row] 
 			and orbs[col+2][row]
@@ -275,19 +294,19 @@ func evaluate(remove_orbs) -> bool:
 				sequence = []
 				for n in range(3):
 					sequence.append(Vector2i(col+n, row))
-					activated[col+n+row*field_size.x] = true
-					v_checked[col+n+row*field_size.x] = true
+					activated[row+n+col*field_size.y] = true
+					v_checked[row+n+col*field_size.y] = true
 				
 				#Loop from 3 on to check if this pattern extends until the end of the field, stop
 				#at the first failed piece
 				var n = 3
 				while(true):
-					if(col+n < field_size.y
+					if(row+n < field_size.y
 					and orbs[col+n][row]
 					and orbs[col][row].type == orbs[col+n][row].type):
 						sequence.append(Vector2i(col+n, row))
-						activated[col+n+row*field_size.x] = true
-						v_checked[col+n+row*field_size.x] = true
+						activated[row+n+col*field_size.y] = true
+						v_checked[row+n+col*field_size.y] = true
 						n += 1
 					else:
 						break
@@ -366,6 +385,7 @@ func transition():
 		FieldState.SWAPPING:
 			#evaluate the field over and over until it's done
 			if !evaluate(false):
+				gathering.emit()
 				swap_orbs(start_coordinate, swap_coordinate)
 				clear_selected(true, true)
 				enter_state(FieldState.SELECTING)

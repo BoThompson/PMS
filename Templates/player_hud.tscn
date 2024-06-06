@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://dyi6eiwa5kfko"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterHud.gd" id="1_6l3sv"]
+[ext_resource type="PackedScene" path="res://Templates/resource_board.tscn" id="2_j1huu"]
+[ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="3_66xe1"]
+[ext_resource type="Texture2D" uid="uid://oxrllwr8vo2h" path="res://Sprites/Empty Ready Bar.png" id="4_rmgeq"]
+[ext_resource type="Shader" path="res://Shaders/Bar_Fill.gdshader" id="5_sso18"]
+[ext_resource type="Texture2D" uid="uid://vw257cf3orjl" path="res://Sprites/Full Ready Bar.png" id="6_jcrrr"]
+[ext_resource type="Texture2D" uid="uid://b3iwo37y6etyq" path="res://Sprites/Combat Go Alert.png" id="7_i2n2n"]
+[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="8_6dcu6"]
+[ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Sprites/Seals/Default.png" id="9_dyl70"]
+[ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="10_d082i"]
+[ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Sprites/Titles/Default.png" id="11_no43o"]
+[ext_resource type="Texture2D" uid="uid://bueprtcdf0sf0" path="res://Sprites/Life Bar Background.png" id="12_nree8"]
+[ext_resource type="Texture2D" uid="uid://bbrvq3o061eam" path="res://Sprites/Life Bar Fill.png" id="13_yshbb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnbc"]
+shader = ExtResource("5_sso18")
+shader_parameter/cutoff = 0.719
+shader_parameter/direction = 0
+shader_parameter/tint = Vector3(0, 0, 0)
+
+[node name="Character HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6l3sv")
+
+[node name="Resource Board" parent="." instance=ExtResource("2_j1huu")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 166.0
+offset_bottom = 198.0
+
+[node name="Ready Bar" type="Node2D" parent="."]
+position = Vector2(12, 80)
+script = ExtResource("3_66xe1")
+has_alert = true
+signal_name = "playerReadyChanged"
+bar_direction = 2
+
+[node name="Background" type="TextureRect" parent="Ready Bar"]
+offset_right = 33.0
+offset_bottom = 172.0
+texture = ExtResource("4_rmgeq")
+
+[node name="Fill" type="TextureRect" parent="Ready Bar"]
+material = SubResource("ShaderMaterial_mqnbc")
+offset_right = 33.0
+offset_bottom = 172.0
+texture = ExtResource("6_jcrrr")
+
+[node name="Alert" type="TextureRect" parent="Ready Bar"]
+visible = false
+offset_left = 2.0
+offset_top = 93.0
+offset_right = 29.0
+offset_bottom = 121.0
+texture = ExtResource("7_i2n2n")
+
+[node name="Character Plate" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 84.0
+texture = ExtResource("8_6dcu6")
+
+[node name="Seal" type="TextureRect" parent="Character Plate"]
+modulate = Color(1, 1, 1, 0.396078)
+self_modulate = Color(0.278431, 0.117647, 0.054902, 1)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 125.0
+offset_bottom = 77.0
+texture = ExtResource("9_dyl70")
+
+[node name="Portrait" type="TextureRect" parent="Character Plate"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 62.0
+offset_bottom = 82.0
+texture = ExtResource("10_d082i")
+
+[node name="Title" type="TextureRect" parent="Character Plate"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 8.0
+offset_right = 138.0
+offset_bottom = 33.0
+texture = ExtResource("11_no43o")
+
+[node name="Life Bar" type="Node2D" parent="Character Plate"]
+position = Vector2(47, 36)
+script = ExtResource("3_66xe1")
+signal_name = "playerReadyChanged"
+
+[node name="Background" type="TextureRect" parent="Character Plate/Life Bar"]
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("12_nree8")
+
+[node name="Fill" type="TextureRect" parent="Character Plate/Life Bar"]
+material = SubResource("ShaderMaterial_mqnbc")
+offset_right = 117.0
+offset_bottom = 15.0
+texture = ExtResource("13_yshbb")
+
+[node name="Affects" type="Control" parent="Character Plate"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

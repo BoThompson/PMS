@@ -4,8 +4,9 @@
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_ro3tm"]
 [ext_resource type="Texture2D" uid="uid://bghtrcjwy606w" path="res://Sprites/Map Portal.png" id="3_dk5ji"]
 [ext_resource type="Script" path="res://Scripts/MapDestination.gd" id="3_mg0j4"]
-[ext_resource type="Texture2D" uid="uid://byf6hhgunilco" path="res://Sprites/Map Tower.png" id="5_mre52"]
 [ext_resource type="Texture2D" uid="uid://2deby5b4tfwd" path="res://Sprites/Map Dot.png" id="6_iuupt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vi4k3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k2xuc"]
 shader = ExtResource("2_ro3tm")
@@ -15,13 +16,8 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_neha4"]
-shader = ExtResource("2_ro3tm")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 0.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qas7"]
+radius = 68.61
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,18 +25,19 @@ shader_parameter/add_margins = true
 texture = ExtResource("1_c7u45")
 centered = false
 
-[node name="MapPortal" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_k2xuc")
+[node name="Map Portal" type="StaticBody2D" parent="."]
 position = Vector2(490, 282)
-texture = ExtResource("3_dk5ji")
+disable_mode = 2
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vi4k3")
 script = ExtResource("3_mg0j4")
-offset_height = 4.0
 landmark = true
-site_name = "Entry Portal"
-site_type = "Battle"
-site_description = "Every candidate must be tested..."
 
-[node name="Panel Location" type="Control" parent="MapPortal"]
+[node name="Sprite" type="Sprite2D" parent="Map Portal"]
+material = SubResource("ShaderMaterial_k2xuc")
+texture = ExtResource("3_dk5ji")
+
+[node name="Panel Location" type="Control" parent="Map Portal"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 42.0
@@ -48,25 +45,9 @@ offset_top = -131.0
 offset_right = 42.0
 offset_bottom = -131.0
 
-[node name="MapTower" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_neha4")
-position = Vector2(688, 287)
-texture = ExtResource("5_mre52")
-script = ExtResource("3_mg0j4")
-offset_height = 4.0
-landmark = true
-site_name = "Test Tower"
-site_type = "Choice"
-difficulty = 2
-site_description = "This tower will test you!"
-
-[node name="Panel Location" type="Control" parent="MapTower"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 48.0
-offset_top = -103.0
-offset_right = 48.0
-offset_bottom = -103.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map Portal"]
+position = Vector2(2, 6)
+shape = SubResource("CircleShape2D_3qas7")
 
 [node name="MapDot2" type="Sprite2D" parent="."]
 position = Vector2(623, 334)
@@ -103,3 +84,7 @@ position = Vector2(646, 327)
 texture = ExtResource("6_iuupt")
 script = ExtResource("3_mg0j4")
 offset_height = 4.0
+
+[connection signal="input_event" from="Map Portal" to="Map Portal" method="_on_click"]
+[connection signal="mouse_entered" from="Map Portal" to="Map Portal" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Map Portal" to="Map Portal" method="_on_mouse_exited"]

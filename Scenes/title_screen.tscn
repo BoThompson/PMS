@@ -154,10 +154,10 @@ script = ExtResource("4_87s2s")
 max_offset = Vector2(8, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-autoplay = "Ripple"
 libraries = {
 "": SubResource("AnimationLibrary_ikub7")
 }
+autoplay = "Ripple"
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 position = Vector2(452, 402)
@@ -175,7 +175,7 @@ script = ExtResource("4_87s2s")
 max_offset = Vector2(10, 10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
-autoplay = "Standard"
 libraries = {
 "": SubResource("AnimationLibrary_vhm28")
 }
+autoplay = "Standard"
