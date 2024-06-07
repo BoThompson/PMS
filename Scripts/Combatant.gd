@@ -8,9 +8,6 @@ var queued_actions = []
 var active_time_remaining : float
 @export var active_timer : float
 
-enum ActivityState {READY, GATHER, ACTION, BLITZ}
-var activity : ActivityState = ActivityState.READY
-
 var stats : CharStats #Current stats of the entity
 var resources : Array[int]
 var action_tween : Tween

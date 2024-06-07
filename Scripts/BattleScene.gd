@@ -11,6 +11,8 @@ var energy_field : EnergyField
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
 
+enum ActivityState {READY, GATHER, ACTION, BLITZ}
+var activity : ActivityState = ActivityState.READY
 
 var combatants = {}
 var selected_actions = [null, null]
@@ -126,3 +128,7 @@ func select_action(id, action) -> bool:
 		selected_actions[id] = action
 	return true
 
+
+
+func _on_energy_field_gathering():
+	pass # Replace with function body.
