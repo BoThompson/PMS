@@ -160,6 +160,21 @@ libraries = {
 }
 autoplay = "Ripple"
 
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(452, 402)
+texture = ExtResource("9_n3h17")
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="Sparkle" type="Sprite2D" parent="."]
+position = Vector2(508, 461)
+texture = ExtResource("11_g50dv")
+hframes = 8
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sparkle"]
+
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(325, 344)
 texture = ExtResource("8_4q8e5")
@@ -174,16 +189,3 @@ libraries = {
 "": SubResource("AnimationLibrary_vhm28")
 }
 autoplay = "Standard"
-
-[node name="Sword" type="Sprite2D" parent="Body"]
-position = Vector2(127, 58)
-texture = ExtResource("9_n3h17")
-script = ExtResource("4_87s2s")
-max_offset = Vector2(10, 10)
-
-[node name="Sparkle" type="Sprite2D" parent="Body"]
-position = Vector2(183, 117)
-texture = ExtResource("11_g50dv")
-hframes = 8
-script = ExtResource("4_87s2s")
-max_offset = Vector2(10, 10)
