@@ -3,7 +3,7 @@ extends Node2D
 class_name BattleScene
 const action_button_template = preload("res://Templates/action_button.tscn")
 const basic_action_button_template = preload("res://Templates/basic_action_button.tscn")
-var action_buttons = [null]
+var action_buttons : Array[ActionButton] = [null]
 
 const combatant_template = preload("res://Templates/combatant.tscn")
 var energy_field : EnergyField
@@ -11,18 +11,19 @@ var energy_field : EnergyField
 var playerResourceBoard : ResourceBoard
 var oppResourceBoard : ResourceBoard
 
-enum ActivityState {READY, GATHER, ACTION, BLITZ}
+enum ActivityState {READY, GATHER, ACTION, BLITZ, COMPLETE}
 var activity : ActivityState = ActivityState.READY
 
-var combatants = {}
-var selected_actions = [null, null]
-const player_hud = preload("res://Templates/player_hud.tscn")
-const enemy_hud = preload("res://Templates/enemy_hud.tscn")
+var combatants : Dictionary = {}
+var player_turn : bool = true
+var selected_actions : Array = [null, null]
+var resolve_actions : bool
+@onready var timer : Timer = $Timer
+@onready var timer_bar : ActiveTimer = %"Timer Bar"
 
-func fireball(targets):
-	pass
+const player_hud : PackedScene = preload("res://Templates/player_hud.tscn")
+const enemy_hud : PackedScene = preload("res://Templates/enemy_hud.tscn")
 	
-
 
 func add_action_button(action):
 	var name = action.name
@@ -42,10 +43,68 @@ func add_action_button(action):
 		$HUD.add_child(action_buttons[idx])
 		action_buttons[idx].position = Vector2(15 + 130 * (idx % 2), 295 + 58 * int(idx/2))
 		action_buttons[idx].setup(name)
+
+func disable_action_buttons() -> void:
+	for button in action_buttons:
+		button.disable()
 		
+func enable_action_buttons() -> void:
+	for button in action_buttons:
+		button.enable()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
+	if !timer.is_stopped():
+		timer_bar.update_value(timer.time_left)
+		
+	if resolve_actions:
+		var unoccupied = true
+		var awaiting = false
+		
+		for comb in combatants.values():
+			if comb.occupied:
+				unoccupied = false
+			if comb.actions_queued():
+				awaiting = true
+			
+		if unoccupied:
+			match activity:
+				ActivityState.BLITZ:
+					if timer.is_stopped():
+						switch_activity(ActivityState.COMPLETE)
+					elif awaiting:
+						advance_action_queue()
+					else:
+						resolve_actions = false
+					
+				ActivityState.ACTION:
+					resolve_actions = false
+					switch_activity(ActivityState.COMPLETE)
+		
+	elif activity == ActivityState.BLITZ:
+		if timer.is_stopped():
+			switch_activity(ActivityState.COMPLETE)
+		else:
+			advance_action_queue()
+	
+	return
+
+func advance_action_queue():
+	if player_turn:
+		while combatants[0].actions_queued() > 0:
+			if combatants[0].try_next_action():
+				resolve_actions = true
+				return
+	else:
+		for key in combatants.keys():
+			if key == 0: #The player gets skipped
+				continue
+			if (combatants[key].actions_queued() > 0
+			and combatants[key].try_next_action()):
+				resolve_actions = true
+				return
+
 
 func add_combatant(combatant_name, is_player, on_left):
 	var combatant = combatant_template.instantiate()
@@ -68,6 +127,7 @@ func get_opponent(id) -> Combatant:
 func queue_action(id, action):
 	var opp = get_opponent(id)
 	combatants[0].queue_action({"name":action, "target":get_opponent(id)})
+	
 
 func register_combatant(combatant : Combatant, on_left : bool):
 	combatants[combatant.id] = combatant
@@ -121,14 +181,83 @@ func add_resource(resource, amt, id):
 	combatants[id].add_resource(resource, amt)
 
 func select_action(id, action) -> bool:
-	if combatants[id].ready_time_remaining <= 0:
-		queue_action(id, action)
-	else:
-		combatants[id].set_action_label(action)
-		selected_actions[id] = action
+	
+	if id == 0 != player_turn:
+		return false
+
+	queue_action(id, action)
+	if activity == ActivityState.READY:
+		switch_activity(ActivityState.BLITZ)
+		resolve_actions = true
+	elif activity == ActivityState.ACTION:
+		disable_action_buttons()
+		advance_action_queue()
 	return true
 
+func switch_activity (act : ActivityState) -> void:
+	activity = act
+	match(act):
+		ActivityState.READY:
+			timer_bar.recolor(player_turn)
+			if player_turn:
+				energy_field.unlock()
+				enable_action_buttons()
+			else:
+				energy_field.lock()
+				disable_action_buttons()
+				var tween = create_tween()
+				tween.tween_interval(1)
+				tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.COMPLETE))
+				return
+		ActivityState.GATHER:
+			disable_action_buttons()
+		ActivityState.ACTION:
+			enable_action_buttons()
+			energy_field.lock()
+			energy_field.try_evaluate()
+		ActivityState.BLITZ:
+			energy_field.lock()
+		ActivityState.COMPLETE:
+			disable_action_buttons()
+			player_turn = !player_turn
+			switch_activity(ActivityState.READY)
+	start_active_timer()
 
+func start_active_timer() -> void:
+	var time = get_active_timer(player_turn)
+	var act_name = ""
+	match activity:
+		ActivityState.READY:
+			act_name = "READY"
+			time = 0
+		ActivityState.GATHER:
+			act_name = "GATHERING"
+		ActivityState.ACTION:
+			act_name = "ACTION"
+			time = 0
+		ActivityState.BLITZ:
+			act_name = "BLITZ!!!"
+	if time == 0:
+		timer.stop()
+	else:
+		timer.start(time)
+	timer_bar.change_action(act_name, time, time)
+
+func get_active_timer(player_turn) -> float:
+	if player_turn:
+		return combatants[0].calculate_active_timer()
+	else:
+		var time = 0
+		for combatant in combatants.values():
+			if combatant.id != 0:
+				time += combatant.calculate_active_timer()
+		return time
+	
+func _on_active_timer_complete():
+	match(activity):
+		ActivityState.GATHER:
+			switch_activity(ActivityState.ACTION)
 
 func _on_energy_field_gathering():
-	pass # Replace with function body.
+	if activity == ActivityState.READY:
+		switch_activity(ActivityState.GATHER)

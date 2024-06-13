@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3ayman5fj78e"]
+[gd_scene load_steps=18 format=3 uid="uid://b3ayman5fj78e"]
 
 [ext_resource type="Script" path="res://WIP/Test Title/TitleScreen.gd" id="1_c1cdu"]
 [ext_resource type="Texture2D" uid="uid://5jcaj3ccw2nc" path="res://Sprites/Title.png" id="2_gidcd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://gyedxpeyid6t" path="res://WIP/Test Title/Ground Ripple.png" id="7_y6gi8"]
 [ext_resource type="Texture2D" uid="uid://cagfidgfwtfx" path="res://WIP/Test Title/Woman.png" id="8_4q8e5"]
 [ext_resource type="Texture2D" uid="uid://bmj7218efobkb" path="res://WIP/Test Title/Sword.png" id="9_n3h17"]
+[ext_resource type="Texture2D" uid="uid://bgda0ospr46l0" path="res://WIP/Test Title/Sparkle.png" id="11_g50dv"]
 
 [sub_resource type="Animation" id="Animation_5nip0"]
 length = 0.001
@@ -159,13 +160,7 @@ libraries = {
 }
 autoplay = "Ripple"
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(452, 402)
-texture = ExtResource("9_n3h17")
-script = ExtResource("4_87s2s")
-max_offset = Vector2(10, 10)
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="."]
 position = Vector2(325, 344)
 texture = ExtResource("8_4q8e5")
 hframes = 4
@@ -174,8 +169,21 @@ frame = 1
 script = ExtResource("4_87s2s")
 max_offset = Vector2(10, 10)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {
 "": SubResource("AnimationLibrary_vhm28")
 }
 autoplay = "Standard"
+
+[node name="Sword" type="Sprite2D" parent="Body"]
+position = Vector2(127, 58)
+texture = ExtResource("9_n3h17")
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)
+
+[node name="Sparkle" type="Sprite2D" parent="Body"]
+position = Vector2(183, 117)
+texture = ExtResource("11_g50dv")
+hframes = 8
+script = ExtResource("4_87s2s")
+max_offset = Vector2(10, 10)

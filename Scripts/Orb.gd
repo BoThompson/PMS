@@ -1,5 +1,4 @@
-class_name Orb
-extends Control
+class_name Orb extends Control
 
 ####################################################################################################	
 ####################################           Members           ###################################
@@ -7,7 +6,7 @@ extends Control
 
 #############################################   Enums   ############################################
 enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
-enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY}
+enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY, MONEY}
 enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
@@ -20,29 +19,41 @@ var field : EnergyField
 var tween : Tween
 var coordinate : Vector2i
 var deployed = true
+var marked : bool = false
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
 ####################################################################################################	
 ####################################          Resources          ###################################
 ####################################################################################################
 
 var animations = {
 	OrbType.ATTACK 	: {
-		"idle": "Attack Idle",	
+		"idle": "Attack Idle",
+		"marked": "Attack Marked",
 	},
 	OrbType.DEFENSE : {
-		"idle": "Defense Idle",	
+		"idle": "Defense Idle",
+		"marked": "Defense Marked",
 	},
 	OrbType.FOCUS 	: {
-		"idle": "Focus Idle",	
+		"idle": "Focus Idle",
+		"marked": "Focus Marked",
 	},
 	OrbType.AURA 	: {
-		"idle": "Aura Idle",	
+		"idle": "Aura Idle",
+		"marked": "Aura Marked",
 	},
 	OrbType.YIN 	: {
-		"idle": "Yin Idle",	
+		"idle": "Yin Idle",
+		"marked": "Yin Marked",
 	},
 	OrbType.YANG 	: {
-		"idle": "Yang Idle",	
+		"idle": "Yang Idle",
+		"marked": "Yang Marked",
 	},
+	#OrbType.MONEY	: {
+	#	"idle": "Money Idle",
+	#	"marked": "Money Marked",
+	#}
 }
 
 ####################################################################################################	
@@ -50,7 +61,8 @@ var animations = {
 ####################################################################################################
 
 func _on_change_type(value : OrbType):
-	$AnimationPlayer.play(animations[value].idle)
+	if value != OrbType.WILDCARD:
+		anim_player.play(animations[value].idle)
 	type = value
 	
 func _on_change_lit(value):
@@ -75,10 +87,18 @@ func _process(_delta):
 ##################################          Helper Methods         #################################
 ####################################################################################################
 func mark():
+	if marked:
+		return
+	anim_player.play(animations[type].marked)
 	$Marker.visible = true
+	marked = true
 
 func unmark():
+	if !marked:
+		return
+	anim_player.play(animations[type].idle)
 	$Marker.visible = true
+	marked = false
 	
 func select():
 	transition(OrbState.SELECTED)
@@ -108,8 +128,22 @@ func rise(offset):
 	transition(OrbState.RISING)
 
 	
-func shuffle():
-	type =randi_range(1, 6) as OrbType
+func shuffle(weights : Array[int]):
+	#var max = weights.reduce(func(accum, n): return accum + n, 0)
+	#var num = randi_range(0, max)
+	#var n = num
+	#type = OrbType.WILDCARD
+	#for i in range(len(weights)):
+		#if num < weights[i]:
+			#type = (i + 1) as OrbType # Omit the wildcard
+			#break
+		#else:
+			#num -= weights[i]
+	#if type == OrbType.WILDCARD:
+		#print("ERROR: Shuffle failed to determine a type")
+		#print("Num: " + str(n))
+		#print("Weights: " + str(weights))
+	type = randi_range(1,6)
 
 ####################################################################################################	
 #############################          Tween Resolution Methods         ############################

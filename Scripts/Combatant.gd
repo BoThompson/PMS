@@ -5,7 +5,6 @@ class_name Combatant
 var occupied : bool
 var current_action = 0
 var queued_actions = []
-var active_time_remaining : float
 @export var active_timer : float
 
 var stats : CharStats #Current stats of the entity
@@ -27,7 +26,6 @@ var reposition_to : Vector2
 var damage_notification_template = preload("res://Templates/damage_notification.tscn")
 
 signal resources_changed(values)
-signal active_time_changed(id : int, value : float)
 signal life_changed(id : int, value : float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,8 +33,8 @@ func _ready():
 
 
 func setup(cs, player, left):
-	active_time_remaining = active_timer
 	stats = cs
+	active_timer = 5
 	texture = null
 	var template = load("res://Templates/Battle Sprites/" + cs.data["combat"]["battle_sprite"])
 	var bsprite = template.instantiate()
@@ -62,14 +60,6 @@ func setup(cs, player, left):
 func _process(delta):
 	if reposition_state != RepositionState.NONE:
 		reposition()
-	if active_time_remaining > 0:
-		active_time_remaining -= delta
-		if active_time_remaining <= 0:
-			active_time_remaining = 0
-			try_next_action()
-		active_time_changed.emit(id, active_time_remaining / active_timer)
-	if !occupied and active_time_remaining == 0:
-		try_next_action()
 	pass
 
 func reposition():
@@ -179,18 +169,21 @@ func end_action():
 	current_action.target.occupied = false
 	current_action = null
 	
-func try_next_action():
+func try_next_action() -> bool:
 	if occupied:
-		return
+		return false
 	if len(queued_actions) == 0 and !GameManager.battle.retrieve_selected_action(id):
-		return
+		return false
 	if !can_afford_action(queued_actions.front()):
-		return
+		return false
 	var action = queued_actions.pop_front()
 	pay_action_costs(action)
 	initiate_action(action)
-	active_time_remaining = active_timer
+	return true
 
+func actions_queued() -> int:
+	return len(queued_actions)
+	
 func queue_action(action):
 	queued_actions.append(action)
 	if len(queued_actions) == 1:
@@ -246,3 +239,5 @@ func pay_action_costs(action):
 	if changed:
 		resources_changed.emit(resources)
 		
+func calculate_active_timer() -> float:
+	return active_timer

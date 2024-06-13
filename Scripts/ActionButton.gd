@@ -1,17 +1,15 @@
-extends TextureButton
+class_name ActionButton extends TextureButton
 
 
 @export var action : String
 @export var primary_action : bool
+var affordable : bool
 var data
 var autofire : bool
 var info_panel_template = preload("res://Templates/info_panel.tscn")
 var resource_cost_template = preload("res://Templates/resource_cost_marker.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#_on_resources_changed(GameManager.combatants[0].resources)
-	#set_costs(GameManager.scene.actions[action].cost)
-	#GameManager.connect("playerResourcesChanged", _on_resources_changed)
 	pass # Replace with function body.
 
 func _on_gui_input(event):
@@ -44,30 +42,24 @@ func on_pressed():
 func _process(delta):
 	pass
 
-func set_costs(costs):
-	pass
-
 func _on_resources_changed(values):
-	disabled = false
+	affordable = false
 	var post_values = values.duplicate()
 	for i in range(1, len(values)):
 		if data.costs[i] > values[i-1]:
-			disabled = true
+			affordable = true
 		else:
 			post_values[i-1] -= int(data.costs[i])
 	
 	var any = data.costs[0]
 	if any > 0:
-		disabled = true
+		affordable = false
 		for v in post_values:
 			any -= v
 			if any <= 0:
-				disabled = false
+				affordable = true
 				break
-	show_disabled(disabled)
-	if !disabled and autofire:
-		autofire = false
-		GameManager.battle.default_action(0, action)
+	show_disabled(!affordable)
 	
 		
 func _on_auto_toggled(button_pressed : bool):
@@ -97,6 +89,14 @@ func setup_costs(curr_costs):
 			marker.setup(i+1, data.costs[i+1])
 			add_child(marker)
 			offset.x += marker.size.x + 3
+
+func disable() -> void:
+	disabled = true
+	show_disabled(disabled)
+	
+func enable() -> void:
+	disabled = false
+	show_disabled(disabled and affordable)
 	
 func setup(name):
 	action = name

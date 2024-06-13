@@ -14,6 +14,7 @@ var swap_coordinate : Vector2i
 var state = FieldState.INACTIVE
 var refresh_required : bool
 var resolve_state : bool
+var locked : bool
 
 var orb_size = Vector2i(50, 50)
 var field_size = Vector2i(FIELD_WIDTH, FIELD_HEIGHT)
@@ -22,8 +23,8 @@ var field_size = Vector2i(FIELD_WIDTH, FIELD_HEIGHT)
 const FIELD_WIDTH = 9
 const FIELD_HEIGHT = 5
 
-signal gathering()
 signal board_evaluated()
+signal gathering()
 ####################################################################################################	
 ################################           Default Methods           ###############################
 ####################################################################################################
@@ -44,14 +45,14 @@ func _input(event):
 			clear_selected(true, true)
 		return
 		
-	if state == FieldState.SELECTING and event is InputEventMouse:
+	if state == FieldState.SELECTING and !locked and event is InputEventMouse:
 		if event is InputEventMouseButton and event.button_index & MOUSE_BUTTON_LEFT:
-			
 			if event.pressed:
 				print(coord)
 				if coord != Vector2i(-1,-1):
 					orbs[coord.x][coord.y].select()
 					start_coordinate = coord
+					gathering.emit()
 			else:
 				print(coord)
 				var diff = (coord - start_coordinate).abs()
@@ -199,31 +200,86 @@ func refresh() -> bool:
 			orbs[col][field_size.y-gaps+i] = orb
 			orb.field = self
 			add_child(orb)
-			orb.shuffle()
+			var type_weights : Array[int] = []
+			type_weights.resize(Orb.OrbType.size()) #0 is wildcard, correct after
+			type_weights.fill(0)
+			type_weights[Orb.OrbType.ATTACK] = 10
+			type_weights[Orb.OrbType.DEFENSE] = 10
+			type_weights[Orb.OrbType.FOCUS] = 10
+			type_weights[Orb.OrbType.AURA] = 10
+			type_weights[Orb.OrbType.YIN] = 10
+			type_weights[Orb.OrbType.YANG] = 10
+			type_weights[Orb.OrbType.MONEY] = 3
+			orb.shuffle(type_weights)
 			orb.name = "Orb [" + str(orb.coordinate.x) + ", " + str(orb.coordinate.y) + "]"
 			orb.rise(0)
 		gaps = 0
+	evaluate(false)
 	return true
 
-func new_evaluate(remove_orbs) -> bool:
-	#Sweep by columns first
-	#For i -> field_size.x
-		#For j -> field_size.y
-			##Efficiency escape if j + 3 - seq_length >= field_size.y BREAK
-			#if col_type != orb[i][j].type
-				#If seq_length >= 3
-					#Add sequence to list
-				#col_type = orb[i][j].type
-				#seq_length = 1
-				#sequence = [[(i,j), orb[i][j] ]]
-			#else
-				#seq_length += 1
-				#sequence.append([(i,j), orb[i][j] ])
-				
-	#Sweep by rows second
-	return false
-	
 func evaluate(remove_orbs) -> bool:
+	
+	var sets : Array = []
+	
+	var h_seq : Array = []
+	for i in field_size.y:
+		h_seq.append([])
+	var v_seq : Array[Orb] = []
+	
+	var marked_orbs : Dictionary = {}
+	#Sweep by columns first
+	for i in range(field_size.x):
+		v_seq = []
+	#For i -> field_size.x
+		for j in range(field_size.y):
+		#For j -> field_size.y
+			if len(v_seq) == 0 or v_seq[-1].type != orbs[i][j].type:
+				if len(v_seq) >= 3:
+					sets.append(v_seq.duplicate())
+					for orb in v_seq:
+						marked_orbs[orb] = true
+				v_seq = [orbs[i][j]]
+			else:
+				v_seq.append(orbs[i][j])
+			if len(h_seq[j]) == 0 or h_seq[j][-1].type != orbs[i][j].type:
+				if len(h_seq[j]) >= 3:
+					sets.append(h_seq[j].duplicate())
+					for orb in h_seq[j]:
+						marked_orbs[orb] = true
+				h_seq[j] = [orbs[i][j]]
+			else:
+				h_seq[j].append(orbs[i][j])
+		if len(v_seq) >= 3: #Minimum for a set
+			sets.append(v_seq.duplicate())
+			for orb in v_seq:
+				marked_orbs[orb] = true
+				
+	for row_seq in h_seq:
+		if len(row_seq) >= 3: #Minimum for a set
+			sets.append(row_seq.duplicate())
+			for orb in row_seq:
+				marked_orbs[orb] = true
+
+	
+	#TODO: This is where to make it care about what sets happened
+	
+	if remove_orbs:
+		for orb in marked_orbs.keys():
+			orb.activate()
+	else:
+		for i in range(field_size.x):
+			for j in range(field_size.y):
+				if marked_orbs.has(orbs[i][j]):
+					orbs[i][j].mark()
+				else:
+					orbs[i][j].unmark()
+	if len(marked_orbs) > 0:
+		refresh_required = true
+		return true
+	else:
+		return false
+	
+func old_evaluate(remove_orbs) -> bool:
 	var sequences = []
 	var sequence
 	var activated = []
@@ -346,8 +402,8 @@ func enter_state(new_state):
 			swap_orbs(start_coordinate, swap_coordinate)
 			pass
 		FieldState.EVALUATING:
-			if !evaluate(true):
-				transition()
+			resolve_state = true
+			evaluate(true)
 			pass
 		FieldState.REFRESHING:
 			if refresh_required:
@@ -378,25 +434,29 @@ func transition():
 		FieldState.INACTIVE:
 			enter_state(FieldState.SETUP)
 		FieldState.SETUP:
+			evaluate(false)
 			enter_state(FieldState.SELECTING)
 		FieldState.SELECTING:
 			enter_state(FieldState.SWAPPING)
-
 		FieldState.SWAPPING:
 			#evaluate the field over and over until it's done
-			if !evaluate(false):
-				gathering.emit()
-				swap_orbs(start_coordinate, swap_coordinate)
-				clear_selected(true, true)
-				enter_state(FieldState.SELECTING)
-			else:
-				enter_state(FieldState.EVALUATING)
+			evaluate(false)
+			clear_selected(true, true)
+			enter_state(FieldState.SELECTING)
 		FieldState.EVALUATING:
-			clear_selected(true, true)	
-			if refresh_required:
-				enter_state(FieldState.REFRESHING)
-			else:
-				enter_state(FieldState.SELECTING)
+			enter_state(FieldState.REFRESHING)
 		FieldState.REFRESHING:
-			enter_state(FieldState.EVALUATING)
+			enter_state(FieldState.SELECTING)
 	
+func unlock() -> void:
+	locked = false
+	$Blinder.visible = false
+
+func lock() -> void:
+	locked = true
+	$Blinder.visible = true
+	clear_selected(true, true)
+
+func try_evaluate() -> void:
+	exit_state(state)
+	enter_state(FieldState.EVALUATING)
