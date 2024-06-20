@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8u07nese0f5n"
-path="res://.godot/imported/pacifist.png-80b1062ff948b381fd3a6e8e4ecab15b.ctex"
+uid="uid://bink3nbveynwt"
+path="res://.godot/imported/Background Map.png-480e2b1189658298c46a0eeabe8ddb34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Battle Sprites/pacifist.png"
-dest_files=["res://.godot/imported/pacifist.png-80b1062ff948b381fd3a6e8e4ecab15b.ctex"]
+source_file="res://Sprites/UI/Character Select/Background Map.png"
+dest_files=["res://.godot/imported/Background Map.png-480e2b1189658298c46a0eeabe8ddb34.ctex"]
 
 [params]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c52hh4qgjcboc"]
+[gd_scene load_steps=13 format=3 uid="uid://c52hh4qgjcboc"]
 
-[ext_resource type="PackedScene" path="res://Templates/character_select_plate.tscn" id="1_efe7y"]
+[ext_resource type="PackedScene" uid="uid://cyv5bhv6jwaw6" path="res://Templates/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
 [ext_resource type="Texture2D" uid="uid://dmdyevuaoui02" path="res://Sprites/Wood Background.png" id="2_xk4qg"]
+[ext_resource type="Texture2D" uid="uid://bink3nbveynwt" path="res://Sprites/UI/Character Select/Background Map.png" id="3_4t8j6"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelectPanel.gd" id="3_08ix2"]
 [ext_resource type="Texture2D" uid="uid://m1s5dg3yo474" path="res://Sprites/Titles/Prodigy.png" id="5_d6dja"]
 [ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="6_lfk4n"]
@@ -38,22 +39,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 texture = ExtResource("2_xk4qg")
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="TextureRect3" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -72.0
-offset_top = 486.0
-offset_right = 234.0
-offset_bottom = 839.0
-rotation = -0.568246
-color = Color(0.878431, 0.862745, 0.835294, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -68.0
-offset_top = 467.0
-offset_right = 238.0
-offset_bottom = 820.0
-rotation = -0.482612
+offset_left = 1.0
+offset_top = 350.0
+offset_right = 327.0
+offset_bottom = 568.0
+texture = ExtResource("3_4t8j6")
 
 [node name="Characters" type="Control" parent="."]
 anchors_preset = 0
@@ -330,100 +322,100 @@ texture = ExtResource("9_xh26g")
 
 [node name="Ability1" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 83.0
-offset_top = 295.0
-offset_right = 115.0
-offset_bottom = 329.0
+offset_left = 67.0
+offset_top = 279.0
+offset_right = 131.0
+offset_bottom = 343.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability2" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 335.0
-offset_right = 71.0
-offset_bottom = 369.0
+offset_left = 24.0
+offset_top = 319.0
+offset_right = 88.0
+offset_bottom = 383.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability3" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 127.0
-offset_top = 335.0
-offset_right = 159.0
-offset_bottom = 369.0
+offset_left = 111.0
+offset_top = 321.0
+offset_right = 175.0
+offset_bottom = 385.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability4" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 377.0
-offset_right = 135.0
-offset_bottom = 411.0
+offset_left = 89.0
+offset_top = 363.0
+offset_right = 153.0
+offset_bottom = 427.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability5" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 151.0
-offset_top = 377.0
-offset_right = 183.0
-offset_bottom = 411.0
+offset_left = 136.0
+offset_top = 363.0
+offset_right = 200.0
+offset_bottom = 427.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability6" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 377.0
-offset_right = 95.0
-offset_bottom = 411.0
+offset_left = 46.0
+offset_top = 363.0
+offset_right = 110.0
+offset_bottom = 427.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability7" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 377.0
-offset_right = 47.0
-offset_bottom = 411.0
+offset_left = -1.0
+offset_top = 363.0
+offset_right = 63.0
+offset_bottom = 427.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability8" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 425.0
-offset_right = 47.0
-offset_bottom = 459.0
+offset_left = -1.0
+offset_top = 411.0
+offset_right = 63.0
+offset_bottom = 475.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability9" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 425.0
-offset_right = 95.0
-offset_bottom = 459.0
+offset_left = 46.0
+offset_top = 411.0
+offset_right = 110.0
+offset_bottom = 475.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability10" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 425.0
-offset_right = 135.0
-offset_bottom = 459.0
+offset_left = 88.0
+offset_top = 411.0
+offset_right = 152.0
+offset_bottom = 475.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability11" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
-offset_left = 151.0
-offset_top = 425.0
-offset_right = 183.0
-offset_bottom = 459.0
+offset_left = 134.0
+offset_top = 411.0
+offset_right = 198.0
+offset_bottom = 475.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
@@ -500,3 +492,5 @@ text = "Choose Your Candidate"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[editable path="Characters/The Inheritor"]

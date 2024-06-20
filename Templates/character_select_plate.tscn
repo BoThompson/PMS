@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://cyv5bhv6jwaw6"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterSelectPlate.gd" id="1_5w84g"]
-[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Scenes/Sprites/Character Plate.png" id="1_guiq0"]
-[ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Scenes/Sprites/Seals/Default.png" id="3_ghym1"]
-[ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Scenes/Sprites/Titles/Default.png" id="4_o3e15"]
+[ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="1_guiq0"]
+[ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Sprites/Seals/Default.png" id="3_ghym1"]
+[ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Sprites/Titles/Default.png" id="4_o3e15"]
 [ext_resource type="FontFile" uid="uid://3x1abt1jgvne" path="res://Fonts/GodsendPro.ttf" id="5_y8k1c"]
-[ext_resource type="Texture2D" uid="uid://c2fpg3ppj5ckk" path="res://Scenes/Sprites/Character Locked.png" id="6_0407a"]
+[ext_resource type="Texture2D" uid="uid://c2fpg3ppj5ckk" path="res://Sprites/Character Locked.png" id="6_0407a"]
 [ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="6_lkfh3"]
-[ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Scenes/Sprites/Portraits/Default.png" id="7_em8ly"]
+[ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="7_em8ly"]
 [ext_resource type="LabelSettings" uid="uid://dda82tko0s777" path="res://UI/Styles/character select.tres" id="8_5ec5a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsohl"]
@@ -75,10 +75,10 @@ autowrap_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -2.0
-offset_top = -14.0
-offset_right = 62.0
-offset_bottom = 82.0
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 75.0
+offset_bottom = 81.0
 mouse_filter = 2
 texture = ExtResource("7_em8ly")
 
