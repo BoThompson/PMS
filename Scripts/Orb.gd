@@ -50,10 +50,10 @@ var animations = {
 		"idle": "Yang Idle",
 		"marked": "Yang Marked",
 	},
-	#OrbType.MONEY	: {
-	#	"idle": "Money Idle",
-	#	"marked": "Money Marked",
-	#}
+	OrbType.MONEY	: {
+		"idle": "Money Idle",
+		"marked": "Money Marked",
+	}
 }
 
 ####################################################################################################	

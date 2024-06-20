@@ -9,7 +9,7 @@ func _ready():
 	var ss = DisplayServer.screen_get_size()
 	var offset = -Vector2(mp.x / ss.x, mp.y / ss.y) * 2 + Vector2.ONE
 	offset_position(offset)
-	get_parent().register_element(self)
+	get_node("/root/Title Screen").register_element(self)
 	pass # Replace with function body.
 
 
