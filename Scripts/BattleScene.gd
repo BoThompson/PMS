@@ -174,6 +174,15 @@ func retrieve_selected_action(id):
 	else:
 		return false
 
+func pass_selected():
+	if activity == ActivityState.READY:
+		energy_field.get_meditation_energy()
+		reset_energy_field()
+	elif activity == ActivityState.ACTION:
+		reset_energy_field()
+		switch_activity(ActivityState.COMPLETE)
+		
+
 func reset_energy_field():
 	energy_field.reset()
 	
@@ -199,9 +208,11 @@ func switch_activity (act : ActivityState) -> void:
 	match(act):
 		ActivityState.READY:
 			timer_bar.recolor(player_turn)
+			%"Pass Button".disabled = !player_turn
 			if player_turn:
 				energy_field.unlock()
 				enable_action_buttons()
+				%"Pass Button".text = "MEDITATE"
 			else:
 				energy_field.lock()
 				disable_action_buttons()
@@ -210,8 +221,11 @@ func switch_activity (act : ActivityState) -> void:
 				tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.COMPLETE))
 				return
 		ActivityState.GATHER:
+			%"Pass Button".disabled = true
 			disable_action_buttons()
 		ActivityState.ACTION:
+			%"Pass Button".disabled = false
+			%"Pass Button".text = "SCATTER"
 			enable_action_buttons()
 			energy_field.lock()
 			energy_field.try_evaluate()

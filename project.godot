@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="PMS"
+config/name="Trials of Jade"
 run/main_scene="res://Scenes/title_screen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://WIP/Icons/256.png"
 
 [autoload]
 

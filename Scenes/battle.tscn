@@ -69,7 +69,8 @@ offset_right = 461.0
 offset_bottom = 261.0
 color = Color(0, 0, 0, 1)
 
-[node name="Shuffle Button" type="Button" parent="HUD"]
+[node name="Pass Button" type="Button" parent="HUD"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 794.0
 offset_top = 456.0
@@ -79,7 +80,7 @@ text = "SHUFFLE!"
 script = ExtResource("10_3l8dk")
 swap_timer = 2.0
 
-[node name="Fill" type="ColorRect" parent="HUD/Shuffle Button"]
+[node name="Fill" type="ColorRect" parent="HUD/Pass Button"]
 layout_mode = 0
 offset_right = 166.0
 offset_bottom = 88.0
@@ -125,6 +126,6 @@ color = Color(0, 0, 0, 1)
 one_shot = true
 
 [connection signal="gathering" from="HUD/Qi Field" to="." method="_on_energy_field_gathering"]
-[connection signal="button_down" from="HUD/Shuffle Button" to="HUD/Shuffle Button" method="on_swap_pressed"]
-[connection signal="button_up" from="HUD/Shuffle Button" to="HUD/Shuffle Button" method="on_swap_released"]
+[connection signal="button_down" from="HUD/Pass Button" to="HUD/Pass Button" method="on_swap_pressed"]
+[connection signal="button_up" from="HUD/Pass Button" to="HUD/Pass Button" method="on_swap_released"]
 [connection signal="timeout" from="Timer" to="." method="_on_active_timer_complete"]

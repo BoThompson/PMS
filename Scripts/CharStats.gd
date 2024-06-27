@@ -24,9 +24,10 @@ var core_level : int
 var player : bool
 
 #PROGRESSION STATS
-var exp : int
-var exp_tnl : int
+var xp : int
+var xp_tnl : int
 
+var money : int
 
 
 

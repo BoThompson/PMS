@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8u07nese0f5n"
-path="res://.godot/imported/pacifist.png-80b1062ff948b381fd3a6e8e4ecab15b.ctex"
+uid="uid://cwfrbq53fjhao"
+path="res://.godot/imported/Menu.png-16b7caad19b052e80f6d0652a7c89f45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Battle Sprites/pacifist.png"
-dest_files=["res://.godot/imported/pacifist.png-80b1062ff948b381fd3a6e8e4ecab15b.ctex"]
+source_file="res://WIP/Test Title/Menu.png"
+dest_files=["res://.godot/imported/Menu.png-16b7caad19b052e80f6d0652a7c89f45.ctex"]
 
 [params]
 

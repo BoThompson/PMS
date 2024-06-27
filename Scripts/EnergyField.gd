@@ -381,7 +381,22 @@ func old_evaluate(remove_orbs) -> bool:
 		return true
 	
 	return false
-	
+
+
+func get_meditation_energy() -> Array:
+	var totals = []
+	totals.resize(Orb.OrbType.size())
+	totals.fill(0)
+	for col in range(field_size.x):
+		for row in range(field_size.y):
+			totals[orbs[col][row].type] += 1
+	for type in range(Orb.OrbType.size()):
+		if (type != Orb.OrbType.MONEY
+		and type != Orb.OrbType.XP):
+			totals[type] = ceili(totals[type]/5.0)
+		if totals[type] != 0:
+			add_resource(type, totals[type])
+	return totals
 ####################################################################################################	
 #############################           State Machine Methods           ############################
 ####################################################################################################

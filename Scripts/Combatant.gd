@@ -203,9 +203,23 @@ func is_player() -> bool:
 	return stats.player
 
 func add_resource(type : int, amount : int):
-	resources[type] += amount
-	resources_changed.emit(resources)
+	if type == Orb.OrbType.MONEY:
+		gain_money(amount)
+	elif type == Orb.OrbType.XP:
+		gain_xp(amount, false)
+	else:
+		resources[type] += amount
+		resources_changed.emit(resources)
 
+func gain_money(amount) -> void:
+	stats.money += amount
+	pass
+	
+func gain_xp(amount, apply) -> void:
+	stats.xp += amount
+	#If apply is true, evaluate levelup conditions
+	pass
+	
 func can_afford_action(action) -> bool:
 	var high_idx = -1
 	var costs = GameManager.get_action_data(action.name).costs

@@ -34,6 +34,42 @@ tracks/1/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left Roll:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(605, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 510)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NinePatchRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(702, 20)]
+}
 
 [sub_resource type="Animation" id="Animation_gvjhn"]
 resource_name = "slide"
@@ -62,6 +98,42 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left Roll:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(605, 5), Vector2(100, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(29, 510), Vector2(553, 510)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NinePatchRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(712, 20), Vector2(207, 20)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tb0gd"]
 _data = {
@@ -83,9 +155,9 @@ script = ExtResource("1_xmgd1")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 222.0
+offset_left = 702.0
 offset_top = 20.0
-offset_right = 760.0
+offset_right = 750.0
 offset_bottom = 530.0
 texture = ExtResource("2_6x3ca")
 region_rect = Rect2(0, 0, 3, 3)
@@ -173,7 +245,7 @@ flip_v = true
 metadata/_edit_lock_ = true
 
 [node name="Left Roll" type="Sprite2D" parent="."]
-position = Vector2(115, 5)
+position = Vector2(605, 5)
 texture = ExtResource("7_thlpn")
 centered = false
 hframes = 4

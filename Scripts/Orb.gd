@@ -6,7 +6,7 @@ class_name Orb extends Control
 
 #############################################   Enums   ############################################
 enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
-enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY, MONEY}
+enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY, MONEY, XP}
 enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
@@ -53,6 +53,10 @@ var animations = {
 	OrbType.MONEY	: {
 		"idle": "Money Idle",
 		"marked": "Money Marked",
+	},
+	OrbType.XP	: {
+		"idle": "XP Idle",
+		"marked": "XP Marked",
 	}
 }
 

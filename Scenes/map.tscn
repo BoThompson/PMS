@@ -85,6 +85,14 @@ texture = ExtResource("6_iuupt")
 script = ExtResource("3_mg0j4")
 offset_height = 4.0
 
+[node name="Label" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 227.0
+offset_right = 493.0
+offset_bottom = 250.0
+scale = Vector2(3, 3)
+text = "!"
+
 [connection signal="input_event" from="Map Portal" to="Map Portal" method="_on_click"]
 [connection signal="mouse_entered" from="Map Portal" to="Map Portal" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Map Portal" to="Map Portal" method="_on_mouse_exited"]

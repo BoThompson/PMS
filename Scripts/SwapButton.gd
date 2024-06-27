@@ -23,6 +23,7 @@ func _process(delta):
 	if held:
 		time_held += delta
 		if time_held >= swap_timer:
-			GameManager.battle.reset_energy_field()
+			GameManager.battle.pass_selected()
+			time_held = 0
 			held = false
 	pass
