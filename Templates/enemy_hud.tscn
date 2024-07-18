@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8qconbxis6d8"]
+[gd_scene load_steps=13 format=3 uid="uid://b8qconbxis6d8"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterHud.gd" id="1_fox88"]
 [ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="3_03syp"]
 [ext_resource type="Shader" path="res://Shaders/Bar_Fill.gdshader" id="5_jhpw0"]
 [ext_resource type="Texture2D" uid="uid://dh0ko2eu6m5td" path="res://Sprites/Character Plate.png" id="8_cmbcj"]
 [ext_resource type="Texture2D" uid="uid://fyqhnrhibt6g" path="res://Sprites/Seals/Default.png" id="9_whdwu"]
+[ext_resource type="Texture2D" uid="uid://c48osspl03038" path="res://Sprites/Orbs/Highlight.png" id="10_6ilcd"]
 [ext_resource type="Texture2D" uid="uid://0jr7jmf50pt" path="res://Sprites/Portraits/Default.png" id="10_xhnk4"]
+[ext_resource type="Texture2D" uid="uid://be34tx8jpmeb1" path="res://Sprites/Orbs/Large Orbs.png" id="11_b4xtc"]
 [ext_resource type="Texture2D" uid="uid://bi8hb75fga3fg" path="res://Sprites/Titles/Default.png" id="11_mt27e"]
 [ext_resource type="Texture2D" uid="uid://bueprtcdf0sf0" path="res://Sprites/Life Bar Background.png" id="12_34l7e"]
 [ext_resource type="Texture2D" uid="uid://bbrvq3o061eam" path="res://Sprites/Life Bar Fill.png" id="13_pu5dh"]
@@ -24,17 +26,11 @@ offset_bottom = 40.0
 script = ExtResource("1_fox88")
 
 [node name="Character Plate" type="TextureRect" parent="."]
+self_modulate = Color(0.39, 0.39, 0.39, 1)
 layout_mode = 0
 offset_right = 174.0
 offset_bottom = 84.0
 texture = ExtResource("8_cmbcj")
-
-[node name="TextureRect" type="TextureRect" parent="Character Plate"]
-layout_mode = 0
-offset_left = 98.0
-offset_top = -34.0
-offset_right = 138.0
-offset_bottom = 6.0
 
 [node name="Seal" type="TextureRect" parent="Character Plate"]
 modulate = Color(1, 1, 1, 0.396078)
@@ -57,14 +53,14 @@ flip_h = true
 
 [node name="Title" type="TextureRect" parent="Character Plate"]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 8.0
-offset_right = 122.0
-offset_bottom = 33.0
+offset_left = 17.0
+offset_top = 5.0
+offset_right = 103.0
+offset_bottom = 30.0
 texture = ExtResource("11_mt27e")
 
 [node name="Life Bar" type="Node2D" parent="Character Plate"]
-position = Vector2(7, 36)
+position = Vector2(7, 30)
 script = ExtResource("3_03syp")
 signal_name = "playerReadyChanged"
 
@@ -83,3 +79,37 @@ texture = ExtResource("13_pu5dh")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Character Plate"]
+modulate = Color(0.18359, 0.18359, 0.18359, 1)
+position = Vector2(12, 72)
+scale = Vector2(0.59375, 0.59375)
+texture = ExtResource("10_6ilcd")
+hframes = 8
+vframes = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Character Plate"]
+modulate = Color(0.678944, 0.678944, 0.678944, 1)
+position = Vector2(12, 72)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_b4xtc")
+hframes = 32
+vframes = 32
+
+[node name="Sprite2D3" type="Sprite2D" parent="Character Plate"]
+self_modulate = Color(0, 0, 0, 0.752941)
+position = Vector2(21, 80)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("10_6ilcd")
+hframes = 8
+vframes = 3
+
+[node name="Label" type="Label" parent="Character Plate/Sprite2D3"]
+offset_left = -17.4545
+offset_top = -23.2728
+offset_right = 16.5455
+offset_bottom = 18.7272
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
