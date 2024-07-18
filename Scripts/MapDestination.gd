@@ -1,4 +1,4 @@
-extends Node2D
+class_name MapIsland extends Node2D
 
 @export var offset_height : float
 var move_tween : Tween
@@ -7,10 +7,19 @@ var move_tween : Tween
 @export var site_type : String
 @export_range(1,7) var difficulty : int
 @export var site_description : String
+var selectable: bool = true
 var mapsite_panel_template = preload("res://Templates/mapsite_panel.tscn")
 var panel = null
+var event_data = {
+	"Name":"Dummy Event", 
+	"Description":"A dummy event description", 
+	"Image":"res://WIP/Test.png",
+	"Options":{"Confirm":dummy_fight}
+	}
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var mat = $Sprite.material
+	$Sprite.material = mat.duplicate()
 	move_tween = create_tween()
 	move_tween.tween_interval(randf())
 	move_tween = move_tween.chain()
@@ -41,7 +50,7 @@ func _on_click(viewport, event : InputEvent, shape_idx):
 	if event.button_index != 1:
 		return
 	if GameManager.event_scroll != null:
-		GameManager.event_scroll.roll()
+		GameManager.event_scroll.roll(event_data)
 	else:
 		var scroll = GameManager.spawn_event_scroll()
 		scroll.unroll()
@@ -49,3 +58,10 @@ func _on_click(viewport, event : InputEvent, shape_idx):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+#TEST
+func dummy_fight():
+	selectable = false
+	GameManager.transition_scene("res://Scenes/map.tscn")
+	

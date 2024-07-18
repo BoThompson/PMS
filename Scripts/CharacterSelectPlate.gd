@@ -6,9 +6,11 @@ extends Control
 var tween : Tween
 var start_position : Vector2
 var data : Dictionary
+var setdown_sound = preload("res://Sounds/CHARACTER SELECT/card_slide_001.wav")
+var pickup_sound = preload("res://Sounds/CHARACTER SELECT/card_set_down_001.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	data = GameManager.characters_data[character]["character_select"]
+	data = GameManager.characters_data[character]
 	$Quote.text = data["quote"]
 	if data["requirement"] == "":
 		$Requirement.text = "This character has not yet been made available. Check back later!"
@@ -29,6 +31,9 @@ func _on_mouse_entered():
 	if tween:
 		tween.stop()
 		set_passive()
+	$AudioStreamPlayer2D.stop()
+	$AudioStreamPlayer2D.stream = pickup_sound
+	$AudioStreamPlayer2D.play()
 	tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(self, "position", start_position + Vector2(-2, -2), .2)
@@ -54,6 +59,7 @@ func _on_mouse_exited():
 	tween.set_parallel()
 	tween.tween_property(self, "position", start_position, .2)
 	tween.tween_property($Shadow, "position", Vector2.ZERO, .2)
+	get_parent().get_parent().update_character(null)
 	if locked:
 		tween.tween_property($Requirement, "modulate:a", 0, .1)
 		var second = tween.chain()
@@ -101,5 +107,5 @@ func _process(delta):
 
 
 func _on_selected():
-	print(character + " selected.")
+	GameManager.launch_trial(character)
 	pass # Replace with function body.

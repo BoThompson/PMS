@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjt2wojebctds"]
+
+[ext_resource type="Script" path="res://Scripts/MapDestination.gd" id="1_b2wsw"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_p04vk"]
+[ext_resource type="Texture2D" uid="uid://egju7y7ctrgq" path="res://Sprites/Map Default.png" id="3_k6uf6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc15t"]
+shader = ExtResource("2_p04vk")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vi4k3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2xuc"]
+shader = ExtResource("2_p04vk")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qas7"]
+radius = 68.61
+
+[node name="Map Portal" type="StaticBody2D"]
+material = SubResource("ShaderMaterial_wc15t")
+disable_mode = 2
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vi4k3")
+script = ExtResource("1_b2wsw")
+landmark = true
+site_name = "Default Island"
+site_type = "Combat"
+site_description = "The default island."
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_k2xuc")
+texture = ExtResource("3_k6uf6")
+
+[node name="Panel Location" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 42.0
+offset_top = -131.0
+offset_right = 42.0
+offset_bottom = -131.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 6)
+shape = SubResource("CircleShape2D_3qas7")
+
+[connection signal="input_event" from="." to="." method="_on_click"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

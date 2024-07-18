@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmk3rpiqyvabw"
+path="res://.godot/imported/Ambient 18.wav-64e21a5b910dba8d031f6e684c8ca1c0.sample"
+
+[deps]
+
+source_file="res://Sounds/TITLE SCREEN/Ambient 18.wav"
+dest_files=["res://.godot/imported/Ambient 18.wav-64e21a5b910dba8d031f6e684c8ca1c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

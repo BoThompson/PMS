@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6f8th8h5r78i"]
+[gd_scene load_steps=13 format=3 uid="uid://c6f8th8h5r78i"]
 
 [ext_resource type="Script" path="res://EventScroll.gd" id="1_xmgd1"]
 [ext_resource type="Texture2D" uid="uid://ckkgtobc3ksyb" path="res://UI/Event/scroll ninepatch.png" id="2_6x3ca"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://crxfgarexqn8g" path="res://UI/Event/short frame.png" id="5_syrsm"]
 [ext_resource type="Texture2D" uid="uid://bvox2ndf12c26" path="res://UI/Event/short mask.png" id="6_lykms"]
 [ext_resource type="Texture2D" uid="uid://b3a0e1m2d2grr" path="res://UI/Event/scroll roll.png" id="7_thlpn"]
+[ext_resource type="Texture2D" uid="uid://cushxli8sxli4" path="res://WIP/Library Scene.png" id="8_dk2mq"]
+[ext_resource type="AudioStream" uid="uid://bvu6sgm8lmui3" path="res://Sounds/CHARACTER SELECT/Open Scroll 1.mp3" id="9_53awa"]
 
 [sub_resource type="Animation" id="Animation_5bjl8"]
 length = 0.001
@@ -20,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,7 +46,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(605, 5)]
+"values": [Vector2(100, 5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -56,7 +58,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(48, 510)]
+"values": [Vector2(553, 510)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -68,7 +70,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(702, 20)]
+"values": [Vector2(207, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_gvjhn"]
@@ -81,10 +83,10 @@ tracks/0/path = NodePath("Left Roll:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75, 0.8, 0.85),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.75, 0.8, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -93,10 +95,10 @@ tracks/1/path = NodePath("Right Roll:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.75, 0.8, 0.85),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.75, 0.8, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -105,10 +107,10 @@ tracks/2/path = NodePath("Left Roll:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.85),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(605, 5), Vector2(100, 5)]
+"values": [Vector2(605, 5), Vector2(100, 5), Vector2(100, 5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -117,10 +119,10 @@ tracks/3/path = NodePath("NinePatchRect:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.85),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(29, 510), Vector2(553, 510)]
+"values": [Vector2(29, 510), Vector2(553, 510), Vector2(553, 510)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -129,10 +131,10 @@ tracks/4/path = NodePath("NinePatchRect:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.85),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(712, 20), Vector2(207, 20)]
+"values": [Vector2(712, 20), Vector2(207, 20), Vector2(207, 20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tb0gd"]
@@ -155,9 +157,9 @@ script = ExtResource("1_xmgd1")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 702.0
+offset_left = 207.0
 offset_top = 20.0
-offset_right = 750.0
+offset_right = 760.0
 offset_bottom = 530.0
 texture = ExtResource("2_6x3ca")
 region_rect = Rect2(0, 0, 3, 3)
@@ -245,10 +247,11 @@ flip_v = true
 metadata/_edit_lock_ = true
 
 [node name="Left Roll" type="Sprite2D" parent="."]
-position = Vector2(605, 5)
+position = Vector2(100, 5)
 texture = ExtResource("7_thlpn")
 centered = false
 hframes = 4
+frame = 3
 
 [node name="Right Roll" type="Sprite2D" parent="."]
 position = Vector2(721, 5)
@@ -262,3 +265,85 @@ frame = 3
 libraries = {
 "": SubResource("AnimationLibrary_tb0gd")
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 67.0
+offset_right = 718.0
+offset_bottom = 301.0
+
+[node name="Contents" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Contents"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 34.0
+offset_right = 473.0
+offset_bottom = 70.0
+text = "BLAH"
+
+[node name="Description" type="Label" parent="Contents"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 312.0
+offset_right = 730.0
+offset_bottom = 465.0
+text = "BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH "
+
+[node name="Frame" type="NinePatchRect" parent="Contents"]
+z_index = 5
+layout_mode = 0
+offset_left = 208.0
+offset_top = 55.0
+offset_right = 741.0
+offset_bottom = 311.0
+texture = ExtResource("5_syrsm")
+patch_margin_left = 107
+patch_margin_top = 45
+patch_margin_right = 107
+patch_margin_bottom = 45
+
+[node name="Mask" type="NinePatchRect" parent="Contents/Frame"]
+z_index = -1
+clip_contents = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 17.0
+offset_right = 503.0
+offset_bottom = 226.0
+texture = ExtResource("6_lykms")
+patch_margin_left = 107
+patch_margin_top = 45
+patch_margin_right = 107
+patch_margin_bottom = 45
+
+[node name="Image" type="TextureRect" parent="Contents/Frame/Mask"]
+clip_contents = true
+layout_mode = 0
+offset_left = -84.0
+offset_top = -151.0
+offset_right = 572.0
+offset_bottom = 333.0
+texture = ExtResource("8_dk2mq")
+
+[node name="Accept Button" type="Button" parent="Contents"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 472.0
+offset_right = 731.0
+offset_bottom = 519.0
+text = "ACCEPT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_53awa")
+volume_db = -4.262

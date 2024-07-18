@@ -21,11 +21,9 @@ func _on_life_changed(_id, value):
 func setup(combatant: Combatant, on_left : bool):
 	self.combatant = combatant
 		
-	$"Character Plate/Portrait".texture = load("res://Sprites/Portraits/" + combatant.stats.data["character_select"]["assets"]["portrait_image"])
-	$"Character Plate/Title".texture = load("res://Sprites/Titles/" + combatant.stats.data["character_select"]["assets"]["title_image"])
-	$"Character Plate/Seal".texture = load("res://Sprites/Seals/" + combatant.stats.data["character_select"]["assets"]["seal_image"])
-	
-	$"Ready Bar".initialize_bar(combatant.stats.health / combatant.stats.max_health)
+	$"Character Plate/Portrait".texture = load("res://Sprites/Portraits/" + combatant.stats.data["assets"]["portrait_image"])
+	$"Character Plate/Title".texture = load("res://Sprites/Titles/" + combatant.stats.data["assets"]["title_image"])
+	$"Character Plate/Seal".texture = load("res://Sprites/Seals/" + combatant.stats.data["assets"]["seal_image"])
 	combatant.life_changed.connect(_on_life_changed)
 	#TODO - Put Affects here
 	if !combatant.is_player():

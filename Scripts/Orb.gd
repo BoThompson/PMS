@@ -6,7 +6,7 @@ class_name Orb extends Control
 
 #############################################   Enums   ############################################
 enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
-enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY, MONEY, XP}
+enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, MONEY, XP, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY }
 enum OrbLit {UNLIT, LIT}
 
 #############################################   Exports   ##########################################
@@ -147,7 +147,7 @@ func shuffle(weights : Array[int]):
 		#print("ERROR: Shuffle failed to determine a type")
 		#print("Num: " + str(n))
 		#print("Weights: " + str(weights))
-	type = randi_range(1,6)
+	type = randi_range(1,7)
 
 ####################################################################################################	
 #############################          Tween Resolution Methods         ############################

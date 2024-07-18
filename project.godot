@@ -40,6 +40,10 @@ enabled=PackedStringArray()
 
 theme/default_font_antialiasing=0
 
+[inkgd]
+
+register_templates=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

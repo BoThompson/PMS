@@ -1,14 +1,17 @@
 extends Control
 
-
+var sprite = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func update_character(data):
+	if sprite:
+			sprite.queue_free()
 	if data == null:
-		$Title.texture = load("res://Sprites/Titles/unknown.png")
-		$Seal.texture = load("res://Sprites/Seals/unknown.png")
+		$Title.texture = null
+		$Seal.texture = null
+		sprite = null
 		$Style.text = "Style: Unknown"
 		$Background.text = "Unknown"
 		$Element.text = "Unknown"
@@ -18,10 +21,9 @@ func update_character(data):
 	$Style.text = data["style"]
 	$Background.text = data["background"]
 	$Element.text = data["element"]
-	if data["assets"]["sprite"] == "":
-		$Sprite.texture = null
-	else:
-		$Sprite.texture = load("res://Sprites/Battle Sprites/" + data["assets"]["sprite"])
+	if data["combat"]["battle_sprite"] != "":
+		sprite = load("res://Templates/Battle Sprites/" + data["combat"]["battle_sprite"]).instantiate()
+		$Sprite.add_child(sprite)
 	var s : String
 	#TODO: Populate the quirks list
 	#TODO: Populate the abilities

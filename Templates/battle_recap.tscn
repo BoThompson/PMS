@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyw7cr36gnjto"]
+
+[ext_resource type="Script" path="res://Scripts/BattleRecap.gd" id="1_ic34d"]
+
+[node name="Battle Recap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ic34d")
+
+[node name="Blocker" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.207843)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 31.0
+offset_right = 711.0
+offset_bottom = 501.0
+
+[node name="Grade" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 3.0
+offset_right = 389.0
+offset_bottom = 26.0
+scale = Vector2(4, 4)
+text = "A+"
+
+[node name="Grade Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 28.0
+offset_right = 354.0
+offset_bottom = 51.0
+text = "Grade:"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 427.0
+offset_right = 281.0
+offset_bottom = 458.0
+text = "OK"
+
+[node name="Battle Recap Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 107.0
+offset_bottom = 37.0
+scale = Vector2(2, 2)
+text = "Battle Recap"
+
+[node name="Exp Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 79.0
+offset_right = 158.0
+offset_bottom = 102.0
+text = "Experience Gained:"
+
+[node name="Enemies Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 103.0
+offset_right = 79.0
+offset_bottom = 126.0
+text = "Enemies:"
+
+[node name="Spoils Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 199.0
+offset_right = 60.0
+offset_bottom = 222.0
+text = "Spoils:"
+
+[node name="Spoils" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 226.0
+offset_right = 432.0
+offset_bottom = 414.0
+text = "Nothing"
+
+[node name="Zin Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 199.0
+offset_right = 328.0
+offset_bottom = 222.0
+text = "Zin Earned:"
+
+[node name="Zin" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 200.0
+offset_right = 417.0
+offset_bottom = 223.0
+text = "0"

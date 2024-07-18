@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c52hh4qgjcboc"]
+[gd_scene load_steps=14 format=3 uid="uid://c52hh4qgjcboc"]
 
 [ext_resource type="PackedScene" uid="uid://cyv5bhv6jwaw6" path="res://Templates/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="6_lfk4n"]
 [ext_resource type="FontFile" uid="uid://ml5x4t3vqdb5" path="res://Fonts/WorthyPro.ttf" id="7_8vown"]
 [ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="9_rec1t"]
+[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="9_xh26g"]
 [ext_resource type="Texture2D" uid="uid://bkwwsiq17v4lt" path="res://Sprites/Abilities/default.png" id="10_edeqm"]
 [ext_resource type="Texture2D" uid="uid://cnkp71e5yp4x" path="res://Sprites/UI/Character Select/key.png" id="12_smcx8"]
 
@@ -323,176 +324,177 @@ text = "Quirk"
 modulate = Color(0.721569, 0.380392, 0, 0.309804)
 layout_mode = 0
 offset_left = 233.0
-offset_top = 323.0
+offset_top = 262.0
 offset_right = 302.0
-offset_bottom = 392.0
+offset_bottom = 331.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("6_lfk4n")
 
-[node name="Sprite" type="Control" parent="Character Select Panel"]
-anchors_preset = 0
-offset_left = 237.0
-offset_top = 459.0
-offset_right = 237.0
-offset_bottom = 459.0
+[node name="Sprite" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 239.0
+offset_right = 252.0
+offset_bottom = 325.0
 scale = Vector2(2, 2)
+texture = ExtResource("9_xh26g")
 
 [node name="Ability1" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 67.0
-offset_top = 277.0
+offset_top = 221.0
 offset_right = 131.0
-offset_bottom = 341.0
+offset_bottom = 285.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability2" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 317.0
+offset_top = 261.0
 offset_right = 88.0
-offset_bottom = 381.0
+offset_bottom = 325.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability3" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 111.0
-offset_top = 319.0
+offset_top = 263.0
 offset_right = 175.0
-offset_bottom = 383.0
+offset_bottom = 327.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability4" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 89.0
-offset_top = 361.0
+offset_top = 305.0
 offset_right = 153.0
-offset_bottom = 425.0
+offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability5" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 136.0
-offset_top = 361.0
+offset_top = 305.0
 offset_right = 200.0
-offset_bottom = 425.0
+offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability6" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 46.0
-offset_top = 361.0
+offset_top = 305.0
 offset_right = 110.0
-offset_bottom = 425.0
+offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability7" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = -1.0
-offset_top = 361.0
+offset_top = 305.0
 offset_right = 63.0
-offset_bottom = 425.0
+offset_bottom = 369.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability8" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = -1.0
-offset_top = 409.0
+offset_top = 353.0
 offset_right = 63.0
-offset_bottom = 473.0
+offset_bottom = 417.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability9" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 46.0
-offset_top = 409.0
+offset_top = 353.0
 offset_right = 110.0
-offset_bottom = 473.0
+offset_bottom = 417.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability10" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 409.0
+offset_top = 353.0
 offset_right = 152.0
-offset_bottom = 473.0
+offset_bottom = 417.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Ability11" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0
 offset_left = 134.0
-offset_top = 409.0
+offset_top = 353.0
 offset_right = 198.0
-offset_bottom = 473.0
+offset_bottom = 417.0
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("10_edeqm")
 
 [node name="Line2D" type="Line2D" parent="Character Select Panel"]
-position = Vector2(127, 319)
+position = Vector2(127, 263)
 points = PackedVector2Array(-12, -10, 17, -10, 17, 16)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D4" type="Line2D" parent="Character Select Panel"]
-position = Vector2(115, 360)
+position = Vector2(115, 304)
 points = PackedVector2Array(12, -10, 5, -10, 5, 15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D3" type="Line2D" parent="Character Select Panel"]
-position = Vector2(171, 360)
+position = Vector2(171, 304)
 points = PackedVector2Array(-12, -10, -4, -10, -4, 15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D7" type="Line2D" parent="Character Select Panel"]
-position = Vector2(33, 412)
+position = Vector2(33, 356)
 points = PackedVector2Array(-2, -5, -2, 11)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D8" type="Line2D" parent="Character Select Panel"]
-position = Vector2(81, 412)
+position = Vector2(81, 356)
 points = PackedVector2Array(-2, -5, -2, 11)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D9" type="Line2D" parent="Character Select Panel"]
-position = Vector2(121, 412)
+position = Vector2(121, 356)
 points = PackedVector2Array(-2, -5, -2, 11)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D10" type="Line2D" parent="Character Select Panel"]
-position = Vector2(169, 412)
+position = Vector2(169, 356)
 points = PackedVector2Array(-2, -5, -2, 11)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D5" type="Line2D" parent="Character Select Panel"]
-position = Vector2(27, 360)
+position = Vector2(27, 304)
 points = PackedVector2Array(12, -10, 4, -10, 4, 15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D6" type="Line2D" parent="Character Select Panel"]
-position = Vector2(83, 360)
+position = Vector2(83, 304)
 points = PackedVector2Array(-12, -10, -4, -10, -4, 15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D2" type="Line2D" parent="Character Select Panel"]
-position = Vector2(71, 319)
+position = Vector2(71, 263)
 points = PackedVector2Array(12, -10, -16, -10, -16, 16)
 width = 3.0
 default_color = Color(0, 0, 0, 1)

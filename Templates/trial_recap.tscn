@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://da5mpb0xr8t3w"]
+
+[ext_resource type="Script" path="res://Scripts/TrialRecap.gd" id="1_02buk"]
+
+[node name="Trial Recap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02buk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.109804, 0.109804, 0.329412)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -231.0
+offset_right = 434.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 33.5
+offset_top = 375.0
+offset_right = 109.5
+offset_bottom = 398.0
+text = "Outcome:"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 393.5
+offset_top = 11.5
+offset_right = 478.5
+offset_bottom = 34.5
+text = "Trial Recap"
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 636.5
+offset_top = 41.5
+offset_right = 763.5
+offset_bottom = 64.5
+text = "Islands Explored"
+
+[node name="Label4" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 153.5
+offset_right = 772.0
+offset_bottom = 176.5
+text = "Enemies Defeated"
+
+[node name="Label5" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 273.5
+offset_right = 782.0
+offset_bottom = 296.5
+text = "Treasures Collected"
+
+[node name="Sprite" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 357.0
+offset_top = 50.0
+offset_right = 521.0
+offset_bottom = 210.0
+
+[node name="Label" type="Label" parent="Panel/Sprite"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 161.0
+offset_right = 118.0
+offset_bottom = 184.0
+text = "VICTORY"
+
+[node name="Inventory" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Okay Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 373.0
+offset_right = 849.0
+offset_bottom = 451.0
+text = "Okay"
+
+[connection signal="pressed" from="Panel/Okay Button" to="." method="_on_okay_button_pressed"]

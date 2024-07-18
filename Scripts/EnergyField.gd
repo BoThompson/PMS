@@ -382,6 +382,23 @@ func old_evaluate(remove_orbs) -> bool:
 	
 	return false
 
+func get_enemy_energy(types : Array) -> Array:
+	var totals = []
+	var orbs = []
+	totals.resize(Orb.OrbType.size())
+	totals.fill(0)
+	for col in range(field_size.x):
+		for row in range(field_size.y):
+			if types.has(orbs[col][row].type):
+				totals[orbs[col][row].type] += 1
+				orbs.append(orbs[col][row])
+	for type in len(totals):
+		if totals[type] != 0:
+			add_resource(type, totals[type])
+	for orb in orbs:
+		orb.activate()
+	return totals
+	
 
 func get_meditation_energy() -> Array:
 	var totals = []
@@ -390,7 +407,7 @@ func get_meditation_energy() -> Array:
 	for col in range(field_size.x):
 		for row in range(field_size.y):
 			totals[orbs[col][row].type] += 1
-	for type in range(Orb.OrbType.size()):
+	for type in range(len(totals)):
 		if (type != Orb.OrbType.MONEY
 		and type != Orb.OrbType.XP):
 			totals[type] = ceili(totals[type]/5.0)

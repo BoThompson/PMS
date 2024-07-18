@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c52hh4qgjcboc"]
+[gd_scene load_steps=14 format=3 uid="uid://c52hh4qgjcboc"]
 
 [ext_resource type="PackedScene" uid="uid://cyv5bhv6jwaw6" path="res://Templates/character_select_plate.tscn" id="1_efe7y"]
 [ext_resource type="Script" path="res://Scripts/CharacterSelect.gd" id="1_hnupb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpcy4kk27jkdn" path="res://Sprites/Seals/Prodigy.png" id="6_lfk4n"]
 [ext_resource type="FontFile" uid="uid://ml5x4t3vqdb5" path="res://Fonts/WorthyPro.ttf" id="7_8vown"]
 [ext_resource type="FontFile" uid="uid://qusa5odd3rt0" path="res://Fonts/MatchupPro.ttf" id="9_rec1t"]
+[ext_resource type="Texture2D" uid="uid://3ve0cgt82mya" path="res://Sprites/test_player.png" id="9_xh26g"]
 [ext_resource type="Texture2D" uid="uid://bkwwsiq17v4lt" path="res://Sprites/Abilities/default.png" id="10_edeqm"]
 [ext_resource type="Texture2D" uid="uid://cnkp71e5yp4x" path="res://Sprites/UI/Character Select/key.png" id="12_smcx8"]
 
@@ -330,13 +331,14 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(43, 12.5)
 texture = ExtResource("6_lfk4n")
 
-[node name="Sprite" type="Control" parent="Character Select Panel"]
-anchors_preset = 0
-offset_left = 237.0
-offset_top = 459.0
-offset_right = 237.0
-offset_bottom = 459.0
+[node name="Sprite" type="TextureRect" parent="Character Select Panel"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 300.0
+offset_right = 252.0
+offset_bottom = 386.0
 scale = Vector2(2, 2)
+texture = ExtResource("9_xh26g")
 
 [node name="Ability1" type="TextureRect" parent="Character Select Panel"]
 layout_mode = 0

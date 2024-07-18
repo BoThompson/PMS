@@ -176,8 +176,15 @@ func retrieve_selected_action(id):
 
 func pass_selected():
 	if activity == ActivityState.READY:
-		energy_field.get_meditation_energy()
-		reset_energy_field()
+		if player_turn:
+			energy_field.get_meditation_energy()
+			reset_energy_field()
+		else:
+			var desired_types = {}
+			for c : Combatant in combatants:
+				if !c.is_player():
+					desired_types[c.energy_type] = c.energy_type
+			energy_field.get_enemy_energy(desired_types.keys())
 	elif activity == ActivityState.ACTION:
 		reset_energy_field()
 		switch_activity(ActivityState.COMPLETE)
@@ -218,7 +225,7 @@ func switch_activity (act : ActivityState) -> void:
 				disable_action_buttons()
 				var tween = create_tween()
 				tween.tween_interval(1)
-				tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.COMPLETE))
+				tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.GATHER))
 				return
 		ActivityState.GATHER:
 			%"Pass Button".disabled = true

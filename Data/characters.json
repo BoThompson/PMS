@@ -1,50 +1,45 @@
 {
 	"": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "default.png",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "default.png",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"beast": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "*Aroooo?*",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "*Aroooo?*",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"dragon": {
-		"character_select": {
 			"assets": {
 				"portrait_image": "default.png",
 				"seal_image": "default.png",
@@ -58,317 +53,288 @@
 			],
 			"quote": "You would deny me entry? Where water goes, so too shall I.",
 			"requirement": "",
-			"style": ""
-		},
+			"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	}, 
 	"fallen": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"This takes blood, sweat, and tears. They don't have to be mine.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"This takes blood, sweat, and tears. They don't have to be mine.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"farstrider": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"You have no idea the long road I have walked to get this far.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"You have no idea the long road I have walked to get this far.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"firebird": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"Burn away those who would oppose you.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"Burn away those who would oppose you.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"inheritor": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "inheritor.png",
-				"seal_image": "inheritor.png",
-				"sprite": "inheritor_idle.tscn",
-				"title_image": "inheritor.png"
-			},
-			"background": "A distant descendant of the creator of the Trials of Jade, the Inheritor is the son of a humble farmer. Imagine his surprise when his one precious inheritance, a brass medallion of a dragon's head, opened a portal to the Trials of Jade and sucked him in! With barely any cultivation training, how will he ever escape?",
-			"element": "None",
-			"quirks": [
-				"Chosen for Greatness"
-			],
-			"quote": "\"I don't even know how I got here...\"",
-			"requirement": "None",
-			"style": "Accidental Combat"
+		"assets": {
+			"portrait_image": "inheritor.png",
+			"seal_image": "inheritor.png",
+			"sprite": "inheritor_idle.tscn",
+			"title_image": "inheritor.png"
 		},
+		"background": "A distant descendant of the creator of the Trials of Jade, the Inheritor is the son of a humble farmer. Imagine his surprise when his one precious inheritance, a brass medallion of a dragon's head, opened a portal to the Trials of Jade and sucked him in! With barely any cultivation training, how will he ever escape?",
+		"element": "None",
+		"quirks": [
+			"Chosen for Greatness"
+		],
+		"quote": "\"I don't even know how I got here...\"",
+		"requirement": "None",
+		"style": "Accidental Combat",
 		"combat": {
-			"battle_sprite": "default.tscn",
+			"battle_sprite": "inheritor.tscn",
 			"basic":"strike"
 		}
 	},
 	"mercenary": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"If you can't sell it, I'm not interested.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"If you can't sell it, I'm not interested.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"novice": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "novice_idle.tcsn",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "Any",
-			"quirks": [
-				"Room to Grow"
-			],
-			"quote": "\"I may not be the best, but I'll do my best!\"",
-			"requirement": "Complete one trial with The Inheritor.",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "novice_idle.tcsn",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "Any",
+		"quirks": [
+			"Room to Grow"
+		],
+		"quote": "\"I may not be the best, but I'll do my best!\"",
+		"requirement": "Complete one trial with The Inheritor.",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"pacifist": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "pacifist.png",
-				"seal_image": "pacifist.png",
-				"sprite": "pacifist.png",
-				"title_image": "pacifist.png"
-			},
-			"background": "Once this wandering monk of the Thousand Grain Temple was the favored heir to his Order until he allowed his pride to lead him to boastfulness. Now, he journeys as an exorcist freeing others of their violent impulses and searching for a treasure that will redeem him in his Abbot's eyes.",
-			"element": "Yin / Yang",
-			"quirks": [
-				""
-			],
-			"quote": "\"Violence is your prison, but mercy is the key.\"",
-			"requirement": "Fully charge a Lotus Wheel artifact to unlock this character.",
-			"style": "Buddha's Gentle Palm"
+		"assets": {
+			"portrait_image": "pacifist.png",
+			"seal_image": "pacifist.png",
+			"sprite": "pacifist.png",
+			"title_image": "pacifist.png"
 		},
+		"background": "Once this wandering monk of the Thousand Grain Temple was the favored heir to his Order until he allowed his pride to lead him to boastfulness. Now, he journeys as an exorcist freeing others of their violent impulses and searching for a treasure that will redeem him in his Abbot's eyes.",
+		"element": "Yin / Yang",
+		"quirks": [
+			""
+		],
+		"quote": "\"Violence is your prison, but mercy is the key.\"",
+		"requirement": "Fully charge a Lotus Wheel artifact to unlock this character.",
+		"style": "Buddha's Gentle Palm",
 		"combat": {
-			"battle_sprite": "default.tscn",
+			"battle_sprite": "pacifist.tscn",
 			"basic":"strike"
 		}
 	},
 	"prodigy": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "prodigy.png",
-				"seal_image": "prodigy.png",
-				"sprite": "prodigy.png",
-				"title_image": "prodigy.png"
-			},
-			"background": "The chosen disciple of a respected and ancient cultivator, the Cultivator has spent her whole life being tested and trained to be the best. Now, with the Trials of Jade opening for the first time in a thousand years, she has entered with the certainty that no other candidate can match her sheer potential.",
-			"element": "Any",
-			"quirks": [
-				"Unyielding",
-				""
-			],
-			"quote": "\"If you're a match for me now, I promise you won't be for long.\"",
-			"requirement": "Reach Jade Core stage to unlock this character.",
-			"style": "Adaptable Fists"
+		"assets": {
+			"portrait_image": "prodigy.png",
+			"seal_image": "prodigy.png",
+			"sprite": "prodigy.png",
+			"title_image": "prodigy.png"
 		},
+		"background": "The chosen disciple of a respected and ancient cultivator, the Cultivator has spent her whole life being tested and trained to be the best. Now, with the Trials of Jade opening for the first time in a thousand years, she has entered with the certainty that no other candidate can match her sheer potential.",
+		"element": "Any",
+		"quirks": [
+			"Unyielding",
+			""
+		],
+		"quote": "\"If you're a match for me now, I promise you won't be for long.\"",
+		"requirement": "Reach Jade Core stage to unlock this character.",
+		"style": "Adaptable Fists",
 		"combat": {
 			"battle_sprite": "prodigy.tscn",
 			"basic":"strike"
 		}
 	},
 	"reborn": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"This place... it's so familiar.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"This place... it's so familiar.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"scion": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"Some people were simply born to succeed.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"Some people were simply born to succeed.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"tiger": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "Do not fear my roar, fear the jaws will that soon follow.",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "Do not fear my roar, fear the jaws will that soon follow.",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"tortoise": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "\"Crush that which may be opposed, weather that which may not.\"",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "\"Crush that which may be opposed, weather that which may not.\"",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"unicorn": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "Do not understimate the power of fortune and chance.",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "Do not understimate the power of fortune and chance.",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "default.tscn",
 			"basic":"strike"
 		}
 	},
 	"training dummy": {
-		"character_select": {
-			"assets": {
-				"portrait_image": "default.png",
-				"seal_image": "default.png",
-				"sprite": "",
-				"title_image": "default.png"
-			},
-			"background": "",
-			"element": "",
-			"quirks": [
-				""
-			],
-			"quote": "Do not understimate the power of fortune and chance.",
-			"requirement": "",
-			"style": ""
+		"assets": {
+			"portrait_image": "default.png",
+			"seal_image": "default.png",
+			"sprite": "",
+			"title_image": "default.png"
 		},
+		"background": "",
+		"element": "",
+		"quirks": [
+			""
+		],
+		"quote": "Do not understimate the power of fortune and chance.",
+		"requirement": "",
+		"style": "",
 		"combat": {
 			"battle_sprite": "training dummy.tscn",
 			"basic":"strike"

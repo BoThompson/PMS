@@ -1,5 +1,5 @@
 
-extends Node2D
+class_name BattleSprite extends Node2D
 
 signal on_hit(count)
 var hit_counter = 0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvu6sgm8lmui3"
+path="res://.godot/imported/Open Scroll 1.mp3-889cd932f886c3c70fdddb00a1c8d42c.mp3str"
+
+[deps]
+
+source_file="res://Sounds/CHARACTER SELECT/Open Scroll 1.mp3"
+dest_files=["res://.godot/imported/Open Scroll 1.mp3-889cd932f886c3c70fdddb00a1c8d42c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
