@@ -384,18 +384,18 @@ func old_evaluate(remove_orbs) -> bool:
 
 func get_enemy_energy(types : Array) -> Array:
 	var totals = []
-	var orbs = []
+	var out = []
 	totals.resize(Orb.OrbType.size())
 	totals.fill(0)
 	for col in range(field_size.x):
 		for row in range(field_size.y):
 			if types.has(orbs[col][row].type):
 				totals[orbs[col][row].type] += 1
-				orbs.append(orbs[col][row])
+				out.append(orbs[col][row])
 	for type in len(totals):
 		if totals[type] != 0:
 			add_resource(type, totals[type])
-	for orb in orbs:
+	for orb in out:
 		orb.activate()
 	return totals
 	

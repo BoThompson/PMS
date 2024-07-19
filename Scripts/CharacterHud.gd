@@ -26,7 +26,4 @@ func setup(combatant: Combatant, on_left : bool):
 	$"Character Plate/Seal".texture = load("res://Sprites/Seals/" + combatant.stats.data["assets"]["seal_image"])
 	combatant.life_changed.connect(_on_life_changed)
 	#TODO - Put Affects here
-	if !combatant.is_player():
-		$"Resource Board".queue_free()
-	else:
-		combatant.resources_changed.connect(_on_resources_changed)
+	combatant.resources_changed.connect(_on_resources_changed)

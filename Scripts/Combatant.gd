@@ -13,6 +13,8 @@ var action_tween : Tween
 var actions = []
 var action_target
 
+var energy_type : Orb.OrbType = Orb.OrbType.YANG
+
 enum DamageType {PHYSICAL, ENERGY}
 
 enum RepositionState { NONE, APPROACHING, RETURNING}

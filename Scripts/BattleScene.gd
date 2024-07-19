@@ -181,7 +181,7 @@ func pass_selected():
 			reset_energy_field()
 		else:
 			var desired_types = {}
-			for c : Combatant in combatants:
+			for c : Combatant in combatants.values():
 				if !c.is_player():
 					desired_types[c.energy_type] = c.energy_type
 			energy_field.get_enemy_energy(desired_types.keys())
@@ -225,7 +225,7 @@ func switch_activity (act : ActivityState) -> void:
 				disable_action_buttons()
 				var tween = create_tween()
 				tween.tween_interval(1)
-				tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.GATHER))
+				tween.tween_callback(Callable(self, "pass_selected"))
 				return
 		ActivityState.GATHER:
 			%"Pass Button".disabled = true
