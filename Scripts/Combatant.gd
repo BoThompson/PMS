@@ -13,7 +13,7 @@ var action_tween : Tween
 var actions = []
 var action_target
 
-var energy_type : Orb.OrbType = Orb.OrbType.YANG
+var energy_type : Orb.OrbType = Orb.OrbType.YIN
 
 enum DamageType {PHYSICAL, ENERGY}
 
@@ -49,6 +49,8 @@ func setup(cs, player, left):
 	else:
 		id = 1
 		bsprite.get_node("Sprite").flip_h = true
+		energy_type = Orb.OrbTypeNames[cs.data.enemy.energy_type]
+		
 	if !left:
 		flip_h = true
 	resources = []
@@ -93,11 +95,6 @@ func tween_reposition(type : RepositionType, state : RepositionState, start_pos 
 func aura_blast(target):
 	occupied = true
 	print("Aura blast at " + target)
-
-
-func deliver_strike():
-	$"BattleSprite/Animator".play("Strike")
-	print_debug("TESTING!!")
 
 
 #Returns true if dying from hit
@@ -242,12 +239,20 @@ func can_afford_action(action) -> bool:
 func pay_action_costs(action):
 	var changed = false
 	var high_idx = -1
-	var costs = GameManager.get_action_data(action.name).costs
+	var costs = 0
+	if is_player():
+		costs = GameManager.get_action_data(action.name).costs
+	else:
+		costs = []
+		costs.resize(len(resources)+1)
+		costs.fill(0)
+		costs[energy_type+1] = action.cost
+		
 	for i in range(len(resources)):
-		if costs[i+1] != 0:
+		if costs[i+1] > 0:
 			changed = true
 		resources[i] -= int(costs[i+1])
-		if costs[0] != 0 and (high_idx == -1 or resources[i] > resources[high_idx]):
+		if costs[0] > 0 and (high_idx == -1 or resources[i] > resources[high_idx]):
 			high_idx = i
 	if high_idx != -1:
 		resources[high_idx] -= int(costs[0])
@@ -257,3 +262,22 @@ func pay_action_costs(action):
 		
 func calculate_active_timer() -> float:
 	return active_timer
+
+func queue_enemy_action():
+	var move_pool = stats.data.enemy.moves
+	var options = []
+	var max = 0
+	for move in move_pool:
+		if move.cost <= resources[energy_type]:
+			options.append(move)
+			max += move.weight
+	var selected = randi_range(0, max)
+	var action = null
+	for move in options:
+		if selected <= move.weight:
+			action = move
+			break
+		selected -= move.weight
+	#TODO: This is sloppy, find a better way of marking opponents and checking valid targets
+	action.target = GameManager.battle.get_opponent(id)
+	queue_action(action)

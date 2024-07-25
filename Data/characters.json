@@ -338,6 +338,17 @@
 		"combat": {
 			"battle_sprite": "training dummy.tscn",
 			"basic":"strike"
+		},
+		"enemy":{
+			"passive_gather":true,
+			"energy_type":"attack",
+			"moves":[
+				{
+					"name":"strike",
+					"cost":3,
+					"weight":1
+				}
+			]
 		}
 	}
 }

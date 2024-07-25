@@ -80,7 +80,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="Character Plate"]
+[node name="Energy Frame" type="Sprite2D" parent="Character Plate"]
 modulate = Color(0.18359, 0.18359, 0.18359, 1)
 position = Vector2(12, 72)
 scale = Vector2(0.59375, 0.59375)
@@ -88,7 +88,8 @@ texture = ExtResource("10_6ilcd")
 hframes = 8
 vframes = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Character Plate"]
+[node name="Orb" type="Sprite2D" parent="Character Plate"]
+unique_name_in_owner = true
 modulate = Color(0.678944, 0.678944, 0.678944, 1)
 position = Vector2(12, 72)
 scale = Vector2(0.5, 0.5)
@@ -96,7 +97,7 @@ texture = ExtResource("11_b4xtc")
 hframes = 32
 vframes = 32
 
-[node name="Sprite2D3" type="Sprite2D" parent="Character Plate"]
+[node name="Energy Counter" type="Sprite2D" parent="Character Plate"]
 self_modulate = Color(0, 0, 0, 0.752941)
 position = Vector2(21, 80)
 scale = Vector2(0.34375, 0.34375)
@@ -104,7 +105,8 @@ texture = ExtResource("10_6ilcd")
 hframes = 8
 vframes = 3
 
-[node name="Label" type="Label" parent="Character Plate/Sprite2D3"]
+[node name="Energy" type="Label" parent="Character Plate/Energy Counter"]
+unique_name_in_owner = true
 offset_left = -17.4545
 offset_top = -23.2728
 offset_right = 16.5455

@@ -153,7 +153,7 @@ func remove_active_orb(orb):
 		
 
 func add_resource(type, amt):
-	GameManager.battle.add_resource(type, amt, 0)
+	GameManager.battle.add_resource(type, amt)
 
 ####################################################################################################	
 ##################################          State Methods          #################################
@@ -395,6 +395,12 @@ func get_enemy_energy(types : Array) -> Array:
 	for type in len(totals):
 		if totals[type] != 0:
 			add_resource(type, totals[type])
+
+	if len(out) > 0:
+		refresh_required = true
+		resolve_state = true
+		state = FieldState.EVALUATING
+		
 	for orb in out:
 		orb.activate()
 	return totals

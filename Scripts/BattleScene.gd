@@ -58,10 +58,10 @@ func _process(delta):
 	if !timer.is_stopped():
 		timer_bar.update_value(timer.time_left)
 		
-	if resolve_actions:
+	if energy_field and !energy_field.resolve_state and resolve_actions:
 		var unoccupied = true
 		var awaiting = false
-		
+			
 		for comb in combatants.values():
 			if comb.occupied:
 				unoccupied = false
@@ -79,8 +79,11 @@ func _process(delta):
 						resolve_actions = false
 					
 				ActivityState.ACTION:
-					resolve_actions = false
-					switch_activity(ActivityState.COMPLETE)
+					if !awaiting:
+						resolve_actions = false
+						switch_activity(ActivityState.COMPLETE)
+					else:
+						advance_action_queue()
 		
 	elif activity == ActivityState.BLITZ:
 		if timer.is_stopped():
@@ -185,6 +188,9 @@ func pass_selected():
 				if !c.is_player():
 					desired_types[c.energy_type] = c.energy_type
 			energy_field.get_enemy_energy(desired_types.keys())
+			var tween = create_tween()
+			tween.tween_interval(.75)
+			tween.tween_callback(Callable(self, "switch_activity").bind(ActivityState.ACTION))
 	elif activity == ActivityState.ACTION:
 		reset_energy_field()
 		switch_activity(ActivityState.COMPLETE)
@@ -192,8 +198,13 @@ func pass_selected():
 
 func reset_energy_field():
 	energy_field.reset()
-	
-func add_resource(resource, amt, id):
+
+
+func add_resource(resource, amt, id=-1):
+	if player_turn:
+		id = 0
+	else:
+		id = 1
 	combatants[id].add_resource(resource, amt)
 
 func select_action(id, action) -> bool:
@@ -231,11 +242,14 @@ func switch_activity (act : ActivityState) -> void:
 			%"Pass Button".disabled = true
 			disable_action_buttons()
 		ActivityState.ACTION:
-			%"Pass Button".disabled = false
-			%"Pass Button".text = "SCATTER"
-			enable_action_buttons()
-			energy_field.lock()
-			energy_field.try_evaluate()
+			if player_turn:
+				%"Pass Button".disabled = false
+				%"Pass Button".text = "SCATTER"
+				enable_action_buttons()
+				energy_field.lock()
+				energy_field.try_evaluate()
+			else:
+				enemy_action()
 		ActivityState.BLITZ:
 			energy_field.lock()
 		ActivityState.COMPLETE:
@@ -282,3 +296,9 @@ func _on_active_timer_complete():
 func _on_energy_field_gathering():
 	if activity == ActivityState.READY:
 		switch_activity(ActivityState.GATHER)
+
+func enemy_action():
+	for combatant : Combatant in combatants.values():
+		if !combatant.is_player():
+			combatant.queue_enemy_action()
+	resolve_actions = true

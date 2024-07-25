@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0lka6igggogw"
-path="res://.godot/imported/Training Dummy.png-7c3c14793e2adf976b63fdd3cf3ab521.ctex"
+path="res://.godot/imported/training dummy.png-a25f314a42e8cf829eabe4f94a02d276.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Battle Sprites/Training Dummy.png"
-dest_files=["res://.godot/imported/Training Dummy.png-7c3c14793e2adf976b63fdd3cf3ab521.ctex"]
+source_file="res://Sprites/Battle Sprites/training dummy.png"
+dest_files=["res://.godot/imported/training dummy.png-a25f314a42e8cf829eabe4f94a02d276.ctex"]
 
 [params]
 

@@ -8,6 +8,25 @@ class_name Orb extends Control
 enum OrbState {RISING, SWAPPING, SELECTABLE, SELECTED, ACTIVATED}
 enum OrbType {WILDCARD, ATTACK, DEFENSE, FOCUS, AURA, YIN, YANG, MONEY, XP, EARTH, WATER, FIRE, METAL, WOOD, BLOOD, FURY }
 enum OrbLit {UNLIT, LIT}
+########################################   Enum Identifiers   ######################################
+const OrbTypeNames = {
+	"wildcard":OrbType.WILDCARD, 
+	"attack":OrbType.ATTACK, 
+	"defense":OrbType.DEFENSE, 
+	"focus":OrbType.FOCUS, 
+	"aura":OrbType.AURA, 
+	"yin":OrbType.YIN, 
+	"yang":OrbType.YANG, 
+	"money":OrbType.MONEY, 
+	"xp":OrbType.XP, 
+	"earth":OrbType.EARTH, 
+	"water":OrbType.WATER, 
+	"fire":OrbType.FIRE, 
+	"metal":OrbType.METAL, 
+	"wood":OrbType.WOOD, 
+	"blood":OrbType.BLOOD, 
+	"fury":OrbType.FURY
+}
 
 #############################################   Exports   ##########################################
 @export var state : OrbState

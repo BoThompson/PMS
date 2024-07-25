@@ -13,6 +13,13 @@ func _process(delta):
 func _on_resources_changed(values):
 	if combatant.is_player():
 		$"Resource Board"._on_resources_changed(values)
+	else:
+		var type = combatant.energy_type
+		%Energy.text = str(values[combatant.energy_type])
+		if values[type] > 0:
+			%Orb.modulate = Color.WHITE
+		else:
+			%Orb.modulate = Color.DARK_GRAY
 
 	
 func _on_life_changed(_id, value):
