@@ -38,8 +38,8 @@ var actions : Array[String] #[0] is the basic attack, 1-8 are the optional ones
 static func load(dataset):
 	var cs = CharStats.new()
 	cs.data = dataset
-	cs.health = 100
-	cs.max_health = 100
+	cs.health = 20
+	cs.max_health = 20
 	cs.mind = 1
 	cs.body = 1
 	cs.spirit = 1

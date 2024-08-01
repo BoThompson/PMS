@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://yf35j3g7nog"]
 
-[ext_resource type="Texture2D" uid="uid://ch8fojkju1qgl" path="res://Scenes/Sprites/Resource Board.png" id="1_snbhb"]
+[ext_resource type="Texture2D" uid="uid://ch8fojkju1qgl" path="res://Sprites/Resource Board.png" id="1_snbhb"]
 [ext_resource type="Script" path="res://Scripts/ResourceBoard.gd" id="2_xgy6h"]
-[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Scenes/Sprites/Lit Attack.png" id="3_tgku1"]
-[ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Scenes/Sprites/Lit Defense.png" id="4_hdq87"]
-[ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Scenes/Sprites/Lit Prepare.png" id="5_tqpv3"]
-[ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Scenes/Sprites/Lit Qi.png" id="6_qdju0"]
-[ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Scenes/Sprites/Lit Yin.png" id="7_r0r67"]
-[ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Scenes/Sprites/Lit Yang.png" id="8_st73y"]
+[ext_resource type="Texture2D" uid="uid://m8t1g2cnpuun" path="res://Sprites/Lit Attack.png" id="3_tgku1"]
+[ext_resource type="Texture2D" uid="uid://ohbfpidn4iap" path="res://Sprites/Lit Defense.png" id="4_hdq87"]
+[ext_resource type="Texture2D" uid="uid://cleq75wtk8sdv" path="res://Sprites/Lit Prepare.png" id="5_tqpv3"]
+[ext_resource type="Texture2D" uid="uid://jbdb0o3eh8ks" path="res://Sprites/Lit Qi.png" id="6_qdju0"]
+[ext_resource type="Texture2D" uid="uid://bbtwgurt67a1e" path="res://Sprites/Lit Yin.png" id="7_r0r67"]
+[ext_resource type="Texture2D" uid="uid://cecgcwj3yuckq" path="res://Sprites/Lit Yang.png" id="8_st73y"]
 
 [node name="Resource Board" type="TextureRect"]
 offset_left = 17.0

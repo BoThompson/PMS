@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dyi6eiwa5kfko"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterHud.gd" id="1_6l3sv"]
-[ext_resource type="PackedScene" path="res://Templates/resource_board.tscn" id="2_j1huu"]
+[ext_resource type="PackedScene" uid="uid://yf35j3g7nog" path="res://Templates/resource_board.tscn" id="2_j1huu"]
 [ext_resource type="Script" path="res://Scripts/ReadyBar.gd" id="3_66xe1"]
 [ext_resource type="Texture2D" uid="uid://oxrllwr8vo2h" path="res://Sprites/Empty Ready Bar.png" id="4_rmgeq"]
 [ext_resource type="Shader" path="res://Shaders/Bar_Fill.gdshader" id="5_sso18"]

@@ -145,6 +145,7 @@ func register_combatant(combatant : Combatant, on_left : bool):
 			var button = add_action_button(action)
 	hud.setup(combatant, on_left)
 	get_tree().root.add_child(hud)
+	combatant.on_defeat.connect(_on_combatant_defeat)
 	if combatant.is_player():
 		hud.position = Vector2(10,10)
 	else:
@@ -297,6 +298,17 @@ func _on_energy_field_gathering():
 	if activity == ActivityState.READY:
 		switch_activity(ActivityState.GATHER)
 
+func _on_combatant_defeat(id : int, cause : String):
+	
+	if id == 0:
+		print("YOU LOST!")
+		get_tree().quit()
+	else:
+		print("YOU WON!")
+		get_tree().quit()
+	pass
+	
+	
 func enemy_action():
 	for combatant : Combatant in combatants.values():
 		if !combatant.is_player():

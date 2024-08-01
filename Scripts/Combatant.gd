@@ -29,6 +29,7 @@ var damage_notification_template = preload("res://Templates/damage_notification.
 
 signal resources_changed(values)
 signal life_changed(id : int, value : float)
+signal on_defeat(id : int, cause : String)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -110,11 +111,14 @@ func damage(amount, type = DamageType.PHYSICAL):
 		get_tree().root.add_child(dam_notify)
 		life_changed.emit(id, float(stats.health) / stats.max_health)
 	if stats.health <= 0:
-		return true
 		die()
+		return true
 	return false
 
 func die():
+	for conn in on_defeat.get_connections():
+		print(conn)
+	on_defeat.emit(id, "death")
 	queue_free()
 	#TODO: Make death more satisfying?
 	
@@ -123,16 +127,16 @@ func strike_hit(_count):
 
 func approach_target(tween) -> Tween:
 	#TODO: Set up a position marker on combatants to show where "infront of them" should be
-	var target_pos = position + (action_target.global_position - global_position)
-	target_pos -= Vector2(100, 0) * sign(target_pos)
-	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, position, target_pos, .2, tween)
+	var offset = action_target.global_position - global_position
+	offset -= Vector2(100, 0) * sign(offset)
+	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, position, position + offset, .2, tween)
 	action_tween = tweens[0]
 	return tweens[1]
 
 func retreat_target(tween) -> Tween:
-	var target_pos = position + (action_target.global_position - global_position)
-	target_pos -= Vector2(100, 0) * sign(target_pos)
-	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, target_pos, position, .2, tween)
+	var offset = action_target.global_position - global_position
+	offset -= Vector2(100, 0) * sign(offset)
+	var tweens = tween_reposition(RepositionType.LEAP, RepositionState.APPROACHING, position + offset, position, .2, tween)
 	action_tween = tweens[0]
 	return tweens[1]
 	
