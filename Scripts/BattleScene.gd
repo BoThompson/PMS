@@ -20,6 +20,8 @@ var selected_actions : Array = [null, null]
 var resolve_actions : bool
 @onready var timer : Timer = $Timer
 @onready var timer_bar : ActiveTimer = %"Timer Bar"
+var battle_data = {"money":0, "xp":0}
+
 
 const player_hud : PackedScene = preload("res://Templates/player_hud.tscn")
 const enemy_hud : PackedScene = preload("res://Templates/enemy_hud.tscn")
@@ -288,7 +290,13 @@ func get_active_timer(player_turn) -> float:
 			if combatant.id != 0:
 				time += combatant.calculate_active_timer()
 		return time
-	
+
+func add_money(amount):
+	battle_data.money += amount
+
+func add_xp(amount):
+	battle_data.xp += amount
+
 func _on_active_timer_complete():
 	match(activity):
 		ActivityState.GATHER:

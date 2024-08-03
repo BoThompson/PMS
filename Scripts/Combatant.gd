@@ -207,9 +207,9 @@ func is_player() -> bool:
 
 func add_resource(type : int, amount : int):
 	if type == Orb.OrbType.MONEY:
-		gain_money(amount)
+		GameManager.battle.add_money(amount)
 	elif type == Orb.OrbType.XP:
-		gain_xp(amount, false)
+		GameManager.battle.add_xp(amount)
 	else:
 		resources[type] += amount
 		resources_changed.emit(resources)

@@ -347,3 +347,5 @@ text = "ACCEPT"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_53awa")
 volume_db = -4.262
+
+[connection signal="pressed" from="Contents/Accept Button" to="." method="_on_accept_button_pressed"]

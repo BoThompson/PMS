@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsk32hxop7i4v"
+path="res://.godot/imported/Japanese Meditation Main.wav-d42f4e71892a8d0347a9299938f28c8b.sample"
+
+[deps]
+
+source_file="res://Sounds/Music/Japanese Meditation Main.wav"
+dest_files=["res://.godot/imported/Japanese Meditation Main.wav-d42f4e71892a8d0347a9299938f28c8b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
