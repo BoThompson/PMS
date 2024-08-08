@@ -26,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_hnupb")
+stuff = Array[int]([388, 123, 234, 5, 3])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

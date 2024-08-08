@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://3njtgtoamdic"]
+
+[ext_resource type="Script" path="res://Scripts/vfx.gd" id="1_2q3r8"]
+[ext_resource type="Texture2D" uid="uid://dl1x5h62svngh" path="res://Sprites/VFX/melee_blast_A.png" id="2_ij3ii"]
+
+[sub_resource type="Animation" id="Animation_axipv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4f06e"]
+resource_name = "Run"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroy"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yr06k"]
+_data = {
+"RESET": SubResource("Animation_axipv"),
+"Run": SubResource("Animation_4f06e")
+}
+
+[node name="Melee Blast 1" type="Node2D"]
+script = ExtResource("1_2q3r8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ij3ii")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yr06k")
+}
+autoplay = "Run"

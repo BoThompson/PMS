@@ -32,4 +32,5 @@ func _process(delta):
 
 
 func _on_accept_button_pressed():
+	queue_free()
 	GameManager.transition_scene("res://Scenes/Tests/test_battle.tscn")

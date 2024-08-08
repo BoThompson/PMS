@@ -32,6 +32,8 @@ func populate_map():
 		island.name = "Island " + str(i.index)
 		island.position = Vector2(400 + i.index.x * 150, 400 + i.index.y * 100 - 125 * (i.index.x+1) )
 		add_child(island)
+
+
 func generate_map():
 	var portal = island_data.create(Vector2i(0,0))
 	islands[portal.index] = portal

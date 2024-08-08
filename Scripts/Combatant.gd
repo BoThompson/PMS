@@ -140,10 +140,11 @@ func retreat_target(tween) -> Tween:
 	action_tween = tweens[0]
 	return tweens[1]
 	
-func tween_action_animation(tween : Tween, animation_name : String):
+func tween_action_animation(tween : Tween, animation_name : String, wait : bool):
 	var length = $BattleSprite/Animator.get_animation(animation_name).length
 	tween.tween_callback(Callable($BattleSprite/Animator, "play").bind(animation_name))
-	tween.tween_interval(length)
+	if wait:
+		tween.tween_interval(length)
 	
 func strike(target):
 	occupied = true
@@ -158,18 +159,18 @@ func strike(target):
 func tween_melee_attack(tween, animation_name):
 	var tween_tail = approach_target(tween)
 	tween_tail = tween_tail.chain()
-	tween_action_animation(tween_tail, animation_name)
+	tween_action_animation(tween_tail, animation_name, true)
 	tween_tail = tween_tail.chain()
 	tween_tail = retreat_target(tween_tail)
 	tween_tail = tween_tail.chain()
+	tween_action_animation(tween_tail, "Idle", true)
 	tween_tail.tween_callback(end_action)
 	return tween_tail
 	
 func end_action():
-	for conn in $BattleSprite.on_hit.get_connections():
-		$BattleSprite.on_hit.disconnect(conn.callable)
 	occupied = false
-	current_action.target.occupied = false
+	if is_instance_valid(current_action.target):
+		current_action.target.occupied = false
 	current_action = null
 	
 func try_next_action() -> bool:

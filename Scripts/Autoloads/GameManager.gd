@@ -63,7 +63,7 @@ func transition_map():
 	add_child(blinder)
 	tween.tween_property(blinder, "modulate:a", 1, .25)
 	tween.tween_callback(get_tree().unload_current_scene)
-	tween.tween_callback(func(): get_tree().add_child(map))
+	tween.tween_callback(func(): get_tree().root.add_child(map))
 	tween.tween_callback(func(): get_tree().current_scene = map)
 	tween.tween_interval(.2)
 	tween.tween_property(blinder, "modulate:a", 0, .25)

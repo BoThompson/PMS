@@ -69,6 +69,15 @@ offset_right = 158.0
 offset_bottom = 102.0
 text = "Experience Gained:"
 
+[node name="Exp" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 161.0
+offset_top = 79.0
+offset_right = 203.0
+offset_bottom = 102.0
+text = "0"
+
 [node name="Enemies Label" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 9.0
@@ -102,9 +111,12 @@ offset_bottom = 222.0
 text = "Zin Earned:"
 
 [node name="Zin" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 330.0
 offset_top = 200.0
 offset_right = 417.0
 offset_bottom = 223.0
 text = "0"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_okay_pressed"]

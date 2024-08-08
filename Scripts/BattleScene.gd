@@ -21,11 +21,11 @@ var resolve_actions : bool
 @onready var timer : Timer = $Timer
 @onready var timer_bar : ActiveTimer = %"Timer Bar"
 var battle_data = {"money":0, "xp":0}
-
+var paused : bool = false
 
 const player_hud : PackedScene = preload("res://Templates/player_hud.tscn")
 const enemy_hud : PackedScene = preload("res://Templates/enemy_hud.tscn")
-	
+const recap_template : PackedScene = preload("res://Templates/battle_recap.tscn")
 
 func add_action_button(action):
 	var name = action.name
@@ -59,39 +59,40 @@ func _process(delta):
 	
 	if !timer.is_stopped():
 		timer_bar.update_value(timer.time_left)
-		
-	if energy_field and !energy_field.resolve_state and resolve_actions:
-		var unoccupied = true
-		var awaiting = false
+	
+	if !paused:
+		if  energy_field and !energy_field.resolve_state and resolve_actions:
+			var unoccupied = true
+			var awaiting = false
+				
+			for comb in combatants.values():
+				if comb.occupied:
+					unoccupied = false
+				if comb.actions_queued():
+					awaiting = true
+				
+			if unoccupied:
+				match activity:
+					ActivityState.BLITZ:
+						if timer.is_stopped():
+							switch_activity(ActivityState.COMPLETE)
+						elif awaiting:
+							advance_action_queue()
+						else:
+							resolve_actions = false
+						
+					ActivityState.ACTION:
+						if !awaiting:
+							resolve_actions = false
+							switch_activity(ActivityState.COMPLETE)
+						else:
+							advance_action_queue()
 			
-		for comb in combatants.values():
-			if comb.occupied:
-				unoccupied = false
-			if comb.actions_queued():
-				awaiting = true
-			
-		if unoccupied:
-			match activity:
-				ActivityState.BLITZ:
-					if timer.is_stopped():
-						switch_activity(ActivityState.COMPLETE)
-					elif awaiting:
-						advance_action_queue()
-					else:
-						resolve_actions = false
-					
-				ActivityState.ACTION:
-					if !awaiting:
-						resolve_actions = false
-						switch_activity(ActivityState.COMPLETE)
-					else:
-						advance_action_queue()
-		
-	elif activity == ActivityState.BLITZ:
-		if timer.is_stopped():
-			switch_activity(ActivityState.COMPLETE)
-		else:
-			advance_action_queue()
+		elif activity == ActivityState.BLITZ:
+			if timer.is_stopped():
+				switch_activity(ActivityState.COMPLETE)
+			else:
+				advance_action_queue()
 	
 	return
 
@@ -312,10 +313,18 @@ func _on_combatant_defeat(id : int, cause : String):
 		print("YOU LOST!")
 		get_tree().quit()
 	else:
-		print("YOU WON!")
-		get_tree().quit()
+		paused = true
+		var recap = recap_template.instantiate()
+		recap.setup(battle_data)
+		recap.on_close.connect(_on_battle_complete)
+		get_tree().root.add_child(recap)
 	pass
 	
+func _on_battle_complete():
+	if GameManager.map != null:
+		GameManager.transition_map()
+	else:
+		get_tree().quit()
 	
 func enemy_action():
 	for combatant : Combatant in combatants.values():

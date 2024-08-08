@@ -1,21 +1,14 @@
-extends Control
+extends Node2D
 
-var plates = []
-var selected_data
 
-@export var stuff : Array[int] = []
-var current_tap = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-func update_character(data):
-	$"Character Select Panel".update_character(data)
-	selected_data = data
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
+func destroy():
+	queue_free()

@@ -17,7 +17,8 @@ config/icon="res://WIP/Icons/256.png"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.gd"
+Tool="*res://Scripts/Autoloads/Tool.gd"
+GameManager="*res://Scripts/Autoloads/GameManager.gd"
 
 [display]
 

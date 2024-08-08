@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1scp7vxijbwk"]
+[gd_scene load_steps=9 format=3 uid="uid://b1scp7vxijbwk"]
 
 [ext_resource type="Script" path="res://Scripts/BattleSprite.gd" id="1_nfxb2"]
 [ext_resource type="Texture2D" uid="uid://b8r3ysu8xxgq8" path="res://Sprites/Battle Sprites/prodigy.png" id="2_tgx8i"]
@@ -47,6 +47,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(9, -38)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contacts/Contact 1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(44, -53)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Contacts/Contact 2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(44, -51)]
+}
 
 [sub_resource type="Animation" id="Animation_r8v5g"]
 resource_name = "Strike"
@@ -90,9 +114,69 @@ tracks/2/keys = {
 "update": 1,
 "values": [Vector2(9, -38), Vector2(13, -37), Vector2(14, -37), Vector2(18, -37), Vector2(14, -37), Vector2(14, -38)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Contacts/Contact 1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(45, -55)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1, "melee_impact", false],
+"method": &"vfx"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2, "melee_blast", true],
+"method": &"vfx"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Contacts/Contact 2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(44, -51)]
+}
+
+[sub_resource type="Animation" id="Animation_6yusn"]
+resource_name = "Dead"
+
+[sub_resource type="Animation" id="Animation_di108"]
+resource_name = "Hurt"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ijch"]
 _data = {
+"Dead": SubResource("Animation_6yusn"),
+"Hurt": SubResource("Animation_di108"),
 "Idle": SubResource("Animation_grcxf"),
 "RESET": SubResource("Animation_h4svf"),
 "Strike": SubResource("Animation_r8v5g")
@@ -102,11 +186,11 @@ _data = {
 script = ExtResource("1_nfxb2")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(9, -38)
+position = Vector2(14, -38)
 texture = ExtResource("2_tgx8i")
 hframes = 8
 vframes = 3
-frame = 16
+frame = 10
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -114,3 +198,17 @@ libraries = {
 "": SubResource("AnimationLibrary_0ijch")
 }
 autoplay = "Idle"
+
+[node name="Contacts" type="Node2D" parent="."]
+
+[node name="Contact 1" type="Node2D" parent="Contacts"]
+position = Vector2(45, -55)
+
+[node name="Contact 2" type="Node2D" parent="Contacts"]
+position = Vector2(44, -51)
+
+[node name="Contact 3" type="Node2D" parent="Contacts"]
+
+[node name="Contact 4" type="Node2D" parent="Contacts"]
+
+[node name="Contact 5" type="Node2D" parent="Contacts"]
