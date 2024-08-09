@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3ayman5fj78e"]
+[gd_scene load_steps=29 format=3 uid="uid://b3ayman5fj78e"]
 
 [ext_resource type="Script" path="res://WIP/Test Title/TitleScreen.gd" id="1_c1cdu"]
 [ext_resource type="Texture2D" uid="uid://2dn7ue0krshg" path="res://WIP/Test Title/Background.png" id="3_cf3r5"]
@@ -12,8 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://dmk3rpiqyvabw" path="res://Sounds/TITLE SCREEN/Ambient 18.wav" id="8_lf0la"]
 [ext_resource type="AudioStream" uid="uid://1tga237kg5yb" path="res://Sounds/TITLE SCREEN/foley_cloth_light_fast_movement_04.wav" id="9_f608y"]
 [ext_resource type="Texture2D" uid="uid://bmj7218efobkb" path="res://WIP/Test Title/Sword.png" id="9_n3h17"]
+[ext_resource type="AudioStream" uid="uid://bhxrykwqdbh52" path="res://Sounds/SFX/Breathe 6.wav" id="10_y35vf"]
 [ext_resource type="Texture2D" uid="uid://bgda0ospr46l0" path="res://WIP/Test Title/Sparkle.png" id="11_g50dv"]
 [ext_resource type="Texture2D" uid="uid://cwfrbq53fjhao" path="res://WIP/Test Title/Menu.png" id="12_hk5s0"]
+[ext_resource type="AudioStream" uid="uid://bsk32hxop7i4v" path="res://Sounds/Music/Japanese Meditation Main.wav" id="15_65g3f"]
 
 [sub_resource type="Animation" id="Animation_800mk"]
 resource_name = "Blink"
@@ -229,8 +231,9 @@ script = ExtResource("1_c1cdu")
 [node name="Clothing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(380, 327)
 stream = ExtResource("9_f608y")
-volume_db = -26.426
+volume_db = -17.2
 autoplay = true
+bus = &"SFX"
 
 [node name="Background Filler" type="ColorRect" parent="."]
 layout_mode = 0
@@ -288,9 +291,18 @@ max_offset = Vector2(8, 8)
 [node name="Ambient" type="AudioStreamPlayer2D" parent="Gate"]
 position = Vector2(310, 269)
 stream = ExtResource("8_lf0la")
-volume_db = -15.876
-pitch_scale = 0.13
+volume_db = -15.6
+pitch_scale = 0.33
 autoplay = true
+bus = &"SFX"
+
+[node name="Breath" type="AudioStreamPlayer2D" parent="Gate"]
+position = Vector2(310, 269)
+stream = ExtResource("10_y35vf")
+volume_db = 1.8
+pitch_scale = 0.83
+autoplay = true
+bus = &"SFX"
 
 [node name="Ground Ripple" type="Sprite2D" parent="."]
 position = Vector2(314, 512)
@@ -406,6 +418,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "OPTIONS"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_65g3f")
+autoplay = true
+bus = &"Music"
 
 [connection signal="finished" from="Clothing" to="." method="_on_clothing_finished"]
 [connection signal="pressed" from="Menu Scroll/Start Button" to="." method="_on_start_button_pressed"]

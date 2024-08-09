@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d05dijsworafq"]
+[gd_scene load_steps=9 format=3 uid="uid://d05dijsworafq"]
 
 [ext_resource type="Script" path="res://Scripts/BattleScene.gd" id="1_x426s"]
 [ext_resource type="Texture2D" uid="uid://c67ekw17co3ug" path="res://Sprites/dot.png" id="2_rlcml"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cl24b1ix7185b" path="res://Sprites/Player Energy Field.png" id="4_8w1kc"]
 [ext_resource type="Script" path="res://Scripts/ActiveTimer.gd" id="7_cauon"]
 [ext_resource type="Script" path="res://Scripts/EnergyField.gd" id="8_21wm4"]
+[ext_resource type="AudioStream" uid="uid://b76uskh578tbd" path="res://Sounds/Music/Japanese Training Main.wav" id="8_vmnh6"]
 [ext_resource type="Script" path="res://Scripts/SwapButton.gd" id="10_3l8dk"]
 
 [node name="Battle Scene" type="Node2D"]
@@ -124,6 +125,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vmnh6")
 
 [connection signal="gathering" from="HUD/Qi Field" to="." method="_on_energy_field_gathering"]
 [connection signal="button_down" from="HUD/Pass Button" to="HUD/Pass Button" method="on_swap_pressed"]
